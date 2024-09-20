@@ -1,0 +1,136 @@
+---
+title: Implementing Array as an Abstract
+description: Implementing Array as an Abstract Data Type in java Language.
+---
+
+Understanding the snippet below:
+1. First, we will define a structure. You can use a class and its methods in java, a structure is used to define customized data types.
+2. Define the structure elements, integer variables total_size and used_size, and an integer pointer to point at the address of the first element.
+3. We are now ready with our customized data type. Let’s define some functions, which will feature
+    - Creating an array of this data type, 
+    - Printing the contents of this array,
+    - Setting values in this array.
+
+Create a void function createArray by passing the address of a struct data type a, and integers tSize and uSize. We can very easily assign this tSize and uSize given from the main, to the total_size and used_size of the struct myArray a by either of the methods defined below.
+
+```
+   (*a).total_size = tSize; 
+               or 
+    a->total_size = tSize;
+```
+
+> Code Snippet 1: Syntax for assigning structure elements to structure pointers.
+
+Similarly, assign the integer pointer ptr, the address of the reserved memory location using malloc.
+
+```java
+a.ptr = new int[tSize]; // Allocating an array of integers of size tSize
+```
+
+*Code Snippet 2: Using malloc*
+
+4. We will now create a show function to display all the elements of the struct myArray. We will simply pass the address of the struct myArray a. To print all the elements, we will traverse through the whole struct and print each struct element till the iterator reaches the last element. We will use a→used_size to define the loop size. Use (a→ptr)[i] to access each element.
+
+4. We will now create a setVal function to set values to this struct myArray a and pass the address of the same. Use scanf to assign values to each element via (a→ptr)[i] .
+
+```java
+import java.util.Scanner;
+
+class MyArray {
+    int totalSize;
+    int usedSize;
+    int[] ptr;
+
+    public void createArray(int tSize, int uSize) {
+        this.totalSize = tSize;
+        this.usedSize = uSize;
+        this.ptr = new int[tSize]; // Allocate array
+    }
+
+    public void show() {
+        for (int i = 0; i < usedSize; i++) {
+            System.out.println(ptr[i]);
+        }
+    }
+
+    public void setVal() {
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < usedSize; i++) {
+            System.out.print("Enter element " + i + ": ");
+            ptr[i] = scanner.nextInt();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyArray marks = new MyArray();
+        marks.createArray(10, 2);
+        
+        System.out.println("We are running setVal now");
+        marks.setVal();
+
+        System.out.println("We are running show now");
+        marks.show();
+    }
+}
+```
+
+*Code Snippet 3: A program to implement the ADT array*
+
+So, these were the basic methods we could define for this struct. We’ll check if these work by running it. We’ll call the createArray, and setVal functions first to create an array of size 2, and assign some values to it. And then call the show function to see if it works.
+
+Output of the above program:
+```
+Enter element 0 : 12
+Enter element 1 : 13
+We are running show now
+12
+13
+```
+
+
+
+**try yourself 😉**
+```java
+import java.util.Scanner;
+
+class MyArray {
+    int totalSize;
+    int usedSize;
+    int[] ptr;
+
+    public void createArray(int tSize, int uSize) {
+        this.totalSize = tSize;
+        this.usedSize = uSize;
+        this.ptr = new int[tSize]; // Allocate array
+    }
+
+    public void show() {
+        for (int i = 0; i < usedSize; i++) {
+            System.out.println(ptr[i]);
+        }
+    }
+
+    public void setVal() {
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < usedSize; i++) {
+            System.out.print("Enter element " + i + ": ");
+            ptr[i] = scanner.nextInt();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyArray marks = new MyArray();
+        marks.createArray(10, 2);
+        
+        System.out.println("We are running setVal now");
+        marks.setVal();
+
+        System.out.println("We are running show now");
+        marks.show();
+    }
+}
+```
