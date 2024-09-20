@@ -1,13 +1,13 @@
 export const ROUTES = [
 
   {
-    title: "Data Structures",
+    title: "Array",
     href: "lists",
     items: [
       { title: "Array", href: "/array" },
       { title: "Basic array operations", href: "/basic-array" },
       { title: "TwoPointer technique", href: "/two-pointer" },
-      { title: "Circular Linkedlist", href: "/circular-linkedlist" },
+      { title: "Sliding Window", href: "/Slidingwindow" },
       { title: "Stack", href: "/stack" },
     ],
   },
