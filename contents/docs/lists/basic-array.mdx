@@ -1,0 +1,152 @@
+---
+title: Basic array operations
+description: One type of data structure called a single linkedlist uses chaining to store data linearly.
+---
+
+Arrays support several basic operations, including **insertion** and **deletion**. Understanding these operations is essential for working efficiently with arrays.
+
+#### 1. Insertion
+
+**Insertion** is the process of adding a new element to the array. There are three common scenarios for insertion:
+1. **At the Beginning**: Insert an element at the start of the array.
+2. **At a Specific Index**: Insert an element at a specific position in the array.
+3. **At the End**: Insert an element at the end of the array.
+
+Since arrays are of fixed size, when inserting into a full array, a new larger array is typically created to accommodate the new element.
+
+##### **Insertion at the Beginning:**
+Inserting at the beginning requires shifting all existing elements one position to the right to make room for the new element.
+
+```java
+// Inserting at the beginning of an array
+int[] numbers = {2, 3, 4, 5};
+int elementToInsert = 1;
+int[] newArray = new int[numbers.length + 1];
+
+// Shift existing elements
+for (int i = numbers.length - 1; i >= 0; i--) {
+  newArray[i + 1] = numbers[i];
+}
+// Insert the new element
+newArray[0] = elementToInsert;
+
+// Output: [1, 2, 3, 4, 5]
+```
+
+##### **Insertion at a Specific Index:**
+
+Inserting at a specific index requires shifting all elements starting from that index to the right by one position.
+
+```java
+// Inserting at index 2
+int[] numbers = {1, 2, 4, 5};
+int elementToInsert = 3;
+int index = 2;
+int[] newArray = new int[numbers.length + 1];
+
+// Copy elements up to the index
+for (int i = 0; i < index; i++) {
+  newArray[i] = numbers[i];
+}
+// Insert the new element
+newArray[index] = elementToInsert;
+// Shift remaining elements
+for (int i = index; i < numbers.length; i++) {
+  newArray[i + 1] = numbers[i];
+}
+
+// Output: [1, 2, 3, 4, 5]
+```
+
+##### **Insertion at the End:**
+
+Inserting at the end is the easiest operation, as no shifting is required.
+
+```java 
+// Inserting at the end
+int[] numbers = {1, 2, 3, 4};
+int elementToInsert = 5;
+int[] newArray = new int[numbers.length + 1];
+
+// Copy all elements
+for (int i = 0; i < numbers.length; i++) {
+  newArray[i] = numbers[i];
+}
+// Insert the new element
+newArray[numbers.length] = elementToInsert;
+
+// Output: [1, 2, 3, 4, 5]
+```
+
+#### 2. Deletion
+
+**Deletion** is the process of removing an element from the array. Similar to insertion, there are three common deletion scenarios:
+
+1. At the Beginning: Remove the first element.
+2. At a Specific Index: Remove an element at a specific position.
+3. At the End: Remove the last element.
+
+After removing an element, we need to shift the remaining elements to fill the gap.
+
+**Deletion at the Beginning:**
+
+Deleting the first element requires shifting all other elements one position to the left.
+
+```java
+// Deleting from the beginning
+int[] numbers = {1, 2, 3, 4, 5};
+int[] newArray = new int[numbers.length - 1];
+
+// Shift elements to the left
+for (int i = 1; i < numbers.length; i++) {
+  newArray[i - 1] = numbers[i];
+}
+
+// Output: [2, 3, 4, 5]
+```
+
+**Deletion at a Specific Index:**
+
+Deleting at a specific index requires shifting all elements after the deleted element to the left.
+
+```java
+// Deleting at index 2
+int[] numbers = {1, 2, 3, 4, 5};
+int index = 2;
+int[] newArray = new int[numbers.length - 1];
+
+// Copy elements before the index
+for (int i = 0; i < index; i++) {
+  newArray[i] = numbers[i];
+}
+// Shift remaining elements
+for (int i = index + 1; i < numbers.length; i++) {
+  newArray[i - 1] = numbers[i];
+}
+
+// Output: [1, 2, 4, 5]
+```
+
+**Deletion at the End:**
+
+Deleting the last element does not require any shifting.
+
+```java
+// Deleting the last element
+int[] numbers = {1, 2, 3, 4, 5};
+int[] newArray = new int[numbers.length - 1];
+
+// Copy all elements except the last one
+for (int i = 0; i < newArray.length; i++) {
+  newArray[i] = numbers[i];
+}
+
+// Output: [1, 2, 3, 4]
+```
+
+##### Summary:
+- Insertion may involve shifting elements to make space for the new element, depending on the location.
+- Deletion often involves shifting elements to fill the gap left by the removed element
+
+*Arrays are useful due to their random access capabilities, but insertion and deletion operations can be costly (O(n) time complexity) if they require shifting multiple elements.*
+

@@ -1,12 +1,12 @@
 export const ROUTES = [
 
   {
-    title: "Linear Structure",
+    title: "Data Structures",
     href: "lists",
     items: [
       { title: "Array", href: "/array" },
-      { title: "Single Linkedlist", href: "/single-linkedlist" },
-      { title: "Double Linkedlist", href: "/double-linkedlist" },
+      { title: "Basic array operations", href: "/basic-array" },
+      { title: "TwoPointer technique", href: "/two-pointer" },
       { title: "Circular Linkedlist", href: "/circular-linkedlist" },
       { title: "Stack", href: "/stack" },
     ],
