@@ -1,12 +1,11 @@
 export const ROUTES = [
-
   {
-    title: "Array",
+    title: "Data Structures and Algorithms:",
     href: "lists",
     items: [
-      { title: "Array", href: "/array" },
-      { title: "Basic array operations", href: "/basic-array" },
-      { title: "TwoPointer technique", href: "/two-pointer" },
+      { title: "Introduction to Data Structures & Algorithms", href: "/intro" },
+      { title: "Time Complexity", href: "/Time-complexity" },
+      { title: "Asymptotic Notations", href: "/AsymptoticNotations" },
       { title: "Sliding Window", href: "/Slidingwindow" },
       { title: "Stack", href: "/stack" },
     ],
