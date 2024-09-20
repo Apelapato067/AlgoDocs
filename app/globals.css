@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 5.7% 82.9%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.prose {
+  margin: 0 !important;
+}
+
+pre {
+  padding: 0 !important;
+  width: inherit !important;
+  overflow-x: auto;
+}
+
+pre>code {
+  display: grid;
+  max-width: inherit !important;
+  padding: 14px 0 !important;
+}
+
+.code-line {
+  padding: 0.75px 12.5px;
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 22px;
+  margin-left: -2px;
+  color: rgb(110, 110, 110);
+  content: attr(line);
+  font-size: 13.5px;
+  text-align: right;
+}
+
+
+.highlight-line {
+  @apply dark:bg-stone-800/90;
+  @apply bg-stone-200/90;
+}
+
+.punctuation {
+  color: gray;
+}
+
+.comment {
+  color: gray;
+}
+
+.keyword {
+  color: rgb(255, 91, 50)
+}
+
+.function {
+  color: hsla(210, 100%, 66%, 1)
+}
+
+.string,
+.constant,
+.annotation,
+.boolean,
+.number {
+  color: hsl(0, 0%, 29%)
+}
+
+.dark .string,
+.dark .constant,
+.dark .annotation,
+.dark .boolean,
+.dark.number {
+  color: hsl(0, 0%, 71%)
+}
+
+.dark .keyword {
+  color: hsla(341, 90%, 67%, 1)
+}
+
+.attr-value {
+  color: hsla(131, 43%, 57%, 1)
+}
+
+.tag {
+  color: hsla(341, 90%, 67%, 1)
+}
+
+.attr-name {
+  color: #414141;
+}
+
+.dark .attr-name {
+  color: #cacaca;
+
+}
+
+.rehype-code-title {
+  @apply px-2;
+  @apply -mb-8;
+  @apply w-full;
+  @apply text-sm;
+  @apply pt-1;
+  @apply pb-5;
+  @apply font-normal;
+  @apply tracking-wider;
+  @apply font-medium;
+  font-family: var(--font-code) !important;
+}
+
+.highlight-comp>code {
+  background-color: transparent !important;
+}
