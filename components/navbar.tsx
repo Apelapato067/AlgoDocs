@@ -60,7 +60,7 @@ export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
       <SquareGanttChartIcon className="w-7 h-7 text-muted-foreground" />
-      <h2 className="text-md font-bold">DS/Refrences</h2>
+      <h2 className="text-md font-bold">AlgoDocs</h2>
     </Link>
   );
 }
