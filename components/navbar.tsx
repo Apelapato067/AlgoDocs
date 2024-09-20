@@ -1,5 +1,5 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, SquareGanttChartIcon } from "lucide-react";
+import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Search from "./search";
@@ -59,7 +59,7 @@ export function Navbar() {
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <SquareGanttChartIcon className="w-7 h-7 text-muted-foreground" />
+      {/* <SquareGanttChartIcon className="w-7 h-7 text-muted-foreground" /> */}
       <h2 className="text-md font-bold">AlgoDocs</h2>
     </Link>
   );
