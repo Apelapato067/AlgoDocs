@@ -27,37 +27,37 @@ export const ROUTES = [
       { title: "Linked List", href: "/LinkedList" },
       { title: "Creation and Traversal", href: "/CreationTraversal" },
       { title: "Insertion of a Node", href: "/InsertionNode" },
-      { title: "N-arry Tree", href: "/n-arry" },
-      { title: "Balanced BST", href: "/avl" },
+      // { title: "N-arry Tree", href: "/n-arry" },
+      // { title: "Balanced BST", href: "/avl" },
     ],
   },
-  {
-    title: "Map Dictionary",
-    href: "maps",
-    items: [
-      { title: "HashMap", href: "/hashmap" },
-      { title: "Linked HashMap", href: "/l-hashmap" },
-      { title: "TreeMap", href: "/tree-map" },
-    ],
-  },
-  {
-    title: "Sets Uniques",
-    href: "sets",
-    items: [
-      { title: "HashSet", href: "/hashset" },
-      { title: "Linked HashSet", href: "/l-hashset" },
-      { title: "TreeSet", href: "/tree-set" },
-    ],
-  },
-  {
-    title: "Advanced Trees",
-    href: "adv-trees",
-    items: [
-      { title: "Priority Queue", href: "/pq" },
-      { title: "Prefix Tree", href: "/trie" },
-      { title: "Graph", href: "/graph" },
-    ],
-  },
+  // {
+  //   title: "Map Dictionary",
+  //   href: "maps",
+  //   items: [
+  //     { title: "HashMap", href: "/hashmap" },
+  //     { title: "Linked HashMap", href: "/l-hashmap" },
+  //     { title: "TreeMap", href: "/tree-map" },
+  //   ],
+  // },
+  // {
+  //   title: "Sets Uniques",
+  //   href: "sets",
+  //   items: [
+  //     { title: "HashSet", href: "/hashset" },
+  //     { title: "Linked HashSet", href: "/l-hashset" },
+  //     { title: "TreeSet", href: "/tree-set" },
+  //   ],
+  // },
+  // {
+  //   title: "Advanced Trees",
+  //   href: "adv-trees",
+  //   items: [
+  //     { title: "Priority Queue", href: "/pq" },
+  //     { title: "Prefix Tree", href: "/trie" },
+  //     { title: "Graph", href: "/graph" },
+  //   ],
+  // },
 ];
 
 export const page_routes = ROUTES.map(({ href, items }) => {
