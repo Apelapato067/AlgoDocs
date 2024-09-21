@@ -3,7 +3,7 @@ title: Calculate Time Complexity
 description: Algorithm + Solved Questions.
 ---
 
-# How to Calculate Time Complexity of an Algorithm + Solved Questions (With Notes)
+# How to Calculate Time Complexity of an Algorithm + Solved Questions 
 
 In previous videos, we had discussed what time complexity is and how it helps in dealing with what is most efficient for our programs. Our task today will be to find out how to calculate the time complexity of our programs. Here are some tips and tricks about the same, followed by a discussion of some questions.
 
@@ -33,73 +33,66 @@ The time taken to paint a park of dimension m * n → O (kmn) → O (mn)
 
 ### Question1: Fine the time complexity of the func1 function in the program shown in the snippet below:
 
-```java
-public class Main {
-    public static void func1(int[] array) {
-        int sum = 0;
-        int product = 1;
+```c
+#include<stdio.h>
 
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            product *= array[i];
-        }
-
-        // Optionally print the results
-        System.out.println("Sum: " + sum);
-        System.out.println("Product: " + product);
+void func1(int array[], int length)
+{
+    int sum=0;
+    int product =1;
+    for (int i = 0; i <length; i++)
+    {
+        sum+=array[i];
     }
-
-    public static void main(String[] args) {
-        int[] arr = {3, 4, 66};
-        func1(arr);
+ 
+    for (int i = 0; i < length; i++)
+    {
+        product*=array[i];
     }
 }
+ 
+int main()
+{
+    int arr[] = {3,4,66};
+    func1(arr,3);
+    return 0;
+}
+
 ```
 
 ### Question 2: Find the time complexity of the func function in the program from program2.c as follows:
 
-```java
-public class Main {
-    public static void func(int n) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.println(i + ", " + j);
-            }
+```c
+void func(int n)
+{
+    int sum=0;
+    int product =1;
+    for (int i = 0; i <n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%d , %d\n", i,j);
         }
     }
-
-    public static void main(String[] args) {
-        int n = 3; // You can change this value to test with different sizes
-        func(n);
-    }
 }
+
 ```
 
 ### Question 3: Consider the recursive algorithm below, where the random(int n) spends one unit of time to return a random integer where the probability of each integer coming as random is evenly distributed within the range [0,n]. If the average processing time is T(n), what is the value of T(6)?
 
-```java
-import java.util.Random;
-
-public class Main {
-    private static final Random random = new Random();
-
-    public static int function(int n) {
-        if (n <= 0) {
-            return 0;
-        } else {
-            int i = random.nextInt(n); // Generates a random integer between 0 (inclusive) and n (exclusive)
-            System.out.println("this");
-            return function(i) + function(n - 1 - i);
-        }
+```c
+int function(int n)
+{
+    int i = 0;
+    if (n <= 0)
+    {
+        return 0;
     }
-
-    public static void main(String[] args) {
-        int n = 5; // You can change this value to test with different inputs
-        int result = function(n);
-        System.out.println("Result: " + result);
+    else
+    {
+        i = random(n - 1);
+        printf("this\n");
+        return function(i) + function(n - 1 - i);
     }
 }
 ```
@@ -113,89 +106,53 @@ public class Main {
 
 ### Question 5: The following simple code sums the values of all the nodes in a balanced binary search tree ( don’t worry about what it is, we’ll learn them later ). What is its runtime?
 
-```java
-class Node {
-    int value;
-    Node left;
-    Node right;
-
-    Node(int value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
+```c
+int sum(Node node)
+{
+    if (node == NULL)
+    {
+        return 0;
     }
-}
-
-public class Main {
-    public static int sum(Node node) {
-        if (node == null) {
-            return 0;
-        }
-        return sum(node.left) + node.value + sum(node.right);
-    }
-
-    public static void main(String[] args) {
-        // Example usage:
-        Node root = new Node(10);
-        root.left = new Node(5);
-        root.right = new Node(15);
-        root.left.left = new Node(3);
-        root.left.right = new Node(7);
-        
-        int totalSum = sum(root);
-        System.out.println("Total sum: " + totalSum);
-    }
+    return sum(node.left) + node.value + sum(node.right);
 }
 ```
 
 ### Question 6: Find the complexity of the following code which tests whether a given number is prime or not?
 
-```java
-public class Main {
-    public static int isPrime(int n) {
-        if (n <= 1) {
-            return 0; // 0 and 1 are not prime numbers
-        }
-        for (int i = 2; i * i <= n; i++) { // Use <= to include the square root
-            if (n % i == 0) {
-                return 0; // n is not prime
-            }
-        }
-        return 1; // n is prime
+```c
+int isPrime(int n)
+{
+    if (n == 1)
+    {
+        return 0;
     }
-
-    public static void main(String[] args) {
-        int number = 29; // You can change this value to test with different numbers
-        int result = isPrime(number);
-        System.out.println("Is " + number + " prime? " + (result == 1 ? "Yes" : "No"));
+    for (int i = 2; i * i < n; i++)
+    {
+        if (n % i == 0)
+        {
+            return 0;
+        }
     }
+    return 1;
 }
 ```
 
 ### Question 7: What is the time complexity of the following snippet of code?
 
-```java
-public class Main {
-    public static int isPrime(int n) {
-        if (n <= 1) {
-            return 0; // 0 and 1 are not prime numbers
+```c
+int isPrime(int n)
+{
+    for (int i = 2; i * i < 10000; i++)
+    {
+        if (n % i == 0)
+        {
+            return 0;
         }
-        
-        // Check for divisibility from 2 up to 10,000 (or until the square root of n)
-        for (int i = 2; i * i <= n && i < 10000; i++) {
-            if (n % i == 0) {
-                return 0; // n is not prime
-            }
-        }
-        return 1; // n is prime
     }
-
-    public static void main(String[] args) {
-        int number = 29; // You can change this value to test with different numbers
-        int result = isPrime(number);
-        System.out.println("Is " + number + " prime? " + (result == 1 ? "Yes" : "No"));
-    }
+ 
+    return 1;
 }
+isPrime();
 ```
 
 So, these were the few questions I felt like discussing. Try them on your own first. And if you have already given them enough thought, then move on to the video above where we have discussed their solutions in detail. Hopefully, they were able to make you learn how to find the time complexities for different programs.

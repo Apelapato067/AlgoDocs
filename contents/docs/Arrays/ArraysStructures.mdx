@@ -29,4 +29,207 @@ Updating elements. An array can easily be traversed using a for loop in Java.
 **An important note on Arrays:**
 If we create an array of length 100 using int[] a = new int[100]; in Java, we do not need to use all the elements. It is possible for a program to use just 60 elements out of these 100. (But we cannot go beyond 100 elements).
 
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/8.svg",
+    light: "/images/8.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={570}
+  height={400}
+  alt="example"
+/>
 
+### Insertion:
+An element can be inserted in an array at a specific position. For this operation to succeed, the array must have enough capacity. Suppose we want to add an element 10 at index 2 in the below-illustrated array, then the elements after index 1 must get shifted to their adjacent right to make way for a new element.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/9.svg",
+    light: "/images/9.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={570}
+  height={400}
+  alt="example"
+/>
+
+When no position is specified, it’s best to insert the element at the end to avoid shifting, and this is when we achieve the best runtime O(1).
+
+### Deletion:
+An element at a specified position can be deleted, creating a void that needs to be fixed by shifting all the elements to their adjacent left, as illustrated in the figure below.
+
+We can also bring the last element of the array to fill the void if the relative ordering is not important. :)
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/10.svg",
+    light: "/images/10.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={570}
+  height={400}
+  alt="example"
+/>
+
+**Quick Quiz**: What is the best and the worst runtime for a delete operation?
+
+### Searching:
+Searching can be done by traversing the array until the element to be searched is found.O(n) There is still a better method. As you may remember, we talked about binary search in some previous tutorials.  Don't forget to look it up if you missed it. We had analyzed both linear and binary search. This search method is only applicable for sorted arrays. Therefore, for sorted arrays, the time taken to search is much less than an unsorted array. O(logn)
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/11.svg",
+    light: "/images/11.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={570}
+  height={400}
+  alt="example"
+/>
+
+### Sorting:
+Sorting means arranging an array in an orderly fashion (ascending or descending). We have different algorithms to sort arrays. We’ll see various sorting techniques later in the course. 
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/12.svg",
+    light: "/images/12.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={570}
+  height={400}
+  alt="example"
+/>
+
+So, these were few primary operators for an abstract data type array. Today, we just had their introduction and visualization. We can now move on to code them in our editors and see how these algorithms work.
+
+We talked about four operations-basically, traversal, insertion, deletion, and searching. As already mentioned, traversal is not any big a deal. It can just be achieved by using a for loop. Our main objective today would be to implement insertion. So, let’s slide our chairs to our coding arena. I have attached the code snippet below. 
+
+**Understanding code snippet 1:**
+
+1. We will start by declaring an array arr of length 100. Initialize this array with some 4-5 elements. This will be our used memory. 
+
+2. We’ll create a void display function using the method of traversal. Pass this array to the display function by value or by reference. And print the elements. Printing the elements of an array has already been covered in my C playlist. Visit now if you haven’t yet.
+
+3. We’ll now create an integer function indInsertion (integer, just to check if the operation succeeds). Before that, create an integer variable size to store the used size of the array. Pass into this void function the array and its used size, the element to be inserted and the total size, and the index where it is inserted.
+
+```
+indInsertion(arr, size, element, 100, index);
+```
+4. In the indInsertion function, write the case of validity. Here, we’ll check if the index is within the range [0,100]. We’ll continue if it's valid; otherwise, return -1.
+
+5. Create a for loop to shift the elements from the index to the last element to their adjacent right. This way, we’ll create a void at the index we want to insert in.
+6. Insert the element in the index. Return 1 on completion.
+
+
+```c
+#include<stdio.h>
+ 
+ 
+void display(int arr[], int n){
+    // Code for Traversal
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");   
+}
+ 
+int indInsertion(int arr[], int size, int element, int capacity, int index){
+    // code for Insertion
+    if(size>=capacity){
+        return -1;
+    }
+    for (int i = size-1; i >=index; i--)
+    {
+        arr[i+1] = arr[i];
+    }
+    arr[index] = element;
+    return 1; 
+}
+ 
+int main(){
+    int arr[100] = {7, 8, 12, 27, 88};
+    int size = 5, element = 45, index=1;
+    display(arr, size); 
+    indInsertion(arr, size, element, 100, index);
+    size +=1;
+    display(arr, size);
+    return 0;
+}
+```
+
+*Code Snippet 1: Insertion Operation Algorithm*
+
+Output of the above program:
+```
+7 8 12 27 88 
+7 45 8 12 27 88
+```
+
+So, as you can see, element 45 got inserted at index 1, and the rest of the elements from this index to the last shifted to their right. And this is how we do an insertion in an array. We may come across a lot of variations to insert into an array, but we’ll go slow for now. 
+
+*Quiz*: Modify this program to display the array only after a successful insertion, otherwise print Insertion failed.
+
+### deletion
+Programming a deletion differs very slightly from programming an insertion. In insertion, we had to shift elements to their adjacent right to create a void at the desired place to insert a new element, but in deletion, we’ll shift the elements to their adjacent left to fill the void created after deleting an element at some index.
+
+Let us now code this out or rather transform the code we constructed to insert the element. I have attached the snippet below.
+**Understanding code snippet 1:**
+
+1. One thing which will remain as it is, is the display function. 
+
+2. We have to make minimal changes in the insertion function to make it a deletion function. Rename it indDeletion. The index and the array, and its size will be our only parameters this time.
+3. Replace the right shift with the left shift. Just assign array[i], the value present in array[i+1].
+
+4. And we are done deleting the element at some specified index.
+
+```c
+#include <stdio.h>
+ 
+void display(int arr[], int n)
+{
+    // Code for Traversal
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+ 
+void indDeletion(int arr[], int size, int index)
+{
+    // code for Deletion
+    for (int i = index; i < size-1; i++)
+    {
+        arr[i] = arr[i + 1];
+    }  
+}
+ 
+int main()
+{
+    int arr[100] = {7, 8, 12, 27, 88};
+    int size = 5, element = 45, index = 0;
+    display(arr, size);
+    indDeletion(arr, size, index);
+    size -= 1;
+    display(arr, size);
+    return 0;
+}
+```
+
+**Code Snippet 1: Deletion in an array:**
+
+We can now check if the program actually works for deleting the element at some index. We’ll create an array with 5 elements and display it before and after deleting an element at index 0.
+
+Refer to the output below:
+```
+7 8 12 27 88 
+8 12 27 88
+PS D:\MyData>
+```
+
+*Figure 1: Output of the above program*
+
+So, the code works fine. Element at index 0 got deleted, and the rest of the elements shifted left to fill the void created after deletion.  And this was all about the deletion. Only a subtle change of code helped transform insertion into deletion. Practice these operations on your desktop till you feel confident about them.

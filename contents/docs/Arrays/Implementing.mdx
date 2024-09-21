@@ -21,58 +21,67 @@ Create a void function createArray by passing the address of a struct data type 
 
 > Code Snippet 1: Syntax for assigning structure elements to structure pointers.
 
-Similarly, assign the integer pointer ptr, the address of the reserved memory location using malloc.
+Similarly, assign the integer pointer ptr, the address of the reserved memory location using malloc. Do use the header file `<stdlib.h>` for using malloc.
 
-```java
-a.ptr = new int[tSize]; // Allocating an array of integers of size tSize
+```c
+a->ptr = (int *)malloc(tSize * sizeof(int));
 ```
 
 *Code Snippet 2: Using malloc*
 
 4. We will now create a show function to display all the elements of the struct myArray. We will simply pass the address of the struct myArray a. To print all the elements, we will traverse through the whole struct and print each struct element till the iterator reaches the last element. We will use a→used_size to define the loop size. Use (a→ptr)[i] to access each element.
 
-4. We will now create a setVal function to set values to this struct myArray a and pass the address of the same. Use scanf to assign values to each element via (a→ptr)[i] .
+5. We will now create a setVal function to set values to this struct myArray a and pass the address of the same. Use scanf to assign values to each element via (a→ptr)[i] .
 
-```java
-import java.util.Scanner;
-
-class MyArray {
-    int totalSize;
-    int usedSize;
-    int[] ptr;
-
-    public void createArray(int tSize, int uSize) {
-        this.totalSize = tSize;
-        this.usedSize = uSize;
-        this.ptr = new int[tSize]; // Allocate array
-    }
-
-    public void show() {
-        for (int i = 0; i < usedSize; i++) {
-            System.out.println(ptr[i]);
-        }
-    }
-
-    public void setVal() {
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < usedSize; i++) {
-            System.out.print("Enter element " + i + ": ");
-            ptr[i] = scanner.nextInt();
-        }
+```c
+#include<stdio.h>
+#include<stdlib.h>
+ 
+struct myArray
+{
+    int total_size;
+    int used_size;
+    int *ptr;
+};
+ 
+void createArray(struct myArray * a, int tSize, int uSize){
+    // (*a).total_size = tSize;
+    // (*a).used_size = uSize;
+    // (*a).ptr = (int *)malloc(tSize * sizeof(int));
+ 
+    a->total_size = tSize;
+    a->used_size = uSize;
+    a->ptr = (int *)malloc(tSize * sizeof(int));
+}
+ 
+void show(struct myArray *a){
+    for (int i = 0; i < a->used_size; i++)
+    {
+        printf("%d\n", (a->ptr)[i]);
     }
 }
-
-public class Main {
-    public static void main(String[] args) {
-        MyArray marks = new MyArray();
-        marks.createArray(10, 2);
-        
-        System.out.println("We are running setVal now");
-        marks.setVal();
-
-        System.out.println("We are running show now");
-        marks.show();
+ 
+void setVal(struct myArray *a){
+    int n;
+    for (int i = 0; i < a->used_size; i++)
+    {
+        printf("Enter element %d", i);
+        scanf("%d", &n);
+        (a->ptr)[i] = n;
     }
+    
+}
+ 
+int main(){
+    struct myArray marks;
+    createArray(&marks, 10, 2);
+    printf("We are running setVal now\n");
+    setVal(&marks);
+ 
+    printf("We are running show now\n");
+    show(&marks);
+ 
+    return 0;
 }
 ```
 
@@ -92,45 +101,54 @@ We are running show now
 
 
 **try yourself 😉**
-```java
-import java.util.Scanner;
+```c
+#include<stdio.h>
+#include<stdlib.h>
 
-class MyArray {
-    int totalSize;
-    int usedSize;
-    int[] ptr;
+struct myArray
+{
+    int total_size;
+    int used_size;
+    int *ptr;
+};
 
-    public void createArray(int tSize, int uSize) {
-        this.totalSize = tSize;
-        this.usedSize = uSize;
-        this.ptr = new int[tSize]; // Allocate array
-    }
+void createArray(struct myArray * a, int tSize, int uSize){
+    // (*a).total_size = tSize;
+    // (*a).used_size = uSize;
+    // (*a).ptr = (int *)malloc(tSize * sizeof(int));
 
-    public void show() {
-        for (int i = 0; i < usedSize; i++) {
-            System.out.println(ptr[i]);
-        }
-    }
+    a->total_size = tSize;
+    a->used_size = uSize;
+    a->ptr = (int *)malloc(tSize * sizeof(int));
+}
 
-    public void setVal() {
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < usedSize; i++) {
-            System.out.print("Enter element " + i + ": ");
-            ptr[i] = scanner.nextInt();
-        }
+void show(struct myArray *a){
+    for (int i = 0; i < a->used_size; i++)
+    {
+        printf("%d\n", (a->ptr)[i]);
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        MyArray marks = new MyArray();
-        marks.createArray(10, 2);
-        
-        System.out.println("We are running setVal now");
-        marks.setVal();
-
-        System.out.println("We are running show now");
-        marks.show();
+void setVal(struct myArray *a){
+    int n;
+    for (int i = 0; i < a->used_size; i++)
+    {
+        printf("Enter element %d", i);
+        scanf("%d", &n);
+        (a->ptr)[i] = n;
     }
+    
+}
+
+int main(){
+    struct myArray marks;
+    createArray(&marks, 10, 2);
+    printf("We are running setVal now\n");
+    setVal(&marks);
+
+    printf("We are running show now\n");
+    show(&marks);
+
+    return 0;
 }
 ```
