@@ -27,19 +27,20 @@ export const ROUTES = [
       { title: "Linked List", href: "/LinkedList" },
       { title: "Creation and Traversal", href: "/CreationTraversal" },
       { title: "Insertion of a Node", href: "/InsertionNode" },
-      // { title: "N-arry Tree", href: "/n-arry" },
-      // { title: "Balanced BST", href: "/avl" },
+      { title: "Deletion in a Linked ListTree", href: "/DeletionLinkedList" },
+      { title: "Circular Linked List and Operations", href: "/Circular" },
+      { title: "Doubly Linked Lists", href: "/DoublyLinkedLists" },
     ],
   },
-  // {
-  //   title: "Map Dictionary",
-  //   href: "maps",
-  //   items: [
-  //     { title: "HashMap", href: "/hashmap" },
-  //     { title: "Linked HashMap", href: "/l-hashmap" },
-  //     { title: "TreeMap", href: "/tree-map" },
-  //   ],
-  // },
+  {
+    title: "Stack Algo",
+    href: "Stack",
+    items: [
+      { title: "Stack in Data Structures", href: "/stack" },
+      // { title: "Linked HashMap", href: "/l-hashmap" },
+      // { title: "TreeMap", href: "/tree-map" },
+    ],
+  },
   // {
   //   title: "Sets Uniques",
   //   href: "sets",
