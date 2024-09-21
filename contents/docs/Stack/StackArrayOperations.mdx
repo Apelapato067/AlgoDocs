@@ -1,0 +1,27 @@
+---
+title: Stack Array Operations
+description: Coding Push(), Pop(), isEmpty() and isFull() Operations in Stack Using an Array. 
+---
+
+## Coding Push(), Pop(), isEmpty() and isFull() Operations in Stack Using an Array| C Code For Stack
+
+In the last tutorial, we covered the concepts behind the push and the pop operations on a stack implemented with an array. We saw how easy it is, to push an element in a non-full array, and to pop an element from a non-empty array. Today, we’ll be interested in coding these implementations in C.
+
+If you didn't follow me in the last tutorial, I would recommend visiting that first. Because it not only covered the concepts but the implementation part as well. I have attached the code snippet below. Refer to it while we learn to code:
+
+### Understanding the code snippet 1:
+
+1. There is nothing new now. You can just construct a struct stack, with all its three members, size, to store the size of the array used to handle this stack, top, to store the index of the topmost element in the stack and arr, a pointer to store the address of the array used. I will skip over this because we have done it before.
+
+```C
+struct stack{
+    int size ;
+    int top;
+    int * arr;
+};
+```
+
+### Code Snippet 1: Creating stack struct
+
+2. In the main, define a struct stack pointer sp, which will store the address of the stack. Since we are using malloc to reserve the memory in heap for this stack, don't forget to include the header file `<stdlib.h>`.
+

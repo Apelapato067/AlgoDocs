@@ -37,8 +37,9 @@ export const ROUTES = [
     href: "Stack",
     items: [
       { title: "Stack in Data Structures", href: "/stack" },
-      // { title: "Linked HashMap", href: "/l-hashmap" },
-      // { title: "TreeMap", href: "/tree-map" },
+      { title: "Implementing Stack Using Array", href: "/ImplementingStack" },
+      { title: "Operations in Stack", href: "/OperationsStack" },
+      { title: "Stack Array Operations", href: "/StackArrayOperations" },
     ],
   },
   // {
