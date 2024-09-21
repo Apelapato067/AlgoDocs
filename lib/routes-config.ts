@@ -51,7 +51,9 @@ export const ROUTES = [
     items: [
       { title: "Applications of Stack", href: "/ApplicationsStack" },
       { title: "Parenthesis Checking", href: "/ParenthesisChecking" },
-  //     { title: "TreeSet", href: "/tree-set" },
+      { title: "Multiple Parenthesis Matching", href: "/MultipleParenthesisMatching" },
+      { title: "Infix, Prefix and Postfix Expressions", href: "/InfixPrefixPostfix" },
+      { title: "Infix To Postfix Using Stack", href: "/InfixPostfixStack" },
     ],
   },
   // {

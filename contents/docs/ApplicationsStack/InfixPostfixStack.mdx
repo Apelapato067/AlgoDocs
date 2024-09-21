@@ -1,0 +1,107 @@
+---
+title: Infix To Postfix Using Stack
+description: Infix to Postfix using a Stack involves converting an infix expression to postfix by utilizing a stack to manage operators' precedence and associativity.
+---
+
+## Infix To Postfix Using Stack
+In the last docs, we had learned to convert an infix expression to its postfix and prefix equivalents manually. Following were the simple steps we followed.
+
+1. Parenthesize the expression following the operators’ precedence and their associativity.
+2. From the innermost to outermost, keep converting the expressions.
+
+But we didn’t talk about their implementation using stacks; rather, we didn’t even mention stacks in our last class. Today, we will learn how to convert an infix expression into its postfix equivalent using stacks.
+
+Converting an infix expression to its postfix counterpart needs you to follow certain steps. The following are the steps:
+
+1. Start moving left to right from the beginning of the expression.
+2. The moment you receive an operand, concatenate it to the postfix expression string.
+3. And the moment you encounter an operator, move to the stack along with its relative precedence number and see if the topmost operator in the stack has higher or lower precedence. If it's lower, push this operator inside the stack. Else, keep popping operators from the stack and concatenate it to the postfix expression until the topmost operator becomes weaker in precedence relative to the current operator.
+4. If you reach the EOE, pop every element from the stack, and concatenate them as well. And the expression you will receive after doing all the steps will be the postfix equivalent of the expression we were given.
+
+For our understanding today, let us consider the expression **x - y / z - k * a**. Step by step, we will turn this expression into its postfix equivalent using stacks.
+
+### 1. We will start traversing from the left. 
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/56.svg",
+    light: "/images/56.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### 2. First, we got the letter ‘x’. We just pushed it into the postfix string. Then we got the subtraction symbol ‘-’, and we push it into the stack since the stack is empty.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/57.svg",
+    light: "/images/57.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### 3. Similarly, we push the division operator in the stack since the topmost operator has a precedence number 1, and the division has 2.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/58.svg",
+    light: "/images/58.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### 4. The next operator we encounter is again a subtraction. Since the topmost operator in the stack has an operator precedence number 2, we would pop elements out from the stack until we can push the current operator. This leads to removing both the present operators in the stack since they are both greater or equal in precedence. Don’t forget to concatenate the popped operators to the postfix expression.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/59.svg",
+    light: "/images/59.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### 5. Next, we have a multiplication operator whose precedence number is 2 relative to the topmost operator in the stack. Hence we simply push it in the stack.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/60.svg",
+    light: "/images/60.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### 6. And then we get to the EOE and still have two elements inside the stack. So, just pop them one by one, and concatenate them to the postfix. And this is when we succeed in converting the infix to the postfix expression.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/61.svg",
+    light: "/images/61.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Follow every step meticulously, and you will find it very easy to master this. You can see if the answer we found at the end is correct manually.  
+
+- x - y / z - k * a →  (( x - ( y / z )) - ( k * a )) →  (( x - [ y z / ]) - [ k a * ]  )  → [ x y z / - ] - [ k a * ]  →  x y z / - k a * -  
+
+And it is indeed a correct conversion. I would now want you to follow the same steps and convert the expression x + y * z - k, using the stack method, and verify your answer manually using parentheses.
+
+This was visualizing the conversion process of infix to postfix using stacks. We will see the programming part in the next tutorial. It would be best if you practiced converting a few expressions of your own. If you still feel diffident about using stacks, you must check out the previous docs where we discussed stacks in detail.
