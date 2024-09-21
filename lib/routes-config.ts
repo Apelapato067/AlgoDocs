@@ -56,15 +56,15 @@ export const ROUTES = [
       { title: "Infix To Postfix Using Stack", href: "/InfixPostfixStack" },
     ],
   },
-  // {
+  {
   //   title: "Advanced Trees",
-  //   href: "adv-trees",
-  //   items: [
-  //     { title: "Priority Queue", href: "/pq" },
-  //     { title: "Prefix Tree", href: "/trie" },
+    href: "Queue",
+    items: [
+      { title: "Queue Data Structure", href: "/QueueDataStructure" },
+      { title: "Queue Implementation", href: "/QueueImplementation" },
   //     { title: "Graph", href: "/graph" },
-  //   ],
-  // },
+    ],
+  },
 ];
 
 export const page_routes = ROUTES.map(({ href, items }) => {
