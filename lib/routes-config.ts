@@ -11,7 +11,7 @@ export const ROUTES = [
     ],
   },
   {
-    title: "Arrays",
+    title: "Arrays Algo",
     href: "Arrays",
     items: [
       { title: "Arrays and Abstract", href: "/ArraysAbstract" },
@@ -21,7 +21,7 @@ export const ROUTES = [
     ],
   },
   {
-    title: "LinkedList",
+    title: "LinkedList Algo",
     href: "LinkedList",
     items: [
       { title: "Linked List", href: "/LinkedList" },
