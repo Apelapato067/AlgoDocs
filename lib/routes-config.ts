@@ -11,7 +11,7 @@ export const ROUTES = [
     ],
   },
   {
-    title: "Arrays Algo",
+    // title: "Arrays Algo",
     href: "Arrays",
     items: [
       { title: "Arrays and Abstract", href: "/ArraysAbstract" },
@@ -21,7 +21,7 @@ export const ROUTES = [
     ],
   },
   {
-    title: "LinkedList Algo",
+    // title: "LinkedList Algo",
     href: "LinkedList",
     items: [
       { title: "Linked List", href: "/LinkedList" },
@@ -33,24 +33,27 @@ export const ROUTES = [
     ],
   },
   {
-    title: "Stack Algo",
+    // title: "Stack Algo",
     href: "Stack",
     items: [
       { title: "Stack in Data Structures", href: "/stack" },
       { title: "Implementing Stack Using Array", href: "/ImplementingStack" },
       { title: "Operations in Stack", href: "/OperationsStack" },
       { title: "Stack Array Operations", href: "/StackArrayOperations" },
+      { title: "Peek Operation in Stack Using Arrays", href: "/PeekOperation" },
+      { title: "Time Complexity of Operations", href: "/TimeComplexityStack" },
+      { title: "Stack Using Linked List Operations", href: "/StackLinkedList" },
     ],
   },
-  // {
+  {
   //   title: "Sets Uniques",
-  //   href: "sets",
-  //   items: [
-  //     { title: "HashSet", href: "/hashset" },
-  //     { title: "Linked HashSet", href: "/l-hashset" },
+    href: "ApplicationsStack",
+    items: [
+      { title: "Applications of Stack", href: "/ApplicationsStack" },
+      { title: "Parenthesis Checking", href: "/ParenthesisChecking" },
   //     { title: "TreeSet", href: "/tree-set" },
-  //   ],
-  // },
+    ],
+  },
   // {
   //   title: "Advanced Trees",
   //   href: "adv-trees",
