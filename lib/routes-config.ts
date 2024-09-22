@@ -67,6 +67,8 @@ export const ROUTES = [
       { title: "Circular Queue", href: "/CircularQueue" },
       { title: "Operations on Circular Queue", href: "/OperationsCircularQueue" },
       { title: "Circular Queue & Operations on Circular Queue", href: "/CircularOperationsCircularQueue" },
+      { title: "Queue Using Linked Lists", href: "/QueueLinkedLists" },
+      { title: "Double-Ended Queue in Data Structure", href: "/DE-Queue" },
     ],
   },
 ];

@@ -1,0 +1,323 @@
+---
+title: Queue Using Linked Lists
+description: A queue using linked lists is a data structure where elements are added at the rear and removed from the front. It follows the FIFO (First In, First Out) principle, with nodes linked together dynamically.
+---
+
+## Queue Using Linked Lists
+Up until now, queues had been implemented using arrays. We have another alternative that is a must to learn and has been examiners’ favorite topic, implementing queues using linked lists. Today, we’ll see how to implement queues using linked lists and some of its operations.
+
+Implementing queues using linked lists tests your proficiency in using/ handling both queues and linked lists. And, in case if you have missed either or both of these, I would recommend visiting them first before proceeding.
+
+If you remember, linked lists are chain-like structures with nodes having two parts, an integer variable to hold data and another node pointer to hold the address of the next node. Below illustrated is a linked list with three nodes. The last node points to NULL. And the first node is called the head.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/84.svg",
+    light: "/images/84.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Moving to the basics of a queue, a queue represents a line or sequence of elements where the elements follow the FIFO discipline. The element inserting the first gets removed the first. We maintained two index variables, f, and r, to mark the beginning and the end of the queue. Below illustrated is a queue with three elements.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/85.svg",
+    light: "/images/85.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since we are implementing this queue using a linked list, the index variables are no longer integers. These become the pointers to the front and the rear nodes. And the queue somewhat starts looking like this.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/86.svg",
+    light: "/images/86.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+## Enqueue in a queue linked list:
+Enqueuing in a queue linked list is very much similar to just inserting at the end in a linked list. As we discussed this thoroughly in our past lectures, you should not find this difficult. Inserting a new node at the end requires you to follow few steps:
+
+Check if there is a space left in the heap for a new node.
+1. If there is, create a new node *n*, assign it memory in heap, and fill its data with the new value the user has given.
+2. Point the next member of this new node *n* to NULL, and point the next member of the *r* to *n*. And make *r* equal to n. And we are done.
+3. There is one exception here. When we insert the first element, both f and r are pointing to NULL. So, instead of just making r equal to *n*, we make *f* equal to *n* as well. This marks the beginning of the list.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/87.svg",
+    light: "/images/87.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+## Dequeue in a queue linked list:
+Dequeuing in a queue linked list is very much similar to deleting the head node in a linked list. Deleting the head node from the list requires you to follow few steps:
+
+1. Check if the queue list is already not empty using the isEmpty function.
+2. If it is, return -1. Else create a new node ptr and make it equal to the f node. And don’t forget to store the data of the f node in some integer variable.
+3. Make the f equal to the next member of f, and free the node ptr. Return the value you stored.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/88.svg",
+    light: "/images/88.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**Condition for *isEmpty*:**
+The only condition for the queue linked list to be empty is that the f node is NULL, which means there is no beginning, hence no element.
+
+Condition for *isFull*:
+
+Queues implemented using linked lists never usually become full until the space in the heap memory is exhausted. Therefore, the only condition for the queue linked list to be full is that the new node becomes NULL when created.
+
+We could very easily finish implementing queues using linked lists because we learned it extensively in our previous docs. We started from the basics of both queues and linked lists and could complete everything. I expect you all to write the codes for all these operations yourself, and do tell me in whichever way if you could write the program on your own. I’ll be more than happy to see you all progress. We will anyways discuss the program in C in the next docs.
+
+## Implementing Queue Using Linked List in C Language
+
+We learned to implement queues using linked lists. We talked about the enqueue and dequeue methods. In the queue linked list, we saw the conditions for its full or empty state. Today, we’ll code these implementations in C. Before proceeding, make sure you have finished till here. I would recommend seeing that first if you somehow missed the last docs since we discussed the concepts there.
+
+Let’s move onto our editors. I have attached the source code below for your reference.
+
+### Understanding the below code snippet:
+
+1. First of all, I’ll make you all aware of the things we have already completed. And I’ll make you feel confident about linked lists and queues.
+2. We had studied linked lists before, where we studied the traversal methods, insertion at different positions, deletion at different positions, cases of empty and full. And we have completed queues as well and their basic operations.
+3. Today, we'll integrate our knowledge of both to implement queues using linked lists.
+4. We don't need to copy everything we learned there in the linked lists. We will move with the basics, and this might feel like a revision of the past Docs.
+5. Create a struct Node with two of its members, one integer variable data to store the data, and another struct Node pointer next to store the address of the next node.
+
+```C
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+```
+
+> Code Snippet 1: Creating the struct Node
+
+6. Globally, create two struct Node pointers f and r, which would be used to mark the front and the rear ends. Declaring globally helps us use them in functions.
+
+### Creating Enqueue:
+
+We learned in the last docs that to enqueue, we only use the rear pointer and add a new node at the end of the list. So, create a void function enqueue, and the value to enqueue is the only parameter since we have declared the pointers *f and *r* globally. In the function, create a new struct Node pointer *n*, and assign its memory in heap dynamically using malloc. Don’t forget to include the header file `<stdlib.h>`. Then check if the queue is full or, in other words, if there is no space in the heap. And that can be done by checking if the new pointer *n* equals NULL. If it does, then print the condition of the queue overflow and return. Else, insert the val in the data member of *n*, and make this node point to NULL. If you recall, we discussed a special case, where we were inserting in the list for the first time, when both *f* and r equals NULL. For this case, make both *f* and *r* equal to *n*, and for all the other cases, just make the *r* point the new node *n*. Ultimately make *r* equal to *n* since *n* becomes our new rear end. And that would be all.
+
+```C
+void enqueue(int val){
+    struct Node *n = (struct Node *) malloc(sizeof(struct Node));
+    if(n==NULL){
+        printf("Queue is Full");
+    }
+    else{
+        n->data = val;
+        n->next = NULL;
+        if(f==NULL){
+            f=r=n;
+        }
+        else{
+            r->next = n;
+            r=n;
+        }
+    }
+}
+```
+
+> Code Snippet 2: Creating the enqueue function
+
+**Exception case:**
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/89.svg",
+    light: "/images/89.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**All the other cases:**
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/90.svg",
+    light: "/images/90.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### Creating Dequeue:
+As we discussed in the last lecture, Dequeue needs you to just delete the head node, which is the *f* node here. So, create an integer function dequeue. And we have no parameters to pass. Create a struct Node pointer ptr to hold the node we will delete. Make ptr equal to *f*. In the function, check if the queue is already not empty by checking if our front *f* is NULL or not. If it is NULL, then print the condition of the queue underflow and return. Else, make *f* equal to the next node to *f*. Store the data of ptr in an integer variable val. We can now free the pointer ptr. And return val, which is the data of the node we deleted.
+
+```C
+int dequeue()
+{
+    int val = -1;
+    struct Node *ptr = f;
+    if(f==NULL){
+        printf("Queue is Empty\n");
+    }
+    else{
+        f = f->next;
+        val = ptr->data;
+        free(ptr);
+    }
+    return val;
+}
+```
+
+> Code Snippet 3: Creating the dequeue function
+
+After every operation, we may need to have the traversal function, which you can copy from the previous lectures. Nothing in that needs to be modified.
+
+## Here is the whole source code:
+```C
+#include <stdio.h>
+#include <stdlib.h>
+ 
+struct Node *f = NULL;
+struct Node *r = NULL;
+ 
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+ 
+void linkedListTraversal(struct Node *ptr)
+{
+    printf("Printing the elements of this linked list\n");
+    while (ptr != NULL)
+    {
+        printf("Element: %d\n", ptr->data);
+        ptr = ptr->next;
+    }
+}
+ 
+void enqueue(int val)
+{
+    struct Node *n = (struct Node *) malloc(sizeof(struct Node));
+    if(n==NULL){
+        printf("Queue is Full");
+    }
+    else{
+        n->data = val;
+        n->next = NULL;
+        if(f==NULL){
+            f=r=n;
+        }
+        else{
+            r->next = n;
+            r=n;
+        }
+    }
+}
+ 
+int dequeue()
+{
+    int val = -1;
+    struct Node *ptr = f;
+    if(f==NULL){
+        printf("Queue is Empty\n");
+    }
+    else{
+        f = f->next;
+        val = ptr->data;
+        free(ptr);
+    }
+    return val;
+}
+ 
+int main()
+{
+    linkedListTraversal(f);
+    printf("Dequeuing element %d\n", dequeue());
+    enqueue(34);
+    enqueue(4);
+    enqueue(7);
+    enqueue(17);
+    printf("Dequeuing element %d\n", dequeue());
+    printf("Dequeuing element %d\n", dequeue());
+    printf("Dequeuing element %d\n", dequeue());
+    printf("Dequeuing element %d\n", dequeue());
+    linkedListTraversal(f);
+    return 0;
+}
+```
+
+> Code Snippet 4: Implementing queues using linked lists
+
+Now, let’s check if these methods work well. First, we’ll enqueue some elements in the queue, and to check if that actually happens, we’ll display the elements using traversal.
+
+```C
+    enqueue(34);
+    enqueue(4);
+    enqueue(7);
+    enqueue(17);
+    linkedListTraversal(f);
+```
+
+> Code Snippet 5: Using the enqueue function
+
+And the output we received was:
+
+```
+Printing the elements of this linked list
+Element: 34
+Element: 4
+Element: 7
+Element: 17
+```
+
+> Figure 1: Output of the above program
+
+Let us now dequeue everything. And focus on the order of elements being dequeued. 
+
+```C
+    printf("Dequeuing element %d\n", dequeue());
+    printf("Dequeuing element %d\n", dequeue());
+    printf("Dequeuing element %d\n", dequeue());
+    printf("Dequeuing element %d\n", dequeue());
+    linkedListTraversal(f);
+```
+
+> Code Snippet 6: Using the dequeue function
+
+And the output this time was;
+
+```
+Dequeuing element 34
+Dequeuing element 4
+Dequeuing element 7
+Dequeuing element 17
+Printing the elements of this linked list
+```
+
+> Figure 2: Output of the above program
+
+As you can observe, there was no element left to display, and element 34 went out first since it entered the first. And here, we finish the implementation of queues using linked lists. The queue has been holding us all for quite some time now. Ah, that metaphor! 
+
