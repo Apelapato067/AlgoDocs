@@ -62,7 +62,11 @@ export const ROUTES = [
     items: [
       { title: "Queue Data Structure", href: "/QueueDataStructure" },
       { title: "Queue Implementation", href: "/QueueImplementation" },
-  //     { title: "Graph", href: "/graph" },
+      { title: "Array implementation of Queue", href: "/ArrayimplementationQueue" },
+      { title: "Queue and its Operations Using Arrays", href: "/QueueOperationsArrays" },
+      { title: "Circular Queue", href: "/CircularQueue" },
+      { title: "Operations on Circular Queue", href: "/OperationsCircularQueue" },
+      { title: "Circular Queue & Operations on Circular Queue", href: "/CircularOperationsCircularQueue" },
     ],
   },
 ];
