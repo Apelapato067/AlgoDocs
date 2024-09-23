@@ -104,7 +104,7 @@ Follow every step meticulously, and you will find it very easy to master this. Y
 
 And it is indeed a correct conversion. I would now want you to follow the same steps and convert the expression x + y * z - k, using the stack method, and verify your answer manually using parentheses.
 
-This was visualizing the conversion process of infix to postfix using stacks. We will see the programming part in the next tutorial. It would be best if you practiced converting a few expressions of your own. If you still feel diffident about using stacks, you must check out the previous docs where we discussed stacks in detail.
+This was visualizing the conversion process of infix to postfix using stacks. We will see the programming part in the next Docs. It would be best if you practiced converting a few expressions of your own. If you still feel diffident about using stacks, you must check out the previous docs where we discussed stacks in detail.
 
 ## Coding Infix to Postfix in C using Stack example & codes 
 We saw earlier how infix expressions can be converted to their other equivalents manually. But when it came to automating the process, we took a different path. We used stacks to take hold of the operators we encountered in the expression. We followed an algorithm to convert an infix expression to its postfix equivalent, which in short, said:
@@ -123,7 +123,7 @@ Let us now see the program pursuing the conversion. I have attached the snippets
 
 1. First of all, create a character pointer function infixToPostfix since the function has to return a character array. And now pass into this function the given expression, which is also a character pointer.
 
-2. Define a struct stack pointer variable sp. And give it the required memory in the heap. Create the instance. It’s safe to assume that a struct stack element and all its basic operations, push, pop, etc., have already been defined. You better copy everything from the stack tutorial.
+2. Define a struct stack pointer variable sp. And give it the required memory in the heap. Create the instance. It’s safe to assume that a struct stack element and all its basic operations, push, pop, etc., have already been defined. You better copy everything from the stack docs.
 
 3. Create a character array/pointer postfix, and assign it sufficient memory to hold all the characters of the infix expression in the heap.
 
