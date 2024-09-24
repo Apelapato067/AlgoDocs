@@ -5,13 +5,14 @@ description: Insertion of a Node in a Linked List Data Structure
 
 ## Insertion of a Node in a Linked List Data Structure
 
-We had learned about creating a linked list using C structures and traversing through them while printing the values at each node. Today, we’ll learn how to insert a node at some position and how that is more efficient than inserting an element in an array.
+Creating a linked list using C structures and traversing through them while printing the values at each node. Today, we’ll learn how to insert a node at a specific position and how that is more efficient than inserting an element in an array.
 
 Inserting in an array has already been covered, and the following remarks were made:
 
-1. A void has to be made to insert an element.
+1. A void must be created to insert an element.
 2. Creating a void causes the rest of the elements to shift to their adjacent right.
 3. Time complexity: O(no. of elements shifted)
+
 
 **Inserting in a linked list:**
 Consider the following Linked List,
@@ -37,7 +38,7 @@ Insertion in this list can be divided into the following categories:
 
 **Case 4:** Insert after the node
 
-For insertion following any of the above-mentioned cases, we would first need to create that extra node. And then, we overwrite the current connection and make new connections. And that is how we insert a new node at our desired place.
+For insertion following any of the above-mentioned cases, we first need to create that extra node. Then, we overwrite the current connection and make new connections. That is how we insert a new node at our desired place.
 
 **Syntax for creating a node:**
 
@@ -120,35 +121,43 @@ prevNode-> next = ptr;
   alt="example"
 />
 
-Summarizing, inserting at the beginning has the time complexity O(1), and inserting at some node in between puts the time complexity O(n) since we have to go through the list to reach that particular node. Inserting at the end has the same time complexity O(n) as that of inserting in between. But if we are given the pointer to the previous node where we want to insert the new node, it would just take a constant time O(1). 
-
-> You must have had no problem understanding all these manipulations if you have followed me from the beginning. It must have been a cakewalk for you. Try to implement them on your own IDEs, and continue going through this until you finish with the concepts.
+Summarizing, inserting at the beginning has a time complexity of **O(1)**, while inserting at a specific node in between has a time complexity of **O(n)** since we have to traverse the list to reach that particular node. Inserting at the end also has a time complexity of **O(n)**, similar to inserting in between. However, if we have the pointer to the previous node where we want to insert the new node, it would take a constant time of **O(1)**.
 
 ## Insertion in a Linked List in C Language
-So, since we are already finished learning about all the cases one would have encountered while inserting a new node into a linked list, we can now code them individually in C language.
 
-Before we code, let’s recall all the cases:
+Now, The various cases for inserting a new node into a linked list, let’s break them down step by step and understand how to implement each case in C language.
 
-1. Inserting at the beginning        -> Time complexity:  O(1)
-2. Inserting in between                 -> Time complexity:  O(n)
-3. Inserting at the end                   -> Time complexity:  O(n)
-4. Inserting after a given Node     -> Time complexity:  O(1)
-Let’s now code. I have attached the snippet below. Refer to it while understanding the steps.
+### Recap of Insertion Cases
 
-**Understanding the snippet below:**
+1. **Inserting at the Beginning**  
+   - **Time Complexity:** O(1)
+   
+2. **Inserting in Between**  
+   - **Time Complexity:** O(n)
+   
+3. **Inserting at the End**  
+   - **Time Complexity:** O(n)
+   
+4. **Inserting After a Given Node**  
+   - **Time Complexity:** O(1)
 
-1. So, the first thing would be to create a struct Node. This is a known thing to us. We have covered this in our traversal video.
-2. Create the linkedlistTraversal function. 
-3. Do include the header file `<stdlib.h>`, since we’ll be using malloc to reserve memory locations.
-4. As we did last time, create the same four nodes, the first node being the head. Define a pointer to head node by struct node* head. And similarly for the other nodes. Request the memory location for each of these nodes from the heap via malloc. Link these nodes using the arrow operator.
-5. Now that we have created a linked list, we can create functions according to the different cases.
+### Understanding the Insertion at the Beginning
 
-**Insertion at the beginning:**
-1. Create a struct Node* function insertAtFirst which will return the pointer to the new head.
-2. We’ll pass the current head pointer and the data to insert at the beginning, in the function.
-3. Create a new struct Node* pointer ptr, and assign it a new memory location in the heap.
-4. Assign head to the next member of the ptr structure using ptr-> next = head, and the given data to its data member.
-5. Return this pointer ptr.
+1. **Function Definition:**  
+   Create a function called `insertAtFirst`, which will return a pointer to the new head of the linked list.
+
+2. **Parameters:**  
+   This function will take two parameters: the current head pointer and the data you want to insert at the beginning.
+
+3. **Creating a New Node:**  
+   Inside the function, declare a pointer `ptr` of type `struct Node*` and allocate memory for it using `malloc`. This creates a new node in memory.
+
+4. **Updating Pointers:**  
+   Set the `next` member of the new node (`ptr`) to point to the current head. Then, assign the new data to the `data` member of `ptr`.
+
+5. **Return New Head:**  
+   Finally, return `ptr` as the new head of the linked list.
+
 
 ```C
 // Case 1
@@ -163,15 +172,28 @@ struct Node * insertAtFirst(struct Node *head, int data){
 
 > Code Snippet 1: Implementing insertAtFirst. 
 
-### Insertion in between:
+### Insertion in Between
 
-1. Create a struct Node* function insertAtIndex which will return the pointer to the head.
-2. We’ll pass the current head pointer and the data to insert and the index where it will get inserted, in the function.
-3. Create a new struct Node* pointer ptr, and assign it a new memory location in the heap.
-4. Create a new struct Node* pointer pointing to head, and run a loop until this pointer reaches the index, where we are inserting a new node.
-5. Assign p->next to the next member of the ptr structure using ptr-> next = p->next, and the given data to its data member.
-6. Break the connection between p and p->next by assigning p->next the new pointer. That is, p->next = ptr.
-7. Return head.
+1. **Function Definition:**  
+   Create a function named `insertAtIndex` that will return a pointer to the head of the linked list.
+
+2. **Parameters:**  
+   This function will take three parameters: the current head pointer, the data to be inserted, and the index where the new node will be inserted.
+
+3. **Creating a New Node:**  
+   Inside the function, declare a pointer `ptr` of type `struct Node*` and allocate memory for it using `malloc`. This creates a new node in memory.
+
+4. **Traversing to the Insertion Point:**  
+   Create another pointer, also of type `struct Node*`, pointing to the head. Use a loop to traverse the linked list until this pointer reaches the index where the new node will be inserted.
+
+5. **Updating Pointers:**  
+   Set the `next` member of the new node (`ptr`) to the node currently following the pointer (`p`), using `ptr->next = p->next`. Then, assign the given data to the `data` member of `ptr`.
+
+6. **Breaking and Re-linking:**  
+   Update the link by breaking the connection between `p` and the node that follows it, and then point `p->next` to the new node (`ptr`), effectively inserting it into the list.
+
+7. **Return Head:**  
+   Finally, return the original head pointer, as the structure of the list remains unchanged at the top level.
 
 ```C
 // Case 2
@@ -194,11 +216,26 @@ struct Node * insertAtIndex(struct Node *head, int data, int index){
 
 > Code Snippet 2: Implementing insertAtIndex.
 
-### Insertion at the end:
-1. Inserting at the end is very similar to inserting at any index. The difference holds in the limit of the while loop. Here we run a loop until the pointer reaches the end and points to NULL.
-2. Assign NULL to the next member of the new ptr structure using ptr-> next = NULL, and the given data to its data member.
-3. Break the connection between p and NULL by assigning p->next the new pointer. That is, p->next = ptr.
-4. Return head.
+### Insertion at the End
+
+1. **Function Definition:**  
+   Create a function named `insertAtEnd` that will return a pointer to the head of the linked list.
+
+2. **Traversing to the End:**  
+   Similar to inserting at an index, create a pointer of type `struct Node*` to traverse the linked list. This time, run a loop that continues until this pointer reaches the last node, which points to `NULL`.
+
+3. **Creating a New Node:**  
+   Inside the function, declare a pointer `ptr` of type `struct Node*` and allocate memory for it using `malloc`. This creates a new node in memory.
+
+4. **Assigning Values:**  
+   Set the `next` member of the new node (`ptr`) to `NULL` using `ptr->next = NULL`, indicating that it will be the last node. Then, assign the given data to the `data` member of `ptr`.
+
+5. **Updating the Last Node's Pointer:**  
+   Break the connection between the last node (`p`) and `NULL` by updating `p->next` to point to the new node (`ptr`), effectively inserting it at the end of the list.
+
+6. **Return Head:**  
+   Finally, return the original head pointer, as the structure of the list remains unchanged at the top level.
+
 
 ```C
 // Case 3
@@ -218,15 +255,28 @@ struct Node * insertAtEnd(struct Node *head, int data){
 > Code Snippet 3: Implementing insertAtEnd.
 
 
-### Insertion after a given node:
-1. Here, we already have a struct Node* pointer to insert the new node just next to it.
-2. Create a struct Node* function insertAfterNode which will return the pointer to the head.
-3. Pass into this function, the head node, the previous node, and the data.
-4. Create a new struct Node* pointer ptr, and assign it a new memory location in the heap.
-5. Since we already have a struct Node* prevNode given as a parameter, use it as p we had in the previous functions.
-6. Assign prevNode->next to the next member of the ptr structure using ptr-> next = prevNode->next, and the given data to its data member.
-7. Break the connection between prevNode and prevNode->next by assigning prevNode->next the new pointer. That is, prevNode->next = ptr.
-8. Return head.
+### Insertion After a Given Node
+
+1. **Function Definition:**  
+   Create a function named `insertAfterNode` that will return a pointer to the head of the linked list.
+
+2. **Function Parameters:**  
+   This function will accept three parameters: the head of the linked list, a pointer to the previous node (`prevNode`), and the data to be inserted.
+
+3. **Creating a New Node:**  
+   Inside the function, declare a pointer `ptr` of type `struct Node*` and allocate memory for it using `malloc`. This new node will be inserted after the specified node.
+
+4. **Using the Previous Node:**  
+   Since you already have the `prevNode` pointer passed as a parameter, you can directly use it as your reference point for insertion.
+
+5. **Assigning Values:**  
+   Set the `next` member of the new node (`ptr`) to point to the node that follows `prevNode` by using `ptr->next = prevNode->next`. Then, assign the given data to the `data` member of `ptr`.
+
+6. **Updating the Previous Node's Pointer:**  
+   Break the connection between `prevNode` and its next node by updating `prevNode->next` to point to the new node (`ptr`). This effectively inserts the new node right after `prevNode`.
+
+7. **Return Head:**  
+   Finally, return the original head pointer, as the structure of the list remains unchanged at the top level.
 
 
 ```C

@@ -24,25 +24,30 @@ Consider an array that is sorted in increasing order.
 ```
 We have to search a given number in this array and report whether it’s present in the array or not. In this case, we have two algorithms, and we will be interested in analyzing their performance separately. 
 
-1. Algorithm 1 – Start from the first element until an element greater than or equal to the number to be searched is found.
-2. Algorithm 2 – Check whether the first or the last element is equal to the number. If not, find the number between these two elements (center of the array); if the center element is greater than the number to be searched, repeat the process for the first half else, repeat for the second half until the number is found. And this way, keep dividing your search space, making it faster to search.
+1. **Algorithm 1:** This algorithm sequentially checks each element from the start until it finds an element that is greater than or equal to the target number.
+
+2. **Algorithm 2:** This algorithm first checks if the first or last element matches the target number. If not, it finds the middle element of the array. If the middle element is greater than the target, it repeats the search in the first half; otherwise, it searches in the second half. This process of dividing the search space continues until the number is found, making it faster than the first algorithm.
+
 
 ## Analyzing Algorithm 1: (Linear Search)
-- We might get lucky enough to find our element to be the first element of the array. Therefore, we only made one comparison which is obviously constant for any size of the array.
+- In the best-case scenario, we might be lucky enough to find the target element as the first element of the array. In this case, we only need to make one comparison, which is a constant time operation, regardless of the array size.
     - Best case complexity = O(1)
-- If we are not that fortunate, the element we are searching for might be the last one. Therefore, our program made ‘n’ comparisons. 
+
+- If we aren't so fortunate, the target element might be the last one in the array. In this case, the program would need to make 'n' comparisons, where 'n' is the number of elements in the array.
+
     - Worst-case complexity = O(n)
-For calculating the average case time, we sum the list of all the possible case’s runtime and divide it with the total number of cases. Here, we found it to be just O(n). (Sometimes, calculation of average-case time gets very complicated.)
+
+To calculate the average case time, we sum the runtimes of all possible cases and divide by the total number of cases. In this scenario, we find the average case time to be O(n). However, it's worth noting that calculating the average case time can sometimes become quite complex.
 
 ## Analyzing Algorithm 2: (Binary Search)
-- If we get really lucky, the first element will be the only element that gets compared. Hence, a constant time.
+- If we get really lucky, the first element could be the only one that gets compared. In this case, the time taken would be constant, representing O(1) time complexity.
     - Best case complexity = O(1)
-- If we get unlucky, we will have to keep dividing the array into halves until we get a single element. (that is, the array gets finished)
+- If we get unlucky, we will need to keep dividing the array into halves until we are left with a single element, meaning we exhaust the entire array.
 - Hence the time taken : n + n/2 +n/4 + . . . . . . . . . . + 1  = logn with base 2 
     - Worst-case complexity = O(log n)
 
 ## What is log(n)
-Logn refers to how many times I need to divide n units until they can no longer be divided (into halves).
+Log(n) refers to the number of times we need to divide \(n\) units in half until we reach a point where they can no longer be divided further.
  - log8 = 3  ⇒  8/2  + 4/2  + 2/2   →    Can’t break anymore.
  - log4 = 2  ⇒  4/2  + 2/2   →    Can’t break anymore.
 
@@ -60,9 +65,9 @@ Logn refers to how many times I need to divide n units until they can no longer 
 />
 
 ## Space Complexity
-- Time is not the only thing we worry about while analyzing algorithms. Space is equally important.
-- Creating an array of size n (size of the input) → O (n) Space
-- If a function calls itself recursively n times, its space complexity is O (n).
+- Time is not the only concern when analyzing algorithms; space complexity is equally important.
+- For instance, creating an array of size \(n\) (the size of the input) results in O(n) space complexity.
+- Additionally, if a function calls itself recursively \(n\) times, its space complexity is also O(n).
 
 **Quiz Quiz:** Calculate the space complexity of a function that calculates the factorial of a given number n.
 **Hint:** Use recursion.
@@ -72,4 +77,3 @@ You might have wondered at some point why we can't calculate complexity in secon
 - Not everyone’s computer is equally powerful. So we avoid handling absolute time taken. We just measure the growth of time with an increase in the input size.
 - Asymptotic analysis is the measure of how time (runtime) grows with input.
 
-> Thank you for being with me throughout. I hope you enjoyed the docs 😊.

@@ -3,11 +3,11 @@ title: Linear Vs Binary
 description: Linear Vs Binary Search 
 ---
 
-Linear Vs Binary Search + Code in C Language
+## Linear Vs Binary Search + Code in C Language
 
-We have already covered the first three operators in an array, namely traversal, insertion, and deletion. Today, we will learn about the search operations in an array. 
+We have already covered the first three operators in an array, namely traversal, insertion, and deletion. Today, we will learn about the search operations in an array.
 
-You must already be familiar with these two methods we have for searching in an array, linear and binary search. We had analyzed them and got the result that for a sorted array, the fastest method to search is the binary one. Today, we’ll learn how to code them and practically use them to search. 
+You must already be familiar with these two methods we have for searching in an array: linear and binary search. We analyzed them and concluded that for a sorted array, the fastest method to search is the binary one. Today, we’ll learn how to code them and practically use them to search.
 
 ### Linear Search:
 
@@ -24,8 +24,9 @@ This search method searches for an element by visiting all the elements sequenti
   alt="example"
 />
 
-### Binary Search:
-This search method searches for an element by breaking the search space into half each time it finds the wrong element. This method is limited to a sorted array. The search continues towards either side of the mid, based on whether the element to be searched is lesser or greater than the mid element of the current search space.
+### Binary Search
+
+Binary search efficiently locates an element by repeatedly dividing the search space in half. This method only works on sorted arrays, directing the search left or right based on whether the target element is less than or greater than the midpoint of the current range.
 
 <AdaptiveThemeImage
   src={{
@@ -53,20 +54,18 @@ From the above illustrations, we can draw a comparison between both the search m
 Let us now move on to the coding part of these methods. I have attached the snippet below. Refer to it while understanding.
 Understanding the code snippet 1:
 
-#### Linear Search:
+#### Linear Search
 
-1. We’ll start with coding the linear search. Create an integer function linearSearch. This function will receive the array, its size, and the element to be searched as its parameters.
+1. To begin, create an integer function called `linearSearch` that takes the array, its size, and the target element as parameters.
+2. Use a for loop to iterate from the start to the end of the array, checking if the element at the current index matches the target. If a match is found, return the index; otherwise, continue searching.
+3. If the loop completes without finding the element, return -1 to indicate that the element is not in the array.
 
-2. Run a for loop from its 0 to the last index, checking the if condition at every index whether the element at that index equals the search element. If yes, return the index, else continue the search.
+#### Binary Search
 
-3. If the element could not be found until the last, return -1.
+1. Define a function named `binarySearch` with the same three parameters as the linear search. Initialize three integers: `low` (the start of the search space), `high` (the end of the search space), and `mid` (the middle index calculated as `mid = (low + high) / 2`).
+2. Check if the mid element equals the target. If it does, return the mid index. If the mid element is greater than the target, adjust `high` to `mid - 1` to search the left side. If the mid element is less, adjust `low` to `mid + 1` to search the right side.
+3. Repeat this process until the element is found or until `low` exceeds `high`, indicating the element is not present in the array.
 
-#### Binary Search:
-1. Create a function named binarySearch and pass the same three parameters as we did in linear search. Here, we will maintain three integer variables low, mid, and high. Low  stores are the beginning of the search space, and high stores the end. Mid stores the middle element of our search space, which is   mid = (low+high)/2.
-
-2. Check whether the mid element equals the search element. If yes, return mid, else if the mid element is greater than the search element, then the search element must lie on the left side of the current space and high becomes mid-1, else if the mid element is less than the search element, then we’ll shift to the right side, and low becomes mid+1.
-
-3. This way, we reduce our search space into half every time we repeat step 2. Now our new mid becomes (low+high)/2, and we repeat step 2. And keep repeating until either we find the search element or the low becomes greater than the high.
 
 ```C
 #include<stdio.h>
@@ -124,5 +123,5 @@ The element 444 was found at index 8
 PS D:\MyData>
 ```
 
-So from the above output, you can conclude that our code works all fine. So, we are done implementing both these search methods. Binary Search holds great importance in the world of programming. We’ll come across several algorithms following binary search. If you couldn’t grasp it all at once, repeat. 
+So from the above output, you can conclude that our code works all fine. So, implementing both these search methods. Binary Search holds great importance in the world of programming. We’ll come across several algorithms following binary search. 
 

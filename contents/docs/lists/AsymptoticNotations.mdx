@@ -5,7 +5,8 @@ description: Description of Asymptotic Notations.
 
 ## Asymptotic Notations: Big O, Big Omega and Big Theta Explained 
 
-Asymptotic notation gives us an idea about how good a given algorithm is compared to some other algorithm.
+Asymptotic notation helps us understand the efficiency of an algorithm by comparing it to other algorithms. It provides a way to express the algorithm's performance in terms of its growth rate as the input size increases. This comparison allows us to determine which algorithm is more efficient in handling larger datasets.
+
 Now let's look at the mathematical definition of 'order of.' Primarily there are three types of widely used asymptotic notations.
 
 1. Big oh notation ( O )
@@ -39,7 +40,7 @@ Now let's look at the mathematical definition of 'order of.' Primarily there are
 
 ### Big Omega Notation ( Ω ):
 
-- Just like O notation provides an asymptotic upper bound, Ω notation provides an asymptotic lower bound. 
+- Big O notation provides an asymptotic upper bound on an algorithm's performance, while Omega (Ω) notation offers an asymptotic lower bound. Together, they give us a clearer picture of an algorithm's efficiency in different scenarios.
 - Let f(n) define the running time of an algorithm; f(n) is said to be Ω (g(n)) if and only if there exist positive constants  c and n° such that :
 
 ```java
@@ -84,7 +85,7 @@ Merging both the equations, we get:
 ```java
  0  ≤ c2 g(n)  ≤  f(n) ≤ c1 g(n)       ∀   n ≥ no.  
 ```
-The equation simply means that there exist positive constants c1 and c2 such that f(n) is sandwiched between c2 g(n) and c1 g(n). 
+The equation means that there are positive constants <sub>c<sub>1</sub></sub> and <sub>c<sub>2</sub></sub> such that the function <sub>f(n)</sub> is bounded between <sub>c<sub>2</sub> g(n)</sub> and <sub>c<sub>1</sub> g(n)</sub>. In other words, <sub>f(n)</sub> grows at the same rate as <sub>g(n)</sub> within these constants, providing a precise comparison of their growth rates.
 
 ### Graphic example of Big theta ( θ ):
 
@@ -101,8 +102,7 @@ The equation simply means that there exist positive constants c1 and c2 such tha
 
 **Which one of these to use?**
 
-Which one of these to use?
-Big theta provides a better picture of a given algorithm's run time, which is why most interviewers expect you to answer in terms of Big theta when they ask "order of" questions. And what you provide as the answer in Big theta, is already a Big oh and a Big omega. It is recommended for this reason.
+Big Theta (Θ) provides a more accurate representation of an algorithm's run time, which is why most interviewers expect you to respond with Big Theta when they ask about the "order of" an algorithm. When you express the time complexity in Big Theta, it inherently includes both Big O and Big Omega. For this reason, it is recommended to use Big Theta for clarity and completeness.
 
  Quick Quiz: Prove that n2+n+1 is O(n3), Ω(n2), and θ(n2) using respective definitions.
 
@@ -122,6 +122,4 @@ Below mentioned are some common runtimes which you will come across in your codi
   alt="example"
 />
 
-So, this was all about the asymptotic notations. We’ll come across these a lot in future. However, there's no need for concern. Just stay with me.
-
-Thank you for being with me throughout the docs. I hope you enjoyed it. If you appreciate my work, please let your friends know about this docs too. Till then keep learning. 
+So, this was all about the asymptotic notations. We’ll come across these a lot in future. However, there's no need for concern. 

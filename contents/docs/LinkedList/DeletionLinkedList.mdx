@@ -3,9 +3,9 @@ title: Deletion in a Linked List
 description: Deletion in a Linked List | Deleting a node from Linked List Data Structure. 
 ---
 
-## Deletion in a Linked List | Deleting a node from Linked List Data Structure
+## Deletion in a Linked List | Deleting a Node from Linked List Data Structure
 
-We got to see how one can insert a node in a linked list. Today, we’ll learn how to delete a node at some position. It will draw quite similarities with inserting a node, so this might be easy to you as well.
+In this section, we'll explore how to delete a node from a linked list. Unlike arrays, where deleting an element requires shifting other elements, linked lists allow us to simply adjust pointers, making deletions more efficient. 
 
 ### Inserting in a linked list:
 Consider the following Linked List:
@@ -21,17 +21,30 @@ Consider the following Linked List:
   alt="example"
 />
 
-Insertion in this list can be divided into the following categories:
+## Deletion in a Linked List: Categories
 
-**Case 1:** Deleting the first node.
+Deletion in a linked list can be divided into the following categories:
 
-**Case 2:** Deleting the node at the index.
+**Case 1:** **Deleting the First Node**  
+In this case, we simply update the head pointer to point to the second node in the list. The original head node will be freed to release its allocated memory.
 
-**Case 3:** Deleting the last node.
+**Case 2:** **Deleting a Node at a Specific Index**  
+To delete a node at a particular index, we need to traverse the list to find the node just before the target node. We then adjust the pointers to skip the target node and free its memory.
 
-**Case 4:** Deleting the first node with a given value.
+**Case 3:** **Deleting the Last Node**  
+For this case, we traverse the list until we reach the second last node. We then set its `next` pointer to `NULL` and free the memory of the last node.
 
-For deletion, following any of the above-mentioned cases, we would just need to free that extra node left after we disconnect it from the list. Before that, we overwrite the current connection and make new connections. And that is how we delete a node from our desired place.
+**Case 4:** **Deleting a Node with a Given Value**  
+To delete a node containing a specific value, we traverse the list to find the target node. We then adjust the pointers to bypass this node and free its allocated memory.
+
+### General Steps for Deletion
+For each of the above cases, the general process involves:
+1. **Locating the Node:** Navigate through the list to find the appropriate node to delete.
+2. **Adjusting Pointers:** Update the pointers of the surrounding nodes to exclude the target node from the list.
+3. **Freeing Memory:** Use the `free()` function to deallocate the memory associated with the deleted node.
+
+By following these steps, we can efficiently manage the nodes in a linked list, ensuring that memory is appropriately allocated and deallocated as needed.
+
 
 **Syntax for freeing a node:**
 ```C
@@ -59,11 +72,11 @@ In order to delete the node at the beginning, we would need to have the head poi
 ### Case 2: Deleting at some index in between:
 Assuming index starts from 0, we can delete an element from index i>0 as follows:
 
-1. Bring a temporary pointer p pointing to the node before the element you want to delete in the linked list.
-2. Since we want to delete between 2 and 8, we bring pointer p to 2.
-3. Assuming ptr points at the element we want to delete.
-4. We make pointer p point to the next node after pointer ptr skipping ptr.
-5. We can now free the pointer skipped.
+1. To delete the last node in the linked list, you will need a temporary pointer `p` that points to the node just before the last node.
+2. Move the pointer `p` through the list until it reaches the second-to-last node (the one before the last node).
+3. Once `p` is positioned correctly, you will set `p->next` to `NULL`, effectively removing the link to the last node.
+4. Finally, free the memory associated with the last node to release the allocated space.
+
 
 <AdaptiveThemeImage
   src={{
@@ -112,35 +125,34 @@ Since, the value 8 comes twice in the list, this function will be made to delete
 
 > Learning about the time complexity while deleting these nodes, we found that deleting the element at the beginning completes in a constant time, i.e O(1). Deleting at any index in between is no big deal either, it just needs the pointer ptr to reach the node to be deleted, causing it to follow O(n). And the same goes with case 3 and case 4. We have to traverse through the list to reach that desired position. 
 
-Before we move to coding these deletion methods, I want you all to try yourselves first.
-
-
 ## C Code For Deletion From Beginning, End, Specified Position & Key
+
 Now that we have a thorough understanding of all the cases that we will encounter when deleting an existing node from a linked list, we can code each one in C language.
 
 Before we code, let’s recall all the cases:
 
-1. Deleting the first node            -> Time complexity:  O(1)
-2. Deleting a node in between   -> Time complexity:  O(n)
-3. Deleting the last node            -> Time complexity:  O(n)
-4. Deleting the element with a given value from the linked list     -> Time complexity:  O(n)
+1. **Deleting the first node**            -> Time complexity:  O(1)
+2. **Deleting a node in between**   -> Time complexity:  O(n)
+3. **Deleting the last node**            -> Time complexity:  O(n)
+4. **Deleting the element with a given value from the linked list**     -> Time complexity:  O(n)
 
 Now, let's move on to the coding part. I have attached the snippet below. Refer to it while understanding the steps.
 
-**Understanding the snippet below:**
+### Understanding the snippet below:
 
 1. You should have a good understanding of how to declare struct Nodes and traverse linked lists by now.
-2. So, the first thing would be to create a struct Node and create the linkedlistTraversal function.
-3. Do include the header file `<stdlib.h>`, since we’ll use malloc to reserve memory locations.
-4. Similar to what we did in the insertion video, create the four(choose any number) nodes. Request the memory location for each of these nodes from the heap via malloc. Link these nodes using the arrow operator.
-5. And this is how we create a linked list of size 4. Let’s see the cases of deletion.
+2. So, the first thing would be to create a struct Node and create the `linkedlistTraversal` function.
+3. Do include the header file `<stdlib.h>`, since we’ll use `malloc` to reserve memory locations.
+4. Similar to what we did in the insertion video, create four nodes. Request the memory location for each of these nodes from the heap via `malloc`. Link these nodes using the arrow operator.
+5. This is how we create a linked list of size 4. Let’s see the cases of deletion.
 
-### Deleting the first node :
-1. Create a struct Node* function deleteFirst which will return the pointer to the new head after deleting the current head.
-2. We’ll pass the current head pointer in the function.
-3. Create a new struct Node* pointer ptr, and make it point to the current head.
-4. Assign head to the next member of the list, by head = head->next, because this is going to be the new head of the linked list.
-5. Free the pointer ptr. And return the head.
+### Deleting the First Node:
+1. Create a `struct Node*` function `deleteFirst` which will return the pointer to the new head after deleting the current head.
+2. We’ll pass the current head pointer into the function.
+3. Create a new `struct Node*` pointer `ptr`, and make it point to the current head.
+4. Assign head to the next member of the list, by `head = head->next`, because this is going to be the new head of the linked list.
+5. Free the pointer `ptr`. And return the head.
+
 
 ```C
 // Case 1: Deleting the first element from the linked list
@@ -154,14 +166,15 @@ struct Node * deleteFirst(struct Node * head){
 
 > Code Snippet 1: Deleting the first node
 
-### Deleting a node in between:
-1. Create a struct Node* function deleteAtIndex which will return the pointer to the head.
+### Deleting a Node in Between
+
+1. Create a `struct Node*` function `deleteAtIndex` which will return the pointer to the head.
 2. In the function, we'll pass the current head pointer and the index where the node is to be deleted.
-3. Create a new struct Node* pointer p pointing to head.
-4. Create a new struct Node* pointer q pointing to head->next, and run a loop until this pointer reaches the index, from where we are deleting the node.
-5. Assign q->next to the next member of the p structure using p-> next = q->next.
-6. Free the pointer q, because it has zero connections with the list now.
-7. Return head.
+3. Create a new `struct Node*` pointer `p` pointing to head.
+4. Create a new `struct Node*` pointer `q` pointing to `head->next`, and run a loop until this pointer reaches the index from where we are deleting the node.
+5. Assign `q->next` to the next member of the `p` structure using `p->next = q->next`.
+6. Free the pointer `q`, because it has zero connections with the list now.
+7. Return `head`.
 
 ```C
 // Case 2: Deleting the element at a given index from the linked list
@@ -181,11 +194,13 @@ struct Node * deleteAtIndex(struct Node * head, int index){
 ```
 > Code Snippet 2: Deleting a node in between
 
-### Deleting the last node :
-1. Deleting the last node is quite similar to deleting from any other index. The difference holds in the limit of the while loop. Here we run a loop until the pointer reaches the end and points to NULL.
-2. Assign NULL to the next member of the p structure using p-> next = NULL.
-3. Break the connection between q and NULL by freeing the ptr q.
-4. Return head
+### Deleting the Last Node
+
+1. Deleting the last node is quite similar to deleting from any other index. The difference holds in the limit of the while loop. Here, we run a loop until the pointer reaches the end and points to NULL.
+2. Assign NULL to the next member of the `p` structure using `p->next = NULL`.
+3. Break the connection between `q` and NULL by freeing the pointer `q`.
+4. Return `head`.
+
 
 ```C
 // Case 3: Deleting the last element
@@ -205,17 +220,18 @@ struct Node * deleteAtLast(struct Node * head){
 ```
 > Code Snippet 3: Deleting the last node
 
-### Deleting the element with a given value from the linked list :
+### Deleting the Element with a Given Value from the Linked List
 
 1. Here, we already have a value that needs to be deleted from the list. The main thing is that we’ll delete only the first occurrence.
-2. Create a struct Node* function deleteByValue which will return the pointer to the head.
-3. Pass into this function the head node, the value which needs to be deleted.
-4. Create a new struct Node* pointer p pointing to the head.
-5. Create another struct Node* pointer q pointing to the next of head.
-6. Run a while loop until the pointer q encounters the given value or the list finishes.
-7. If it encounters the value, delete that node by making p point the next node, skipping the node q. And free q from memory.
-8. And if the list just finishes, it means there was no such value in the list. Continue without doing anything.
-9. Return head.
+2. Create a `struct Node*` function `deleteByValue` which will return the pointer to the head.
+3. Pass into this function the head node and the value which needs to be deleted.
+4. Create a new `struct Node*` pointer `p` pointing to the head.
+5. Create another `struct Node*` pointer `q` pointing to the next of head.
+6. Run a while loop until the pointer `q` encounters the given value or the list finishes.
+7. If it encounters the value, delete that node by making `p` point to the next node, skipping the node `q`. Then, free `q` from memory.
+8. If the list finishes without finding the value, continue without doing anything.
+9. Return `head`.
+
 
 ```C
 // Case 4: Deleting the element with a given value from the linked list

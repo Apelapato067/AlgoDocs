@@ -5,11 +5,9 @@ description: Algorithm + Solved Questions.
 
 # How to Calculate Time Complexity of an Algorithm + Solved Questions 
 
-In previous videos, we had discussed what time complexity is and how it helps in dealing with what is most efficient for our programs. Our task today will be to find out how to calculate the time complexity of our programs. Here are some tips and tricks about the same, followed by a discussion of some questions.
-
 Techniques to calculate Time Complexity:
 
-Once we are able to write the runtime in terms of the size of the input (n), we can find the time complexity. For example:
+Once we can express the runtime in relation to the size of the input (\(n\)), we can determine the time complexity. For example:
 
 ```java
  T(n) = n2 → O(n^2)
@@ -18,12 +16,11 @@ T(n) = logn → O(logn)
 
 **Here are some tricks to calculate complexities:**
 
-- Drop the constants:
-Anything you might think is O(kn) (where k is a constant) is O(n) as well. This is considered a better representation of the time complexity since the k term would not affect the complexity much for a higher value of n.
-- Drop the non-dominant terms: : 
-Anything you represent as O(n2+n) can be written as O(n2). Similar to when non-dominant terms are ignored for a higher value of n.
-- Consider all variables which are provided as input:
-O (mn) and O (mnq) might exist for some cases.
+- **Drop the constants:** Any time complexity expressed as O(kn) (where \(k\) is a constant) can be simplified to O(n). This is a more effective representation since the \(k\) term has little impact on complexity as \(n\) increases.
+
+- **Drop the non-dominant terms:** A time complexity expressed as O(n² + n) can be simplified to O(n²), as non-dominant terms become negligible for larger values of \(n\).
+
+- **Consider all input variables:** Time complexities such as O(mn) and O(mnq) can arise in certain scenarios, where \(m\), \(n\), and \(q\) are all variables provided as input.
 
 In most cases, we try to represent the runtime in terms of the inputs which can even be more than one in number. For example,
 
@@ -154,7 +151,3 @@ int isPrime(int n)
 }
 isPrime();
 ```
-
-So, these were the few questions I felt like discussing. Try them on your own first. And if you have already given them enough thought, then move on to the video above where we have discussed their solutions in detail. Hopefully, they were able to make you learn how to find the time complexities for different programs.
-
-Thank you for being with me throughout.

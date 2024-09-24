@@ -5,18 +5,19 @@ description: Linked List Data Structure Creation and Traversal.
 
 ## Linked List Data Structure: Creation and Traversal in C Language
 
-I would anyway want to point some important things we learned about linked lists:
+Here are some important points we learned about linked lists:
 
-1. These are stored in non-contiguous memory locations.
-2. Insertion and deletion in a linked list are very efficient in comparison to arrays.
-3. An element called node holds the value as well as a pointer to the next element.
-We can now move onto coding them. I've attached the snippet below for your referral. Follow them while understanding the same.
+1. They are stored in non-contiguous memory locations.
+2. Insertion and deletion in a linked list are more efficient compared to arrays.
+3. Each element, called a node, holds both a value and a pointer to the next element.
+
+We can now move on to coding them. I've attached the snippet below for your reference. Follow it while understanding the concepts.
 
 ### Understanding the snippet below:
 
-1. An element in a linked list is a struct Node. It is made to hold integer data and a pointer of data type struct Node*, as it has to point to another struct Node. 
+1. An element in a linked list is defined as a `struct Node`. It is designed to hold integer data and a pointer of data type `struct Node*`, as it needs to point to another struct Node.
 
-2. We’ll create the below illustrated linked list.
+2. We’ll create the linked list as illustrated below.
 
 <AdaptiveThemeImage
   src={{
@@ -33,9 +34,9 @@ We can now move onto coding them. I've attached the snippet below for your refer
 
 3. We will always create individual nodes and link them to the next node via the arrow operator ‘→’.
 
-4. First, we’ll define a structure Node and create two of its members, an int variable data, to store the current node's value and a struct node* pointer variable next. 
+4. First, we’ll define a structure Node and create two of its members: an `int` variable `data` to store the current node's value and a `struct Node*` pointer variable `next` to point to the next node.
 
-5. Now, we can move on to our main() and start creating these nodes. We’ll name the first node, head. Define a pointer to head node by struct node* head. And similarly for the other nodes. Request the memory location for each of these nodes from heap via malloc using the below snippet.
+5. Now, we can move on to our `main()` function and start creating these nodes. We’ll name the first node `head` and define a pointer to the head node with `struct Node* head`. Similarly, we will create pointers for the other nodes. Request the memory location for each of these nodes from the heap via `malloc` using the snippet below.
 
 ```C
 head = (struct Node *)malloc(sizeof(struct Node));
@@ -43,9 +44,9 @@ head = (struct Node *)malloc(sizeof(struct Node));
 
 6. Link these nodes using the arrow operator and call the traversal function.
 
-7. Create a void function linkedlistTraversal and pass into it the pointer to the head node.
+7. Create a `void` function `linkedlistTraversal` and pass the pointer to the head node into it.
 
-8. Run a while loop while the pointer doesn’t point to a NULL. And keep changing the pointer next each time you are done printing the data of the current node.
+8. In the `linkedlistTraversal` function, run a `while` loop while the pointer doesn’t point to `NULL`. Inside the loop, print the data of the current node and then update the pointer to point to the next node.
 
 ```C
 #include <stdio.h>
@@ -112,5 +113,5 @@ PS D:\Code>
 ```
 **Figure 2: Output of the above program**
 
->So, this was successfully creating and traversing through the linked list. We have more things to learn ahead, but before that, make sure you feel confident about the things we have covered so far. I'll take care of the rest.
+>So, this was successfully creating and traversing through the linked list. We have more things to learn ahead, but before that, make sure you feel confident about the things we have covered so far.
 

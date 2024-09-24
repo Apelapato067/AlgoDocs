@@ -2,17 +2,17 @@
 title: Doubly Linked Lists
 description: Dummy description for Binary Tree.
 ---
+## Doubly Linked Lists Explained
 
-## Doubly Linked Lists Explained With Code in C Language
+We have already discussed various types of linked lists. We covered singly linked lists, where the head node is followed by the last node pointing to `NULL`. We also talked about circular linked lists, which have no end but do have a designated head node. In both types, we explored basic operations like traversal, insertion, deletion, and searching.
 
-So, we have already talked about a lot of things under linked lists. We talked about the singly-linked lists, which had both a head node and the last node pointing to the NULL. We also talked about circular linked lists, which had no ending but an arbitrary head node. We also learned about all the basic operations (traversal, insertion, deletion, search) that we could do on both these variants of a linked list.
+### Takeaway:
+The main takeaway is that we can perform all these operations on any variant of a linked list, regardless of its structure or properties. Today, we'll look at another type of linked list and see how it relates to what we’ve learned so far.
 
-Our takeaway from all this is that we can perform all these operations on any variant of a linked list regardless of their structure and properties. We'll see one such thing today as well. We’ll draw out similarities between the structure we’ll handle today and the ones we did before.
+### What is a Doubly Linked List?
+In a **doubly linked list**, each node contains a data part and two pointers: one pointing to the **previous node** and the other to the **next node**.
 
-### What is a doubly-linked list?
-Each node contains a data part and two pointers in a doubly-linked list, one for the previous node and the other for the next node.
-
-Below illustrated is a doubly-linked list with three nodes. Both the end pointers point to the NULL.
+Below is a visual representation of a doubly linked list with three nodes, where both the end pointers point to `NULL`.
 
 <AdaptiveThemeImage
   src={{
@@ -25,17 +25,18 @@ Below illustrated is a doubly-linked list with three nodes. Both the end pointer
   alt="example"
 />
 
-How is it different from a singly linked list?
+### How is it Different from a Singly Linked List?
 
-- A doubly linked list allows traversal in both directions. We have the addresses of both the next node and the previous node. So, at any node, we’ll have the freedom to choose between going right or left.
-- A node comprises three parts, the data, a pointer to the next node, and a pointer to the previous node.
-- Head node has the pointer to the previous node pointing to NULL.
+- A **doubly linked list** allows traversal in **both directions**. Each node contains the address of both the next node and the previous node, giving us the flexibility to move either right or left.
+- A node consists of three parts: the data, a pointer to the next node, and a pointer to the previous node.
+- The **head node** has its pointer to the previous node set to `NULL`.
+
+### Memory Considerations:
+The extra pointer to the previous node allows for bidirectional traversal, but it also requires more memory for each node. This is a trade-off compared to a singly linked list, which only stores the data and the next node's address.
 
 ### Implementation in C:
 
-Let’s try implementing a doubly linked list in our codes. We’ll have a struct Node as before. The only information added to this struct Node is a struct Node* pointer to the previous node. Let’s name this prev.
-
-This new information makes us travel in both directions, but using it follows the use of more memory space for a single node that now comprises three members. It is because of this we have a singly linked list. 
+Let’s consider implementing a doubly linked list. The structure (`struct Node`) is similar to what we’ve seen before, with the addition of a pointer to the previous node. This new pointer, often named **prev**, enables travel in both directions but comes with an added memory cost for each node, now having three parts.
 
 ```C
 struct Node {
@@ -49,13 +50,21 @@ struct Node {
 
 ### Operations on a Doubly Linked List:
 
-The insertion and deletion on a doubly linked list can be performed by recurring pointer connections, just like we saw in a singly linked list.
+Insertion and deletion in a doubly linked list are performed by adjusting pointer connections, just like in a singly linked list.
 
-The difference here lies in the fact that we need to adjust two-pointers (prev and next) instead of one (next) in the case of a doubly linked list. It very much follows the fact, “With great power, comes great responsibility.” :)
+The key difference here is that we need to adjust **two pointers** (prev and next) instead of just one (next) like we did with singly linked lists. It reflects the saying, "With great power, comes great responsibility." :)
 
-Task: Try implementing a traversal algorithm to traverse once to the right and once to the left. Print the data in both cases.
+#### Task:
+Try implementing a traversal algorithm that:
+- Traverses once to the right (using the next pointer).
+- Traverses once to the left (using the prev pointer).
 
-So this was all we had in linked lists. It was a great segment. Let’s give it an end here. We have so many things coming. So don’t miss out on this ever. Keep revising things at regular intervals.
+Print the data in both cases.
+
+---
+
+That’s all for linked lists! It has been a great segment, and we hope you’ve found it helpful. Keep an eye out for upcoming topics, and remember to revisit and revise things regularly.
+
 
 > Code as described/written in the all docs:
 

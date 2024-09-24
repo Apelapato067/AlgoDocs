@@ -3,18 +3,19 @@ title: Linked List
 description: Dummy description for Binary Tree.
 ---
 
-## Introduction to Linked List in Data Structures 
+## Introduction to Linked List in Data Structures
 
-The study of linked lists will certainly be detailed, but first, I would like to inform you about one of the fundamental differences between linked lists and arrays.  
+The study of linked lists will certainly be detailed, but first, I would like to highlight a fundamental difference between linked lists and arrays.
 
-Arrays demand a contiguous memory location. Lengthening an array is not possible. We would have to copy the whole array to some bigger memory location to lengthen its size. Similarity inserting or deleting an element causes the elements to shift right and left, respectively.
+Arrays require contiguous memory allocation, which means their size cannot be easily changed. To increase an array's size, you must copy the entire array to a larger memory location. Additionally, inserting or deleting an element requires shifting elements right or left, respectively.
 
-But linked lists are stored in a non-contiguous memory location. To add a new element, we just have to create a node somewhere in the memory and get it pointed by the previous element. And deleting an element is just as easy as that. We just have to skip pointing to that particular node. Lengthening a linked list is not a big deal.
+In contrast, linked lists are stored in non-contiguous memory locations. To add a new element, you simply create a node in memory and link it to the previous element. Deleting an element is similarly straightforward; you just adjust the pointers to skip the node you want to remove. Consequently, extending a linked list is quite efficient.
 
-### Structure of a Linked List:
-Every element in a linked list is called a node and consists of two parts, the data part, and the pointer part. The data part stores the value, while the pointer part stores the pointer pointing to the address of the next node.
+### Structure of a Linked List
 
-Both of these structures (arrays and linked lists) are linear data structures.
+Each element in a linked list is referred to as a node, which consists of two parts: the data part and the pointer part. The data part holds the value, while the pointer part contains the address of the next node in the list.
+
+Both arrays and linked lists are classified as linear data structures.
 
 Linked Lists VS Arrays:
 
@@ -32,19 +33,21 @@ Linked Lists VS Arrays:
 **Figure 1: Arrays vs. Linked lists**
 
 ### Why Linked Lists?
-Memory and the capacity of an array remain fixed, while in linked lists, we can keep adding and removing elements without any capacity constraint.
+
+Memory and the capacity of an array remain fixed, while linked lists allow us to add and remove elements without any capacity constraints.
 
 **Drawbacks of Linked Lists:**
 
-- Extra memory space for pointers is required (for every node, extra space for a pointer is needed)
-- Random access is not allowed as elements are not stored in contiguous memory locations.
+- Extra memory space is required for pointers (each node needs additional space for a pointer).
+- Random access is not allowed, as elements are not stored in contiguous memory locations.
 
 ### Implementations
+
 Linked lists are implemented in C language using a structure. You can refer to the snippet below.
 
 **Understanding the snippet below:**
-1. We construct a structure named Node. 
-2. Define two of its members, an integer data, which holds the node's data, and a structure pointer, next, which points to the address of the next structure node.
+1. We construct a structure named `Node`. 
+2. Define two of its members: an integer `data` that holds the node's data, and a structure pointer `next` that points to the address of the next structure node.
 
 ```c
 struct Node
@@ -55,5 +58,5 @@ struct Node
 ```
 
 **Code Snippet 1: Implementation of a linked list**
-These were just the basics of the linked lists. We haven’t delved into details yet. There’s a lot to cover in this data structure. Just sit back and enjoy.
+These were just the basics of the linked lists. We haven’t delved into details. There’s a lot to cover in this data structure.
 

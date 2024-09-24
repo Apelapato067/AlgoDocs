@@ -3,11 +3,15 @@ title: Circular Linked List and Operations
 description: Circular Linked List and Operations in Data Structures
 ---
 
-# Circular Linked List and Operations example with code.
-Till now, we have covered linked lists, which consist of a head, the body, and an end pointing to NULL. Basically, it was linear. We could do traversal, insertion, deletion, searching, and many more operations while traversing to the end of it. Today, we’ll see a variant of it, circular linked lists. We’ll also see all those operations that we could do in a linear linked list and their implementations in a circular linked list.
+## Circular Linked List and Operations
 
-**Introduction:**
-A circular linked list is a linked list where the last element points to the first element (head) hence forming a circular chain. There is no node pointing to the NULL, indicating the absence of any end node. In circular linked lists, we have a head pointer but no starting of this list.
+Till now, we've covered linked lists, which consist of a head, the body, and an end pointing to `NULL`. Basically, it was linear. We could perform traversal, insertion, deletion, searching, and many more operations while traversing to the end of the list. 
+
+Today, we’ll explore a variant of it—circular linked lists. We’ll also go through all the operations that we could do in a linear linked list and see how they work in a circular linked list.
+
+### **Introduction:**
+A circular linked list is a linked list where the last element points to the first element (head), hence forming a circular chain. There is no node pointing to `NULL`, meaning there’s no "end" node. In circular linked lists, we have a head pointer, but no starting or ending in the traditional sense.
+
 
 Refer to the illustration of a circular linked list below:
 <AdaptiveThemeImage
@@ -22,31 +26,31 @@ Refer to the illustration of a circular linked list below:
 />
 
 ### Operations on a Circular Linked List:
-Operations on circular linked lists can be performed exactly like a singly linked list. It’s just that we have to maintain an extra pointer to check if we have gone through the list once.
 
-**Traversal:**
-- Traversal in a circular linked list can be achieved by creating a new struct Node* pointer p, which starts from the head and goes through the list until it points again at the head. So, this is how we go through this circle only once, visiting each node.
-- And since traversal is achieved, all the other operations in a circular linked list become as easy as doing things in a linear linked list. 
-- One thing that may have sounded confusing to you is that there is a head but no starting of this circular linked list. Yes, that is the case; we have this head pointer just to start or incept in this list and for our convenience while operating on it. There is no first element here
+Operations on circular linked lists can be performed just like a singly linked list. The only difference is that we need to maintain an extra pointer to check if we’ve gone through the list once.
 
-> Thank you for being with me throughout.
+#### **Traversal:**
+- Traversal in a circular linked list can be achieved by creating a new `struct Node*` pointer `p`, which starts from the head and goes through the list until it points back at the head. This way, we traverse the circle only once, visiting each node.
+- Since traversal is possible, all other operations (like insertion, deletion, etc.) in a circular linked list become as easy as they are in a linear linked list.
+- You might find it confusing that there is a head but no "starting" of the circular linked list. That’s correct—the head pointer is just there for our convenience while operating on the list. There’s no first element as such; it’s circular.
 
-## Example with code
+## Example with Code
 
-In the last docs, we learned about this new data structure, the circular linked lists. Additionally, we discussed the difference and similarities between a circular linked list and a linear linked list. 
+In the last section, we learned about circular linked lists, and we discussed the differences and similarities between circular and linear linked lists.
 
-Let me quickly summarize some of the most important points:
+Let me quickly summarize the key points:
 
-Unlike singly-linked lists, a circular linked list has no node pointing to NULL. Hence it has no end. The last element points at the head node.
-1. All the operations can still be done by maintaining an extra pointer fixed at the head node.
-2. A circular linked list has a head node, but no starting node.
-3. We even learned traversing through the circular linked list using the do-while approach. Today, we’ll see one of the operations, insertion in a doubly-linked list with the help of C language.
+1. Unlike singly linked lists, a circular linked list has no node pointing to `NULL`. Instead, the last element points to the head node, forming a circle.
+2. All operations (traversal, insertion, deletion, etc.) can be done by maintaining an extra pointer fixed at the head node.
+3. A circular linked list has a head node, but no specific starting or ending node.
+4. We learned to traverse a circular linked list using a `do-while` loop. 
 
-Now, let's move on to the coding part. I have attached the snippet below. Refer to it while understanding the steps.
+Now, let’s move to coding. Below is an example that shows how to perform insertion in a circular linked list in C.
 
-### Creating the circular linked list:
-1. Creating a circular linked list is no different from creating a singly linked list. One thing we do differently is that instead of having the last element to point to NULL, we’ll make it point to the head.
-2. While creating these nodes and connecting them. This is the third time we are doing it, and I believe you must have gained that confidence.
+### Creating the Circular Linked List:
+1. Creating a circular linked list is no different from creating a singly linked list. The only difference is that, instead of having the last element point to `NULL`, we’ll make it point to the head.
+2. While creating these nodes and connecting them, this is the third time we are doing it, so by now you should be gaining confidence!
+
 
 ```C
 struct Node
@@ -89,11 +93,12 @@ int main(){
 
 > Code Snippet 1: Creating the circular linked list
 
-### Traversing the circular linked list:
-1. Create a void function *linkedListTraversal* and pass the head pointer of the linked list to the function.
-2. In the function, create a pointer *ptr* pointing to the head.
-3. Run a *do-while* loop until ptr reaches the last node, and ptr-> next becomes head, i.e. ptr->next = head. And keep printing the data of each node.
-4. So, this is how we traverse through a circular linked list. And *do-while was* the key to make it possible. 
+### Traversing the Circular Linked List:
+
+1. Create a `void` function named **linkedListTraversal** and pass the head pointer of the circular linked list to the function.
+2. Inside the function, create a pointer named **ptr** and set it to point to the head.
+3. Use a **do-while** loop to traverse the list. The loop should continue until **ptr** reaches the last node and **ptr->next** points back to the head (i.e., `ptr->next == head`). During the traversal, print the data of each node.
+4. The **do-while** loop is crucial here because it allows you to handle the circular nature of the list, ensuring you traverse through it exactly once.
 
 ```C
 void linkedListTraversal(struct Node *head){
@@ -107,13 +112,14 @@ void linkedListTraversal(struct Node *head){
 
 > Code Snippet 2: Traversing the circular linked list
 
-### Inserting into a circular linked list:
-1. I’ll just cover the insertion part, and that too on the head. Rest of the variations, I believe, you’ll be able to do yourselves. Things are very similar to that of singly-linked lists.
-2. Create a struct Node* function *insertAtFirst* which will return the pointer to the new head.
-3. We’ll pass the current head pointer and the data to insert at the beginning, in the function.
-4. Create a new struct Node* pointer ptr, and assign it a new memory location in the heap. This is our new node pointer. Make sure you don't forget to include the header file `<stdlib.h>`.
-5. Create another struct node * pointer p pointing to the next of the head. *p = head-> next*.
-6. Run a *while* loop until the p pointer reaches the end element and p-> next becomes the head.
+### Inserting into a Circular Linked List:
+
+1. Let’s focus on the insertion at the head. The rest of the variations (insertion at other positions) will be quite similar to what you already know from singly linked lists.
+2. Create a function called **insertAtFirst** which will return the pointer to the new head of the circular linked list.
+3. Pass the current head pointer and the data to be inserted at the beginning as arguments to this function.
+4. Inside the function, create a pointer called **ptr** that will point to a new memory location allocated in the heap (this will be the new node). Don’t forget to include the header file `<stdlib.h>` when you're working with dynamic memory.
+5. Next, create another pointer, **p**, which points to the next node of the current head (`p = head->next`).
+6. Use a **while** loop to traverse the list until **p** points to the last node (i.e., until `p->next` becomes the head).
 
 <AdaptiveThemeImage
   src={{
@@ -126,8 +132,8 @@ void linkedListTraversal(struct Node *head){
   alt="example"
 />
 
-7. Now, assign ptr to the next of p, i.e.*p->next  = ptr*. And head to  the next of ptr, i.e. *ptr->next = head*.
-8. Now, the new head becomes ptr. *head = ptr*.
+7. Now, assign **ptr** to the next of **p**, i.e., `p->next = ptr`. Then, set the next of **ptr** to point to the head, i.e., `ptr->next = head`.
+8. Finally, make **ptr** the new head by assigning `head = ptr`.
 
 <AdaptiveThemeImage
   src={{
@@ -264,8 +270,3 @@ Element is 3
 Element is 6
 Element is 1
 ```
-
-As you can see, all the elements we passed into the insertAtFirst function got added at the beginning. So, it is indeed working. 
-
-And this was all about a circular linked list. We won’t go doing other operations. You should all carry out other operations yourselves. 
-

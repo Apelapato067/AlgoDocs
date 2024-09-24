@@ -3,13 +3,19 @@ title: Implementing Array as an Abstract
 description: Implementing Array as an Abstract Data Type in java Language.
 ---
 
-Understanding the snippet below:
-1. First, we will define a structure. You can use a class and its methods in java, a structure is used to define customized data types.
-2. Define the structure elements, integer variables total_size and used_size, and an integer pointer to point at the address of the first element.
-3. We are now ready with our customized data type. Let’s define some functions, which will feature
-    - Creating an array of this data type, 
-    - Printing the contents of this array,
-    - Setting values in this array.
+## Understanding the Snippet Below:
+
+1. **Defining a Structure:**  
+   First, we define a structure. In c, you can use a class and its methods to achieve this. A structure is utilized to create customized data types.
+
+2. **Define the Structure Elements:**  
+   Inside the structure, we define integer variables `total_size` and `used_size`, along with an integer pointer that points to the address of the first element.
+
+3. **Ready for Custom Data Type:**  
+   With our customized data type established, we can define several functions, which will include:  
+   - Creating an array of this data type.  
+   - Printing the contents of this array.  
+   - Setting values in this array.
 
 Create a void function createArray by passing the address of a struct data type a, and integers tSize and uSize. We can very easily assign this tSize and uSize given from the main, to the total_size and used_size of the struct myArray a by either of the methods defined below.
 
@@ -29,9 +35,11 @@ a->ptr = (int *)malloc(tSize * sizeof(int));
 
 *Code Snippet 2: Using malloc*
 
-4. We will now create a show function to display all the elements of the struct myArray. We will simply pass the address of the struct myArray a. To print all the elements, we will traverse through the whole struct and print each struct element till the iterator reaches the last element. We will use a→used_size to define the loop size. Use (a→ptr)[i] to access each element.
+4. **Creating a Show Function:**  
+   We will create a `show` function to display all the elements of the struct `myArray`. We will pass the address of the struct `myArray a` as an argument. To print all the elements, we will traverse through the entire struct and print each element until the iterator reaches the last element. We will use `a->used_size` to define the loop size, accessing each element with `(a->ptr)[i]`.
 
-5. We will now create a setVal function to set values to this struct myArray a and pass the address of the same. Use scanf to assign values to each element via (a→ptr)[i] .
+5. **Creating a SetVal Function:**  
+   Next, we will create a `setVal` function to set values in the struct `myArray a`. We will pass the address of the struct as an argument. Inside this function, we will use `scanf` to assign values to each element via `(a->ptr)[i]`.
 
 ```c
 #include<stdio.h>
@@ -87,7 +95,7 @@ int main(){
 
 *Code Snippet 3: A program to implement the ADT array*
 
-So, these were the basic methods we could define for this struct. We’ll check if these work by running it. We’ll call the createArray, and setVal functions first to create an array of size 2, and assign some values to it. And then call the show function to see if it works.
+These were the basic methods we defined for this struct. We will check if they work by executing the program. First, we'll call the `createArray` and `setVal` functions to create an array of size 2 and assign some values to it. After that, we'll call the `show` function to verify that everything functions correctly.
 
 Output of the above program:
 ```

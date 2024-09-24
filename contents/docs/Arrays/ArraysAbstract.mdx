@@ -7,7 +7,7 @@ description: Arrays and Abstract Data Type in Data Structure.
 
 ## Abstract Data Types and Arrays:
 
-ADTs or abstract data types are the ways of classifying data structures by providing a minimal expected interface and some set of methods. It is very similar to when we make a blueprint before actually getting into doing some job, be it constructing a computer or a building. The blueprint comprises all the minimum required logistics and the roadmap to pursuing the job.
+Abstract Data Types (ADTs) classify data structures by defining a minimal expected interface along with a set of methods. This concept is similar to creating a blueprint before starting a project, whether it’s building a computer or constructing a building.
 
 <AdaptiveThemeImage
   src={{
@@ -22,22 +22,22 @@ ADTs or abstract data types are the ways of classifying data structures by provi
 Array - ADT
 An array ADT holds the collection of given elements (can be int, float, custom) accessible by their index.
 
-1. Minimal required functionality:
-We have two basic functionalities of an array, a get function to retrieve the element at index i and a set function to assign an element to some index in the array.
-    - get (i) – get element i
-    - set (i, num) – set element i to num.
+1. **Minimal Required Functionality:**  
+   An array has two basic functionalities:  
+   - **get(i):** Retrieves the element at index \(i\).  
+   - **set(i, num):** Assigns the value \(num\) to the element at index \(i\).  
 
-2. Operations:-
-We can have a whole lot of different operations on the array we created, but we’ll limit ourselves to some basic ones.
-    - Max()
-    - Min()
-    - Search ( num )
-    - Insert ( i, num )
-    - Append (x)
+2. **Operations:**  
+   We can perform various operations on the array, but we'll focus on some basic ones:  
+   - **Max():** Returns the maximum element in the array.  
+   - **Min():** Returns the minimum element in the array.  
+   - **Search(num):** Searches for the element \(num\) in the array.  
+   - **Insert(i, num):** Inserts the value \(num\) at index \(i\).  
+   - **Append(x):** Adds the value \(x\) to the end of the array.  
 
-Static and Dynamic Arrays:
-- Static arrays – Size cannot be changed
-- Dynamic arrays – Size can be changed
+**Static and Dynamic Arrays:**  
+- **Static Arrays:** The size cannot be changed after creation.  
+- **Dynamic Arrays:** The size can be adjusted as needed.
 
 **Quick Quiz**- Code the operations mentioned above in C language by creating array ADT.
 **Hint**: Use structures.
@@ -55,8 +55,10 @@ Memory Representations of Array:
 />
 
 - Elements in an array are stored in contiguous memory locations.
-- Elements in an array can be accessed using the base address in constant time → O (1).
-- Although changing the size of an array is not possible, one can always reallocate it to some bigger memory location. Therefore resizing in an array is a costly operation.
+
+- Elements can be accessed using the base address in constant time, O(1).
+
+- While the size of an array cannot be changed directly, it can be reallocated to a larger memory location. However, resizing an array is a costly operation.
 
 Suppose we want to build an array as an abstract data type with our customized set of values and customized set of operations in a heap. Let’s name this customized array myArray. 
 
@@ -75,12 +77,15 @@ And the operations include operators namely,
 
 So, now when we are done creating a blueprint of the customized array. We can very easily code their implementation, but before that, let’s first learn what these values and operations, we have defined, do:
 
-## Understanding the ADT above:
-- total_size: This stores the total reserved size of the array in the memory location.
-- used_size: This stores the size of the memory location used.
-- base_address: This is a pointer that stores the address of the first element of the array.
+## Understanding the ADT Above:
 
-Let the below-illustrated array be an example of what we are talking about.
+- **total_size:** This variable stores the total reserved size of the array in memory.
+
+- **used_size:** This variable keeps track of the amount of memory currently being used.
+
+- **base_address:** This is a pointer that stores the address of the first element of the array.
+
+Let the illustration below serve as an example of the concepts discussed.
 
 <AdaptiveThemeImage
   src={{
@@ -94,5 +99,3 @@ Let the below-illustrated array be an example of what we are talking about.
 />
 
 Here, the total_size returns 6, and the used_size returns 3.
-
-We will keep the code implementation of the above ADT for the next docs. You can even give it a try on your editors. Use structs and define that set of values with proper data types.
