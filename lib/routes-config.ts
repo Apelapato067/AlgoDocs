@@ -77,8 +77,7 @@ export const ROUTES = [
       items: [
         { title: "Sorting Algorithms", href: "/SortingAlgorithms" },
         { title: "Bubble Sort Algorithm", href: "/BubbleSortAlgorithm" },
-        // { title: "Array implementation of Queue", href: "/ArrayimplementationQueue" },
-        // { title: "Queue and its Operations Using Arrays", href: "/QueueOperationsArrays" },
+        { title: "Bubble Sort Program", href: "/BubbleSortProgram" },
         // { title: "Circular Queue", href: "/CircularQueue" },
         // { title: "Operations on Circular Queue", href: "/OperationsCircularQueue" },
         // { title: "Circular Queue & Operations on Circular Queue", href: "/CircularOperationsCircularQueue" },

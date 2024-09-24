@@ -1,0 +1,226 @@
+---
+title: Bubble Sort Program
+description: Bubble Sort is a simple sorting algorithm that can be implemented in various programming languages. The algorithm works by repeatedly stepping through the list, comparing adjacent elements, and swapping them if they are in the wrong order. This process continues until no more swaps are needed, resulting in a sorted list. While easy to understand and implement, Bubble Sort has a time complexity of O(n²), making it less suitable for large datasets.
+---
+
+## Bubble Sort Program in C
+
+### Important Notes on Bubble Sort
+
+Before we move on to the programming aspect, let's review some key points regarding the Bubble Sort algorithm:
+
+1. **Time Complexity**: The time complexity of the Bubble Sort algorithm is \( O(n^2) \).
+2. **Stability**: It is a stable algorithm, as it preserves the order of equal elements.
+3. **Recursiveness**: Bubble Sort is not a recursive algorithm.
+4. **Adaptiveness**: By default, Bubble Sort is not adaptive, but it can be modified to become adaptive. This modification will be covered later.
+
+Writing the program to implement Bubble Sort is straightforward. I have attached the source code below. Let’s proceed with that.
+
+### Understanding the Bubble Sort Code Snippet
+
+Let’s break down the code snippet for Bubble Sort step by step:
+
+1. **Define an Array**: The first step is to define an array of elements. This can include integers or characters. In this case, we will be using an array of integers.
+
+2. **Define Array Size**: Next, define an integer variable to store the size or length of the array.
+
+3. **Function for Displaying the Array**: Before implementing the Bubble Sort function, we will create a function to display the contents of the array.
+
+4. **Print Array Function**: We will create a `void` function named `printArray`, passing the address of the array and its length as parameters. The function will utilize a `for` loop to print the array elements, which we will not detail here.
+
+Now, let’s look at the actual code implementation.
+
+```C
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+```
+**Code Snippet 1: Creating the *printArray* function**
+
+5. Create another void function bubbleSort and pass the address of the array and its length as its parameters. Now, create a for loop which would track the number of passes. If you recall, to sort an array of length 6, we made a total of 5 passes, which is obviously, 6-1. So, for length n, we would make (n-1) passes. So, make this loop run from 0 to (n-1). Inside this loop, make another for loop to track the index we are making a comparison at.
+
+In our loop, we start from index 0, but we need to determine the ending index. From our previous discussion, we noted that with each pass, the size of the unsorted array decreases by 1. For instance, during the first pass, we deal with 6 elements, leading to 5 comparisons. For each subsequent pass, the comparisons are reduced to 4, 3, 2, and finally 1. 
+
+Let **i** represent the current pass number. The number of comparisons for the **i**-th pass would be **(n - i)**, where **n** is the length of the array. Given that we start at **i = 0** in the program, the total number of comparisons for the loop will be **(n - i - 1)**.
+
+Within the nested loop, we will check if the **j**-th element of the array is greater than the **(j + 1)**-th element. Here, **j** is the counter variable for the inner loop. If the **j**-th element is greater than the **(j + 1)**-th element, we need to swap their positions to ensure they are sorted correctly. To facilitate the swap, define a temporary integer variable called `temp`. This variable will be used to exchange the **j**-th and the **(j + 1)**-th elements.
+
+By following this approach, the array will gradually become sorted with each pass.
+
+```C
+void bubbleSort(int *A, int n){
+    int temp;
+    int isSorted = 0;
+    for (int i = 0; i < n-1; i++) // For number of pass
+    {
+        printf("Working on pass number %d\n", i+1); 
+        for (int j = 0; j <n-1-i ; j++) // For comparison in each pass
+        {
+            if(A[j]>A[j+1]){
+                temp = A[j];
+                A[j] = A[j+1];
+                A[j+1] = temp; 
+            }
+        }  
+    } 
+}
+```
+
+**Code Snippet 2: Creating the *bubbleSort* function**
+
+6. What would an adaptive bubble sort do? Once it detects that our array has already been sorted, it will not perform any more comparisons. 
+
+The key to an adaptive bubble sort is its ability to detect whether the array is already sorted. If the algorithm finds that no swaps are needed during a pass, it can stop further comparisons, thus improving efficiency.
+
+To implement this, create a new function called `bubbleSortAdaptive` that accepts the address of the array and its length as parameters. Inside this function, set up the same two nested loops as before: the outer loop will run from `0` to `n-1`, and the inner loop will run from `0` to `n-i-1`. 
+
+Introduce an integer variable named `isSorted`, initializing it to `1` (indicating that the array is sorted) before beginning comparisons in each pass. If any comparison results in a swap, set `isSorted` to `0` (indicating that the array is not yet sorted).
+
+At the conclusion of each pass, check the value of `isSorted`. If it remains `1`, the array is already sorted, and you can terminate further comparisons. This modification effectively makes the bubble sort algorithm adaptive.
+
+
+```C
+void bubbleSortAdaptive(int *A, int n){
+    int temp;
+    int isSorted = 0;
+    for (int i = 0; i < n-1; i++) // For number of pass
+    {
+        printf("Working on pass number %d\n", i+1);
+        isSorted = 1;
+        for (int j = 0; j <n-1-i ; j++) // For comparison in each pass
+        {
+            if(A[j]>A[j+1]){
+                temp = A[j];
+                A[j] = A[j+1];
+                A[j+1] = temp;
+                isSorted = 0;
+            }
+        } 
+        if(isSorted){
+            return;
+        }
+    } 
+}
+```
+
+**Code Snippet 3: Creating the *bubbleSortAdaptive* function**
+
+**Here is the whole source code:**
+
+```C
+#include<stdio.h>
+ 
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+void bubbleSort(int *A, int n){
+    int temp;
+    int isSorted = 0;
+    for (int i = 0; i < n-1; i++) // For number of pass
+    {
+        printf("Working on pass number %d\n", i+1); 
+        for (int j = 0; j <n-1-i ; j++) // For comparison in each pass
+        {
+            if(A[j]>A[j+1]){
+                temp = A[j];
+                A[j] = A[j+1];
+                A[j+1] = temp; 
+            }
+        }  
+    } 
+}
+ 
+void bubbleSortAdaptive(int *A, int n){
+    int temp;
+    int isSorted = 0;
+    for (int i = 0; i < n-1; i++) // For number of pass
+    {
+        printf("Working on pass number %d\n", i+1);
+        isSorted = 1;
+        for (int j = 0; j <n-1-i ; j++) // For comparison in each pass
+        {
+            if(A[j]>A[j+1]){
+                temp = A[j];
+                A[j] = A[j+1];
+                A[j+1] = temp;
+                isSorted = 0;
+            }
+        } 
+        if(isSorted){
+            return;
+        }
+    } 
+}
+ 
+int main(){
+    // int A[] = {12, 54, 65, 7, 23, 9};
+    int A[] = {1, 2, 5, 6, 12, 54, 625, 7, 23, 9, 987};
+    // int A[] = {1, 2, 3, 4, 5, 6};
+    int n = 11;
+    printArray(A, n); // Printing the array before sorting
+    bubbleSort(A, n); // Function to sort the array
+    printArray(A, n); // Printing the array before sorting
+    return 0;
+}
+```
+
+**Code Snippet 4: Program to implement the Bubble Sort Algorithm**
+
+Let us now check if our functions work well. Consider an array A of length 11.
+
+```C
+    int A[] = {1, 2, 5, 6, 12, 54, 625, 7, 23, 9, 987};
+    int n = 11;
+    printArray(A, n); 
+    bubbleSort(A, n); 
+    printArray(A, n); 
+```
+
+**Code Snippet 5: Using the bubbleSort function**
+
+And the output we received was:
+
+```
+1 2 5 6 12 54 625 7 23 9 987 
+Working on pass number 1     
+Working on pass number 2     
+Working on pass number 3     
+Working on pass number 4     
+Working on pass number 5
+Working on pass number 6
+Working on pass number 7
+Working on pass number 8
+Working on pass number 9
+Working on pass number 10
+1 2 5 6 7 9 12 23 54 625 987
+PS D:\Code>
+```
+
+**Figure 1: Output of the above program**
+
+So, our array got sorted, and it made 10 passes as you can see. Let us now put the same array in the adaptive bubble sort function, and see if it still makes 10 comparisons.
+
+```C
+    bubbleSortAdaptive(A, n); 
+    printArray(A, n); 
+```
+
+**Code Snippet 6: Using the *bubbleSortAdaptive* function**
+
+In fact, it only took one pass to detect it was already sorted.
+
+```
+Working on pass number 1     
+1 2 5 6 7 9 12 23 54 625 987
+PS D:\Code>
+```
+
+**Figure 2: Output of the above program**
