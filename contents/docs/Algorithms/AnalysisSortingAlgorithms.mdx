@@ -1,0 +1,95 @@
+---
+title: Analysis of Sorting Algorithms
+description: Sorting algorithms arrange data in a specific order. They vary in efficiency based on time and space complexity. Common algorithms include Bubble Sort, Merge Sort, and Quick Sort, each with different performance in terms of comparison and swap operations.
+---
+
+## Criteria For Analysis of Sorting Algorithms
+
+### We will discuss each of the following criteria in detail:
+
+1. **Time Complexity**: The amount of time an algorithm takes to complete as a function of the input size.
+2. **Space Complexity**: The amount of memory an algorithm requires during its execution.
+3. **Stability**: Whether an algorithm maintains the relative order of equal elements in the sorted output.
+4. **Internal & External Sorting Algorithms**: Sorting performed entirely in memory (internal) versus using external storage (external) due to limited memory.
+5. **Adaptivity**: How well an algorithm performs on data that is already partially sorted.
+6. **Recursiveness**: Whether the algorithm uses recursive function calls to solve the sorting problem.
+
+
+### Time Complexity
+
+1. Time complexity is crucial for evaluating the efficiency of sorting algorithms, particularly when handling different data set sizes. It helps us determine which algorithms are efficient for larger data sets and which perform better with smaller ones. For instance, if a sorting algorithm efficiently sorts 4 elements but struggles with 1000 elements, its time complexity is considered poor.
+
+2. In general, an algorithm with a time complexity of `O(N log N)` is preferred over one with `O(N²)`. Most sorting algorithms fall within these two complexity classes, making them critical considerations when selecting a sorting method.
+
+
+> Note: Lesser the time complexity, the better is the algorithm.
+
+### Space Complexity
+
+Space complexity allows us to evaluate the amount of memory an algorithm requires to sort a data set. An algorithm that consumes excessive space for larger inputs is generally considered inefficient for sorting large data sets. However, there may be instances where a higher space complexity is acceptable if the algorithm offers significantly lower time complexity.
+
+When discussing space complexity, the term **in-place sorting algorithm** emerges. An in-place sorting algorithm operates with constant space complexity, utilizing techniques such as swapping and rearranging elements within the data set. An example of an in-place sorting algorithm is Bubble Sort.
+
+### Stability
+
+The stability of an algorithm refers to its ability to preserve the relative order of elements that have equal keys when sorted. While this may sound technical, it can be easily understood with an example.
+
+Consider the set of numbers: 6, 1, 2, 7, 6. If we sort these numbers in increasing order, the result would be 1, 2, 6, 6, 7. The key question is whether the two instances of the number 6 retain their original order. If the first 6 still comes before the second 6 in the sorted output, then the algorithm is classified as **stable**. If the order changes, making it unstable, then the algorithm is considered **unstable**.
+
+#### Illustration for Better Understanding:
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/97.svg",
+    light: "/images/97.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Imagine we have 6 students who are called to stand in line based on their arrival. We then measure their heights, and we will use two different algorithms to arrange them by increasing height.
+
+**Sorting by Algorithm A:**
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/98.svg",
+    light: "/images/98.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**Sorting by algorithm B:**
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/98.svg",
+    light: "/images/98.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Algorithm A is **stable** because it preserves the order between students C and D, who have equal heights. In contrast, Algorithm B is **unstable** as it does not maintain this order.
+
+### Internal & External Sorting Algorithms
+
+- **Internal Sorting Algorithms**: These algorithms load the entire data set into memory (RAM) before sorting it. This method allows for faster access and manipulation of the data.
+  
+- **External Sorting Algorithms**: These are used when the data set is too large to fit into memory. The algorithm processes the data directly from external storage, such as hard drives, and typically involves more complex operations to manage data retrieval.
+
+### Adaptivity
+
+**Adaptive Algorithms** are those that recognize when the data is already partially sorted and adjust their operations accordingly to reduce sorting time. Conversely, **non-adaptive algorithms** do not take advantage of this property, performing the same operations regardless of the initial order of the data.
+
+### Recursiveness
+
+A **recursive algorithm** uses recursion to sort a data set, breaking the problem down into smaller subproblems. If the algorithm does not use recursion, it is classified as **non-recursive**.
+
+These criteria provide a framework for analyzing and comparing sorting algorithms effectively.

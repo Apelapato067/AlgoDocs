@@ -1,0 +1,316 @@
+---
+title: Bubble Sort Algorithm
+description: Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until no swaps are needed, indicating that the list is sorted. While easy to implement, Bubble Sort has a time complexity of O(n²), making it inefficient for large datasets.
+---
+
+### Introduction to Bubble Sort Algorithm
+
+We will begin our exploration of different sorting algorithms with the **Bubble Sort Algorithm**.
+
+Suppose we are given an array of integers and tasked with sorting them using the bubble sort algorithm. It is straightforward to generate the resultant array, which is simply the sorted form of the given array. Regardless of the algorithm employed, the final sorted result will remain consistent. The illustration below demonstrates this concept.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/99.svg",
+    light: "/images/99.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### Understanding the Bubble Sort Algorithm
+
+The key distinction with the Bubble Sort Algorithm lies in its approach. With bubble sort, we aim to ensure that the largest element of the current segment reaches the last position in each iteration. Understanding how this is achieved is crucial.
+
+Bubble sort sorts an array using **(n-1)** passes, where **n** is the length of the array. In each pass, the largest element from the current unsorted portion of the array is moved to its final position. Consequently, the unsorted part of the array decreases by one, while the sorted part increases by one. 
+
+Let's take a closer look at the unsorted array and examine each pass to see how it gets sorted.
+
+During each pass, we iterate through the unsorted portion of the array and compare each adjacent pair. If the adjacent pair is sorted, we move on; if not, we swap their positions to sort them. This process ensures that the largest element in the unsorted part reaches its final position by the end of each pass.
+
+Given that our array has a length of 6, we will perform 5 passes. It will soon become clear why this is the case.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/100.svg",
+    light: "/images/100.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since these two are already sorted, we move ahead without making any changes.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/101.svg",
+    light: "/images/101.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Now since 9 is less than 11, we swap their positions to make them sorted.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/102.svg",
+    light: "/images/102.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Again, we swap the positions of 11 and 2.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/103.svg",
+    light: "/images/103.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+We move ahead without changing anything since they are already sorted.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/104.svg",
+    light: "/images/104.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Here, we make a swap since 17 is greater than 4.
+
+And this is where our first pass finishes. We should make an overview of what we received at the end of the first pass.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/105.svg",
+    light: "/images/105.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**2nd Pass:**
+
+We again start from the beginning, with a reduced unsorted part of length 5. Hence the number of comparisons would be just 4.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/100.svg",
+    light: "/images/100.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+No changes to make.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/101.svg",
+    light: "/images/101.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Yes, here we make a swap, since 9>2.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/102.svg",
+    light: "/images/102.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since 9 < 11, we move further.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/103.svg",
+    light: "/images/103.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since 11 is greater than 4, we make a swap again. And that would be it for the second pass. Let see how close we have reached to the sorted array.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/106.svg",
+    light: "/images/106.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**3rd Pass:**
+
+Well again start from the beginning, and this time our unsorted part has a length of 4; hence no. of comparisons would be 3.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/107.svg",
+    light: "/images/107.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since 7 is greater than 2, we make a swap here.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/108.svg",
+    light: "/images/108.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+We move ahead without making any change.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/109.svg",
+    light: "/images/109.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+In this final comparison, we make a swap, since 9 > 4.
+
+And that was our third pass. And the result at the end was:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/110.svg",
+    light: "/images/110.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**4th Pass:**
+
+We just have the unsorted part of length 3, and that would cause just 2 comparisons. So, let see them.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/111.svg",
+    light: "/images/111.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+No changes here.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/112.svg",
+    light: "/images/112.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+We swap their positions. And that is all in the 4th pass. The resultant array after the 4th pass is:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/113.svg",
+    light: "/images/113.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**5th (last) pass:**
+
+We have only one comparison to make here. 
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/114.svg",
+    light: "/images/114.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since these are already sorted, we finish our procedure here. And see the final results:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/115.svg",
+    light: "/images/115.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And this is what the Bubble Sort algorithm looks like. We have a few things to conclude and few calculations regarding the complexity of the algorithm to make.
+
+Time Complexity of Bubble Sort:
+
+1. If you count the number of comparisons we made, there were (5+4+3+2+1), that is, a total of 15 comparisons. And every time we compared, we had a fair probability of making a swap. So, 15 comparisons intend to make 15 possible swaps.  Let us quickly generalize this sum. For length 6, we had 5+4+3+2+1 number of comparisons and possible swaps. Therefore, for an array of length n, we would have (n-1) + (n-2) + (n-3) + (n-4) + . . . . . + 1 comparison and possible swaps.
+2. This is a high school thing to find the sum from 1 to n-1, which is n(n-1)/2, and hence our complexity of runtime becomes O(n^2).
+3. And if you could observe, we never made a swap when two elements of a pair become equal. Hence the algorithm is a stable algorithm. 
+4. It is not a recursive algorithm since we didn’t use recursion here.
+5. This algorithm has no adaptive aspect since every pair will be compared, even if the array given has already been sorted. So, no adaptiveness. Although it can be modified to make it 
+adaptive, it's not adaptive by default. We’ll see in the next lecture how it can be made adaptive.
+
+Before wrap up, bubble sort is called bubble because it bubbles up lighter elements to the left and stores larger elements towards the right.

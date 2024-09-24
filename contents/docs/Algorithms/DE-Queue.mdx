@@ -1,0 +1,124 @@
+---
+title: Double-Ended Queue in Data Structure
+description: A Double-Ended Queue (Deque) is a data structure that allows insertion and deletion of elements from both the front and rear. It offers flexibility for operations at both ends, unlike a regular queue which restricts them to one side.
+---
+
+## Double-Ended Queue
+
+In the previous documentation, we finished learning about queues, covering both regular queues and circular queues. We implemented queues using arrays and linked lists, along with all their operations. The only remaining topic in this area is **Double-Ended Queues** (DEQueue), which should not be confused with the dequeue operation we previously discussed.
+
+### Characteristics of Normal Queues
+
+To recap, normal queues have certain characteristics:
+
+1. A queue is similar to a real-life queue, where individuals stand at the back and wait for their turn.
+2. Elements are inserted from one end and exit from the other.
+3. We maintain two pointers (or index variables) to manage the two ends of the queue.
+4. We adhere to the FIFO (First In, First Out) principle throughout our discussions.
+
+### Characteristics of Double-Ended Queues
+
+In **DEQueue**, we deviate from the FIFO principle. As the name suggests, this variant of the queue is double-ended, allowing for more flexibility. Specifically, double-ended queues have the following characteristics:
+
+1. They do not follow the FIFO discipline.
+2. Insertion can be performed at both ends of the queue.
+3. Deletion can also occur from both ends of the queue.
+
+You might assume that implementing double-ended queues is complex, but it's actually quite straightforward. I will use illustrations to help you understand these concepts better.
+
+
+## Insertion in a DEQueue:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/91.svg",
+    light: "/images/91.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Now since the front has no space to insert, you can only insert at the rear end. But if the front manages to have some space after some dequeuing, then our condition would be something like this:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/92.svg",
+    light: "/images/92.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Now, we have 2 places to fill in front as well. And in DEQueue, we have no restrictions. We would just fill our new element at the front and decrease its value by 1. And that would be it. See the results below:
+
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/93.svg",
+    light: "/images/93.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+## Deletion in a DEQueue:
+Deletion in a DEQueue is very similar to what we did above. Follow the illustration below:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/94.svg",
+    light: "/images/94.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Now, for one moment, think of the rear as the front end. You would simply then increase the front value by 1 and delete the element at the new front. Similarly, here we first delete the element at rear and decrease the value of the rear by 1. See the results below.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/95.svg",
+    light: "/images/95.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And we are done with deleting elements from the rear end and inserting at the front end. Moving forward, double-ended queues (DEQueues) can be categorized into two types:
+
+1. **Restricted Input DEQueue**
+2. **Restricted Output DEQueue**
+
+### Restricted Input DEQueue
+
+In input restricted DEQueues, insertion at the front end is not allowed, but deletion can occur from both ends.
+
+### Restricted Output DEQueue
+
+In output restricted DEQueues, deletion from the rear end is not permitted, while insertion can be performed at both ends.
+
+### DEQueue ADT
+
+Now, the main task is for you to implement the Double Ended Queue Abstract Data Type (ADT) on your own! I believe you are capable of doing this. For your convenience, let’s discuss the ADT and its functionalities.
+
+#### Methods
+
+The data structure will remain the same as that of a queue. All operations, except for enqueue and dequeue, will follow the same principles as in a regular queue. Instead of `enqueue` and `dequeue`, we will use the following methods:
+
+1. `enqueueF()` – for inserting at the front.
+2. `enqueueR()` – for inserting at the rear.
+3. `dequeueF()` – for deleting from the front.
+4. `dequeueR()` – for deleting from the rear.
+
+You can also include additional methods such as `initialize()`, `print()`, and others. This concludes our discussion on the abstract data type of DEQueue. Implement these programs.
+

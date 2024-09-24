@@ -1,0 +1,83 @@
+---
+title: Operations on Circular Queue
+description: Operations on a Circular Queue include Enqueue (inserting an element at the rear), Dequeue (removing an element from the front), Front (viewing the front element), Rear (viewing the rear element), and checks for isFull and isEmpty conditions, with circular wrapping of the front and rear pointers.
+---
+
+## Enqueue( ), Dequeue( ) & Other Operations on Circular Queue
+
+In the previous documentation, we provided a basic introduction to circular queues and discussed their necessity. We visualized the differences between a linear and a circular queue and examined the advantages of a circular queue over a linear/normal queue. Today, we will complete the implementation part of a circular queue and its operations using arrays.
+
+Recall that we converted a linear queue into a circular queue using a mathematical tool called modulus. This approach allows us to increment the indices circularly, ensuring that 0 follows the last index of size -1.
+
+Consider the illustration below, which demonstrates how a queue implemented using a linear array of size 8 fails to utilize memory space efficiently. Once the rear index variable reaches its limit, the queue prevents further enqueuing, even if there are unused spaces behind it.
+
+However, by converting this linear queue into a circular queue, we can continue enqueuing until the queue is genuinely full. This transformation allows us to reuse the vacant spaces left after a dequeue operation, enabling circular traversal through these spaces repeatedly.
+
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/79.svg",
+    light: "/images/79.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Note: Circular increment lets us access the queue indices circularly, which means, after we finish visiting the 7th index in the above illustration, we again come at the zeroth index.
+
+Let us now see the operations one by one.
+
+### Enqueue
+
+Inserting a new element into a queue requires the user to input a value that will be passed into the queue function. Before inserting, follow these steps:
+
+1. **Check if the queue is full:** Unlike a linear queue, the usual method to check for fullness won’t apply here. Instead, check if the next index to the rear is the front.
+2. **Determine if the queue is full:** If the next index to the rear equals the front, it indicates that the queue is full. This is known as queue overflow because the front (f) represents the start of the queue, and the rear (r) represents the end. When the front comes next to the rear, the queue cannot accept more elements.
+3. **Insert the new element:** If the queue is not full, increment the rear index by 1 and apply the modulus operation with the queue's size. This circular increment ensures that the rear wraps around to the beginning of the array if necessary. Finally, insert the new element at the updated rear index.
+
+Follow the illustration below for a better understanding.
+
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/80.svg",
+    light: "/images/80.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Now, since the f is just next to the r, the queue is full, and no more elements can get pushed.
+
+### Dequeue
+
+Dequeuing involves removing the element that was inserted first in the queue. Since the front (f) holds the index of that element, we can easily remove it. Before proceeding, follow these steps:
+
+1. **Check if the queue is empty:** In a circular queue, the same method applies as in a linear queue. We check if the front equals the rear. If they are equal, the queue is empty, indicating queue underflow.
+2. **Remove the element:** If the front (f) does not equal the rear (r), increment the front index by 1 and apply the modulus operation with the queue's size. This circular increment allows the front to wrap around to the beginning of the array if necessary. While dequeuing, store the element being removed and return it at the end.
+
+Follow the illustration below for a clearer understanding.
+
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/81.svg",
+    light: "/images/81.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+**Condition for *isEmpty*:**
+
+- If our *f* equals *r*, then there is no element in our queue, and this is the case of an empty queue.
+
+**Condition for *isFull*:**
+
+If our *(r+1)%size* equals *f*, then there is no space left in our queue, and this is the case of a full queue.

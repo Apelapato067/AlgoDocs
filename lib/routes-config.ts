@@ -11,7 +11,7 @@ export const ROUTES = [
     ],
   },
   {
-    // title: "Arrays Algo",
+    // title: "",
     href: "Arrays",
     items: [
       { title: "Arrays and Abstract", href: "/ArraysAbstract" },
@@ -21,7 +21,7 @@ export const ROUTES = [
     ],
   },
   {
-    // title: "LinkedList Algo",
+    // title: "",
     href: "LinkedList",
     items: [
       { title: "Linked List", href: "/LinkedList" },
@@ -33,7 +33,7 @@ export const ROUTES = [
     ],
   },
   {
-    // title: "Stack Algo",
+    // title: "",
     href: "Stack",
     items: [
       { title: "Stack in Data Structures", href: "/stack" },
@@ -46,7 +46,7 @@ export const ROUTES = [
     ],
   },
   {
-  //   title: "Sets Uniques",
+  //   title: " ,
     href: "ApplicationsStack",
     items: [
       { title: "Applications of Stack", href: "/ApplicationsStack" },
@@ -57,7 +57,7 @@ export const ROUTES = [
     ],
   },
   {
-  //   title: "Advanced Trees",
+  //   title: "",
     href: "Queue",
     items: [
       { title: "Queue Data Structure", href: "/QueueDataStructure" },
@@ -71,6 +71,21 @@ export const ROUTES = [
       { title: "Double-Ended Queue in Data Structure", href: "/DE-Queue" },
     ],
   },
+  {
+    //   title: "",
+      href: "Algorithms",
+      items: [
+        { title: "Sorting Algorithms", href: "/SortingAlgorithms" },
+        { title: "Bubble Sort Algorithm", href: "/BubbleSortAlgorithm" },
+        // { title: "Array implementation of Queue", href: "/ArrayimplementationQueue" },
+        // { title: "Queue and its Operations Using Arrays", href: "/QueueOperationsArrays" },
+        // { title: "Circular Queue", href: "/CircularQueue" },
+        // { title: "Operations on Circular Queue", href: "/OperationsCircularQueue" },
+        // { title: "Circular Queue & Operations on Circular Queue", href: "/CircularOperationsCircularQueue" },
+        // { title: "Queue Using Linked Lists", href: "/QueueLinkedLists" },
+        // { title: "Double-Ended Queue in Data Structure", href: "/DE-Queue" },
+      ],
+    },
 ];
 
 export const page_routes = ROUTES.map(({ href, items }) => {
