@@ -1,0 +1,208 @@
+---
+title: Insertion Sort Algorithm
+description: Insertion Sort is a straightforward sorting algorithm that builds a sorted array one element at a time. It works by taking each element from the unsorted portion and inserting it into the correct position within the sorted portion. While it has a time complexity of O(n²) in the worst case, it performs well for small datasets or partially sorted arrays.
+---
+
+## Introduction to Insertion Sort Algorithm
+
+Let’s explore a new sorting method known as the **Insertion Sort Algorithm**. To make this concept intuitive, I’ll relate it to real-life scenarios before diving into the technical aspects.
+
+Imagine you are standing in a queue where people are already arranged based on the amount of money they possess. The person with the least amount stands at the front, while the individual with the largest sum is at the back. This real-life scenario serves as a great analogy for how the insertion sort algorithm functions.
+
+The process of sorting in this method resembles how you might insert a new person into this already sorted queue. You would simply compare the amount of money the new person has with those already in line and place them in the correct position accordingly. 
+
+This analogy sets the stage for understanding the insertion sort algorithm, where we will gradually delve into its mechanics and how it operates effectively.
+
+**The below illustration describes the given situation.**
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/116.svg",
+    light: "/images/116.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+When joining a queue with ₹8000, you need to determine your position based on the amounts others have. Starting from the back, you ask each person if they have more or less money than you. If someone has more, you request them to step back. This continues until you find someone with less money, allowing you to position yourself right behind them. Ultimately, this process results in the queue being organized in ascending order based on everyone's amount of money, with you successfully standing in the second position.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/117.svg",
+    light: "/images/117.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+So, this was one of the examples I had in mind. Now, suppose these were not the people but the numbers in an array. It would have been as simple as it is right now. We would keep comparing two numbers, and if we find a number greater than the number we want to insert, we shift it backward. And the moment we find a number smaller, we insert the element at the vacant space just behind the smaller number. 
+
+And basically, what did we learn? We learned to insert an element in a sorted array. Although it felt very intuitive to just put yourself in the second position, what would you do if the queue had a thousand people? Not easy, right? And this is where we need a proper algorithm.
+
+### Insert Sort Algorithm:
+
+Let’s just take an array, and use the insertion sort algorithm to sort its elements in increasing order.
+Consider the given array below:
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/118.svg",
+    light: "/images/118.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And what have we already learned? We have learned to put an arbitrary element inside a sorted array, using the insertion method we saw above. **And an array of a single element is always sorted**. So, what we have now is an array of length 5 with a subarray of length 1 already sorted.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/119.svg",
+    light: "/images/119.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Moving from the left to the right, we will pluck the first element from the unsorted part, and insert it in the sorted subarray. This way at each insertion, our sorted subarray length would increase by 1 and unsorted subarray length decreases by 1. Let’s call each of these insertions and the traversal of the sorted subarray to find the best position, a pass.
+
+So, let’s start with pass 1, which is to insert 2 in the sorted array of length 1.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/119.svg",
+    light: "/images/119.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+So, we plucked the first element from the unsorted part. Let’s insert element 2 at its correct position, which is before 7. And this increases the size of our sorted array.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/120.svg",
+    light: "/images/120.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Let’s proceed to the next pass.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/121.svg",
+    light: "/images/121.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+The next element we plucked out was 91. And its position in the sorted array is at the last. So that would cause zero shifting. And our array would look like this.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/122.svg",
+    light: "/images/122.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Our sorted subarray now has size 3, and unsorted subarray is now of length 2. Let’s proceed to the next pass which would be to traverse in this sorted array of length 3 and insert element 77.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/123.svg",
+    light: "/images/123.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+We started checking its best fit, and found the place next to element 7. So this time it would cause just a single shift of element 91.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/124.svg",
+    light: "/images/124.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+As a result, we are left with a single element in the unsorted subarray. Let’s pull that out too in our last pass.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/125.svg",
+    light: "/images/125.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since our new element to insert is the element 3, we started checking for its position from the back. The position is, no doubt, just next to element 2. So, we shifted elements 7, 77, and 91. Those were the only three shifts.  And the final sorted we received is illustrated below.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/126.svg",
+    light: "/images/126.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+So, this was the main procedure behind the insertion sort algorithm.
+
+
+
+## Analysis of Insertion Sort Algorithm
+
+To sort an array of length 5, we required 4 passes. In the first pass, we compared the element to be inserted with a single element `(7)`, resulting in one comparison and one possible swap. For the ith pass, we have i comparisons and i possible swaps.
+
+1. **Time Complexity of Insertion Sort Algorithm**:
+   - For an array of length n, the total number of comparisons made is `1 + 2 + 3 + ... + (n-1)`, which simplifies to `n(n-1)/2`. Therefore, the time complexity is `O(n^2)`.
+
+2. **Stability**:
+   - The Insertion Sort algorithm is stable because we compare from the back of the sorted subarray, ensuring that elements equal to the to-be-inserted element retain their original order.
+
+3. **Adaptivity**:
+   - The algorithm is adaptive. If the array is already sorted, we only make n-1 passes without actual comparisons, completing the process in `O(n)`.
+
+
+## Simple Notes on Insertion Sort Algorithm
+
+1. **Time Complexity**:
+   - Total comparisons for an array of length n: 1 + 2 + 3 + ... + (n-1) = n(n-1)/2.
+   - Time complexity is O(n^2).
+
+2. **Stability**:
+   - Insertion Sort is stable, preserving the order of equal elements.
+
+3. **Adaptivity**:
+   - The algorithm is adaptive; it completes in fewer passes if the array is already sorted.

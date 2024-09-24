@@ -1,0 +1,200 @@
+---
+title: Insertion Sort Program
+description: Insertion Sort is an algorithm that sorts an array by building a sorted section one element at a time. Starting from the second element, it compares it with the elements before it, shifting larger elements to the right until the correct position for the current element is found. This process repeats for each element until the entire array is sorted. Insertion Sort is efficient for small datasets and has a time complexity of O(n²) in the worst case, but it performs well with partially sorted data.
+---
+
+**Before we move on to the programming part, let's review these characteristics of the insertion sort algorithm.**
+
+1. **Time Complexity**: 
+The worst-case time complexity is O(n^2), while the best-case time complexity is O(n).
+
+2. **Stability**: 
+ The algorithm is stable, meaning it maintains the relative order of equal elements.
+
+3. **Recursiveness**: 
+ It is not a recursive algorithm; it operates iteratively.
+
+4. **Adaptivity**: 
+ Insertion Sort is inherently adaptive, allowing it to perform efficiently on already sorted arrays, reducing its time complexity from O(n^2) to O(n).
+
+
+Having completed the revision of the Insertion Sort algorithm, let's move on to the programming aspect. Below is the source code for your reference.
+
+## Understanding the Code Snippet
+
+1. **Define an Array**: Start by defining an array of elements. In this case, we will define an array of integers.
+
+2. **Define Size Variable**: Create an integer variable to store the size or length of the array.
+
+3. **Function for Displaying Array Contents**: Before writing the Insertion Sort function, we will first implement a function to display the contents of the array.
+
+4. **Reusing the Print Function**: As this function was previously covered in the Bubble Sort lecture, we can simply copy the `printArray` function from there to avoid redundancy.
+
+```c
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+```
+
+> Code Snippet 1: Creating the *printArray* function
+
+5. **Define the Insertion Sort Function**: 
+   - Create a void function named `insertionSort`, passing the address of the array and its length as parameters. 
+   - Implement a for loop to track the number of passes. For an array of length 5, we will make a total of 4 passes (5-1). 
+   - Note that this loop should start from the 1st index instead of the 0th index, as the first element is already considered sorted. Therefore, set the loop to run from 1 to (n-1).
+
+Inside this loop, collect the element at the index i in an integer variable key. This key is the element we would insert in the sorted subarray.
+
+ 
+
+Create another index variable j, which would be used to iterate through the sorted subarray, and to find a perfect position for the key. The index variable j holds the value i-1.
+
+Make a while loop run until either we finish through the sorted subarray and reach the last position, or else we find an index fit for the key. And until we come out of the loop, keep shifting the elements to their right and reduce j by 1. And once we come out, insert the key at the current value of j+1. And this would go on for n-1 passes.
+
+To understand the functioning of the above while loop, follow the illustrations below:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/127.svg",
+    light: "/images/127.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Here, i=2, and the element we have at index i is 1. No, this element needs to be given a position in the sorted subarray. So, j = i - 1 which is 1. We run a while loop up until j becomes 0 or we find a position for the key 1. So, when j=1, we check if the element at the jth index is smaller than the key or not. Since it's not, we shift it to the right and reduce j by 1.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/128.svg",
+    light: "/images/128.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And now j=0, and we have element 2 at the jth index, and it is bigger than the key, hence, we shift even this. And then reducing j makes it equal to -1. So, we stop there itself. And insert the key at j+1 which is at 0.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/129.svg",
+    light: "/images/129.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And at the end, we would receive a sorted array. All we had to do was this.
+
+```c
+void insertionSort(int *A, int n){
+    int key, j;
+    // Loop for passes
+    for (int i = 1; i <= n-1; i++)
+    {
+        key = A[i];
+        j = i-1;
+        // Loop for each pass
+        while(j>=0 && A[j] > key){
+            A[j+1] = A[j];
+            j--;
+        }
+        A[j+1] = key;
+    }
+}
+```
+
+> Code Snippet 2: Creating the insertionSort function
+
+**Here is the whole source code about this:**
+
+```c
+#include<stdio.h>
+
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+
+void insertionSort(int *A, int n){
+    int key, j;
+    // Loop for passes
+    for (int i = 1; i <= n-1; i++)
+    {
+        key = A[i];
+        j = i-1;
+        // Loop for each pass
+        while(j>=0 && A[j] > key){
+            A[j+1] = A[j];
+            j--;
+        }
+        A[j+1] = key;
+    }
+}
+
+int main(){
+   // -1   0    1   2   3   4   5
+   //      12,| 54, 65, 07, 23, 09 --> i=1, key=54, j=0
+   //      12,| 54, 65, 07, 23, 09 --> 1st pass done (i=1)!
+
+   //      12, 54,| 65, 07, 23, 09 --> i=2, key=65, j=1
+   //      12, 54,| 65, 07, 23, 09 --> 2nd pass done (i=2)!
+
+   //      12, 54, 65,| 07, 23, 09 --> i=3, key=7, j=2
+   //      12, 54, 65,| 65, 23, 09 --> i=3, key=7, j=1
+   //      12, 54, 54,| 65, 23, 09 --> i=3, key=7, j=0
+   //      12, 12, 54,| 65, 23, 09 --> i=3, key=7, j=-1
+   //      07, 12, 54,| 65, 23, 09 --> i=3, key=7, j=-1--> 3rd pass done (i=3)!
+
+   // Fast forwarding and 4th and 5th pass will give:
+   //      07, 12, 54, 65,| 23, 09 --> i=4, key=23, j=3
+   //      07, 12, 23, 54,| 65, 09 --> After the 4th pass
+
+   //      07, 12, 23, 54, 65,| 09 --> i=5, key=09, j=4
+   //      07, 09, 12, 23, 54, 65| --> After the 5th pass 
+    
+    int A[] = {12, 54, 65, 7, 23, 9};
+    int n = 6;
+    printArray(A, n);
+    insertionSort(A, n);
+    printArray(A, n);
+    return 0;
+}
+```
+
+> Code Snippet 3: Program to implement the Insertion Sort Algorithm
+
+Let us now check if our functions work well. Consider an array A of length 6.
+
+```c 
+    int A[] = {12, 54, 65, 7, 23, 9};
+    int n = 6;
+    printArray(A, n);
+    insertionSort(A, n);
+    printArray(A, n);
+```
+
+> Code Snippet 4: Using the insertionSort function
+
+And the output we received was:
+
+12 54 65 7 23 9 
+7 9 12 23 54 65 
+PS D:\Code> 
+
+> Figure 1: Output of the above program
+
+Insertion Sort organizes an array by building a sorted section one element at a time. In each pass, it compares the current element with the sorted portion and shifts larger elements to the right to find the correct position. The process continues until the entire array is sorted in ascending order.
