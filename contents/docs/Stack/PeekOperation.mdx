@@ -5,13 +5,12 @@ description: Peek Operation in Stack Using Arrays (With C Code & Explanation).
 
 ## Peek Operation in Stack Using Arrays With C Code & Explanation
 
-Now that we've finished the push and pop operations, we'll move on to the peek operation in stacks. Peeking into something literally means to quickly see what’s there at someplace. In a similar way, it refers to looking for the element at a specific index in a stack. 
+Now that we've completed the push and pop operations, we'll move on to the peek operation in stacks. Peeking into something literally means quickly checking what’s there at a certain place. Similarly, in stacks, it refers to looking at the element at a specific index.
 
- 
+As a reminder, when pushing an element into a stack, you must first check if the stack is not full and then insert the element at the incremented value of the top. For popping, you need to ensure the stack is not empty, then decrease the value of the top by 1.
 
-If you could remember, pushing an element into a stack needs you to first check if the stack is not full, and then insert the element at the incremented value of the top. And similarly, popping from a stack, needs you to first check if it is not empty, and then you just decrease the value of the top by 1. 
+The peek operation requires the user to provide a position to check. Here, the position refers to the distance from the top element, plus one. This can be visualized with some illustrations.
 
-Peek operation requires the user to give a position to peek at as well. Here, position refers to the distance of the current index from the top element +1. I’ll make you visualize this via a few illustrations.
 
 <AdaptiveThemeImage
   src={{
@@ -24,25 +23,24 @@ Peek operation requires the user to give a position to peek at as well. Here, po
   alt="example"
 />
 
-The index, mathematically, is (*top -position + 1* ).
+The index, mathematically, is (*top - position + 1*).
 
-So, before we return the element at the asked position, we’ll check if the position asked is valid for the current stack. Index 0, 1 and 2 are valid for the stack illustrated above, but index 4 or 5 or any other negative index is invalid. 
+Before returning the element at the requested position, we check if the position is valid for the current stack. Indices 0, 1, and 2 are valid, while indices 4, 5, or any negative index are invalid.
 
-Note: peek(1) returns 12 here.
+Note: `peek(1)` returns 12 here.
 
-Now, since we are done with all the basics of the peek operation, we can try writing its code as well. Here, we’ll focus mainly on the peek operation, so you can just copy the codes from the last docs, where we learned writing push and pop, isFull and isEmpty. 
+Now that we've covered the basics of the peek operation, we can write its code. Focus will mainly be on the peek operation, so you can reference the codes from the previous documents where we learned about push, pop, isFull, and isEmpty.
 
-I have attached the snippet below for your reference.
+### Understanding the Code Snippet 1:
 
-### Understanding the code snippet 1:
+1. Ensure you've copied everything from the previous documents. This is essential since we are focusing solely on the peek operation.
 
-1. I hope you have copied everything from the last docs. That’ll save us some time. And this was important since we are focusing just on the peek operation.
+2. Create an integer function `peek`, passing the reference to the stack and the position to peek at as parameters.
 
-2. Create an integer function peek, and pass the reference to the stack, and the position to peek in, as its parameters.
+3. Inside the function, create an integer variable `arrayInd` to store the index of the array to be returned. This is calculated as `(top - position + 1)`.
 
-3. Inside the function, create an integer variable arrayInd which will store the index of the array to be returned. This is just (top-position +1). 
+4. Before returning anything, check if `arrayInd` is a valid index. If it’s less than 0, it is invalid, and an error should be reported. Otherwise, return the element at the index `(top - position + 1)`.
 
-4. Before we return anything, we’ll check if the arrayInd is a valid index. If it’s less than 0, it is invalid and we report an error. Otherwise,we just return the element at the index, (top-position+1).
 
 ```C
 int peek(struct stack* sp, int i){
@@ -186,6 +184,4 @@ The value at position 12 is 1
 PS D:\Code>
 ```
 
-**Figure 1: Output of the above program**
-
-As you can see, it’s all good here. If you still have any doubt regarding the things we did in this docs, you must have missed the last few docss. Keep going through them. If the (top-position +1) feels haunting, you can check out a playlist dedicated to practicing problems based on C language. 
+*Figure 1: Output of the above program*

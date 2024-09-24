@@ -3,15 +3,15 @@ title: Stack Array Operations
 description: Coding Push(), Pop(), isEmpty() and isFull() Operations in Stack Using an Array. 
 ---
 
-## Coding Push(), Pop(), isEmpty() and isFull() Operations in Stack Using an Array| C Code For Stack
+## Coding Push(), Pop(), isEmpty(), and isFull() Operations in Stack Using an Array
 
-In the last Docs, we covered the concepts behind the push and the pop operations on a stack implemented with an array. We saw how easy it is, to push an element in a non-full array, and to pop an element from a non-empty array. Today, we’ll be interested in coding these implementations in C.
+In the last sections, we covered the concepts behind the push and pop operations on a stack implemented with an array. We saw how easy it is to push an element into a non-full array and to pop an element from a non-empty array. Today, we’ll focus on coding these implementations in C.
 
-If you didn't follow me in the last Docs, I would recommend visiting that first. Because it not only covered the concepts but the implementation part as well. I have attached the code snippet below. Refer to it while we learn to code:
+If you haven't followed along in the last sections, I recommend visiting that first. It not only covered the concepts but also the implementation part. Below is the code snippet for reference as we learn to code:
 
-### Understanding the code snippet 1:
+### Understanding the Code Snippet 1:
 
-1. There is nothing new now. You can just construct a struct stack, with all its three members, size, to store the size of the array used to handle this stack, top, to store the index of the topmost element in the stack and arr, a pointer to store the address of the array used. I will skip over this because we have done it before.
+1. There is nothing new here. You can construct a `struct stack` with all its three members: `size` to store the size of the array used for this stack, `top` to store the index of the topmost element in the stack, and `arr`, a pointer to store the address of the array used. I will skip this part because we have covered it before.
 
 ```C
 struct stack{
@@ -21,17 +21,17 @@ struct stack{
 };
 ```
 
-### Code Snippet 1: Creating stack struct
+### Code Snippet 1: Creating Stack Struct
 
-2. In the main, define a struct stack pointer sp, which will store the address of the stack. Since we are using malloc to reserve the memory in heap for this stack, don't forget to include the header file `<stdlib.h>`.
+2. In the main function, define a `struct stack` pointer `sp`, which will store the address of the stack. Since we are using `malloc` to reserve memory in the heap for this stack, don't forget to include the header file `<stdlib.h>`.
 
 3. Initialize all the elements of the stack with some values.
 
-4. Create the integer functions isFull and isEmpty. We have covered them in detail here. These functions are a must, while we use the push or the pop operations.
+4. Create the integer functions `isFull` and `isEmpty`. We have covered them in detail here. These functions are essential while using the push or pop operations.
 
-5. Create a void function push, and pass into it the address of the stack using the pointer sp and the value which is to be pushed.
+5. Create a void function `push`, and pass into it the address of the stack using the pointer `sp` and the value that is to be pushed.
 
-6. Don’t forget to first check if our stack still has some space left to push elements. Use isFull function for that. If it returns 1, this is the case of stack overflow, otherwise, increase the top element of the stack by 1, and insert the value at this new top of the array.
+6. Don’t forget to first check if our stack still has some space left to push elements. Use the `isFull` function for that. If it returns 1, this indicates a case of stack overflow; otherwise, increase the top element of the stack by 1 and insert the value at this new top of the array.
 
 <AdaptiveThemeImage
   src={{
@@ -56,11 +56,11 @@ void push(struct stack* ptr, int val){
 }
 ```
 
-### Code Snippet 2: Implementing the push operation.
+### Code Snippet 2: Implementing the Push and Pop Operations
 
-7. Create another void function pop, and pass into it the same address of the stack using the pointer sp. This is the only parameter since the pop operation pops only the topmost element.
+7. Create another void function `pop`, and pass into it the same address of the stack using the pointer `sp`. This is the only parameter since the pop operation retrieves only the topmost element.
 
-8. Don’t forget to first check if our stack still has some elements left to pop elements. Use isEmpty function for that. If it returns 1, this is the case of stack underflow, otherwise, just decrease the top element of stack by 1, and we are done. The next time we push an element, we’ll overwrite the present element at that index. So, that’s basically ignored and acts as if it got deleted.
+8. Don’t forget to first check if our stack still has some elements left to pop. Use the `isEmpty` function for that. If it returns 1, this indicates a case of stack underflow; otherwise, just decrease the top element of the stack by 1, and we are done. The next time we push an element, we’ll overwrite the present element at that index. So, that’s basically ignored and acts as if it got deleted.
 
 <AdaptiveThemeImage
   src={{
@@ -221,7 +221,6 @@ Popped 46 from the stack
 PS D:\Code>
 ```
 
-**Figure 3: Output of the above program**
+*Figure 3: Output of the above program*
 
-So, yes, we are done with these operations. The codes are working properly. It’s time for you to go over these until you learn. Don’t skip anything. Every concept is being repeated at least twice for you to understand. If you still have any doubts, reach out to me or go through these Docs again and again, and you’ll be able to understand things yourselves.
 

@@ -5,17 +5,21 @@ description: A Circular Queue is a linear data structure where the last position
 
 ## C Code For Circular Queue & Operations on Circular Queue 
 
-We have already finished learning about the implementation of circular queues using arrays. We saw the algorithms behind enqueuing and dequeuing elements in a circular queue. We saw the conditions for circular queues to be declared full and empty. Before proceeding, if you somehow missed the last Docs, I would recommend seeing that first, since we discussed key concepts there. Today’s lecture will be solely focusing on the programming part. 
+We have completed our exploration of the implementation of circular queues using arrays, along with the algorithms for enqueuing and dequeuing elements. We also examined the conditions for determining when a circular queue is full or empty. If you missed the previous documentation, I recommend reviewing it first, as we discussed key concepts essential for understanding this topic. Today, we will focus solely on the programming aspect.
 
-*Note*: In circular queues, the *f* is always an index behind the first element which means there is always a vacant index in circular queues.
+*Note*: In circular queues, the *f* (front) is always an index behind the first element, which means there is always a vacant index in circular queues.
 
-Let's get your editors involved. I have attached the source code below. Keep it handy while understanding the code.
+Let's get your editors involved. Below is the source code you should keep handy while understanding the implementation.
 
 ### Understanding the code snippet below:
 
-#### 1. First of all, I would like you all to copy everything from the queue implementation program since things are more or less the same, and circular queues are just a variation of normal queues. So, we would just make subtle modifications and things will work well.
+1. **Copy the Queue Implementation**: Begin by copying everything from the existing queue implementation program, as the concepts are similar. Circular queues are simply a variation of normal queues, so we will make subtle modifications to adapt the code.
 
-2. Now, since it was a queue, replace queues with circular queues. Start by changing the struct named queue to a struct named circularQueue, and all the four members remain the same as queue. (An integer variable size to store the size of the array, another integer variable f to store the index of the front end, an integer variable r to store the index of the rear end. And an integer pointer arr to store the address of the dynamically allocated array.)
+2. **Modify the Structure**: Since we are working with a circular queue, change the struct named `queue` to `circularQueue`. The four members should remain the same as in the queue structure:
+   - An integer variable `size` to store the size of the array.
+   - An integer variable `f` to store the index of the front end.
+   - An integer variable `r` to store the index of the rear end.
+   - An integer pointer `arr` to store the address of the dynamically allocated array.
 
 ```C
 struct circularQueue
@@ -281,5 +285,4 @@ PS D:\Code>
 
 > Figure 2: Output of the above program
 
-But had it been a normal queue, it would have still been full. I hope you understood everything. Make sure you read through the lectures again if you are having trouble understanding certain concepts. Trust me, you'll be able to crack things yourself. 
 

@@ -4,23 +4,25 @@ description: Infix to Postfix using a Stack involves converting an infix express
 ---
 
 ## Infix To Postfix Using Stack
-In the last docs, we had learned to convert an infix expression to its postfix and prefix equivalents manually. Following were the simple steps we followed.
 
-1. Parenthesize the expression following the operators’ precedence and their associativity.
-2. From the innermost to outermost, keep converting the expressions.
+In the last docs, we learned to convert an infix expression to its postfix and prefix equivalents manually. The simple steps we followed were:
 
-But we didn’t talk about their implementation using stacks; rather, we didn’t even mention stacks in our last class. Today, we will learn how to convert an infix expression into its postfix equivalent using stacks.
+1. Parenthesize the expression according to operators’ precedence and their associativity.
+2. Convert the expressions from innermost to outermost.
 
-Converting an infix expression to its postfix counterpart needs you to follow certain steps. The following are the steps:
+However, we didn’t discuss their implementation using stacks. Today, we will learn how to convert an infix expression into its postfix equivalent using stacks.
+
+Converting an infix expression to its postfix counterpart requires the following steps:
 
 1. Start moving left to right from the beginning of the expression.
-2. The moment you receive an operand, concatenate it to the postfix expression string.
-3. And the moment you encounter an operator, move to the stack along with its relative precedence number and see if the topmost operator in the stack has higher or lower precedence. If it's lower, push this operator inside the stack. Else, keep popping operators from the stack and concatenate it to the postfix expression until the topmost operator becomes weaker in precedence relative to the current operator.
-4. If you reach the EOE, pop every element from the stack, and concatenate them as well. And the expression you will receive after doing all the steps will be the postfix equivalent of the expression we were given.
+2. When you encounter an operand, concatenate it to the postfix expression string.
+3. Upon encountering an operator, check the stack. If the topmost operator in the stack has lower precedence, push the current operator onto the stack. If it has higher precedence, pop operators from the stack and concatenate them to the postfix expression until the topmost operator has lower precedence than the current operator.
+4. Upon reaching the end of the expression (EOE), pop every element from the stack and concatenate them. The resulting expression will be the postfix equivalent of the original expression.
 
 For our understanding today, let us consider the expression **x - y / z - k * a**. Step by step, we will turn this expression into its postfix equivalent using stacks.
 
-### 1. We will start traversing from the left. 
+### 1. We will start traversing from the left.
+
 
 <AdaptiveThemeImage
   src={{
@@ -98,36 +100,38 @@ For our understanding today, let us consider the expression **x - y / z - k * a*
   alt="example"
 />
 
-Follow every step meticulously, and you will find it very easy to master this. You can see if the answer we found at the end is correct manually.  
+## Infix To Postfix Using Stack
 
-- x - y / z - k * a →  (( x - ( y / z )) - ( k * a )) →  (( x - [ y z / ]) - [ k a * ]  )  → [ x y z / - ] - [ k a * ]  →  x y z / - k a * -  
+Follow every step meticulously, and you will find it very easy to master this process. You can verify if the final answer is correct manually.
 
-And it is indeed a correct conversion. I would now want you to follow the same steps and convert the expression x + y * z - k, using the stack method, and verify your answer manually using parentheses.
+- **Example Conversion:**  
+  x - y / z - k * a → (( x - ( y / z )) - ( k * a )) → (( x - [ y z / ]) - [ k a * ]) → [ x y z / - ] - [ k a * ] → x y z / - k a * -
 
-This was visualizing the conversion process of infix to postfix using stacks. We will see the programming part in the next Docs. It would be best if you practiced converting a few expressions of your own. If you still feel diffident about using stacks, you must check out the previous docs where we discussed stacks in detail.
+And it is indeed a correct conversion. Now, I would like you to follow the same steps and convert the expression **x + y * z - k**, using the stack method, and verify your answer manually using parentheses.
 
-## Coding Infix to Postfix in C using Stack example & codes 
-We saw earlier how infix expressions can be converted to their other equivalents manually. But when it came to automating the process, we took a different path. We used stacks to take hold of the operators we encountered in the expression. We followed an algorithm to convert an infix expression to its postfix equivalent, which in short, said:
+This was a visualization of the conversion process of infix to postfix using stacks. We will see the programming part in the next docs. It would be beneficial if you practiced converting a few expressions on your own. If you still feel unsure about using stacks, please check out the previous docs where we discussed stacks in detail.
 
-1. We create a string variable that will hold our postfix expression. We start moving from the left to the right. And the moment we receive an operand, we concatenate it to the postfix string. And whenever we encounter an operator, we proceed with the following steps:
+## Coding Infix to Postfix in C using Stack
 
-- Keep in account the operator and its relative precedence.
-- If either the stack is empty or its topmost operator has lower relative precedence, push this operator-precedence pair inside the stack.
-- Else, keep popping operators from the stack and concatenate it to the postfix expression until the topmost operator becomes weaker in precedence relative to the current operator.
+We previously saw how infix expressions can be converted to their other equivalents manually. When it comes to automating the process, we utilize stacks to manage the operators encountered in the expression. We follow an algorithm to convert an infix expression to its postfix equivalent, summarized as follows:
 
-2. If you reach the EOE, pop every element from the stack, if there is any, and concatenate them as well. And there, you’ll have your postfix expression.
+1. Create a string variable to hold the postfix expression. Start moving from left to right. When you receive an operand, concatenate it to the postfix string. Upon encountering an operator, follow these steps:
 
-Let us now see the program pursuing the conversion. I have attached the snippets alongwith. Keep checking them while you understand the codes.
+   - Consider the operator and its relative precedence.
+   - If the stack is empty or its topmost operator has lower relative precedence, push this operator-precedence pair onto the stack.
+   - Else, pop operators from the stack and concatenate them to the postfix expression until the topmost operator has lower precedence than the current operator.
 
-**Understanding the program for infix to postfix conversion:**
+2. Upon reaching the end of the expression (EOE), pop every element from the stack (if any) and concatenate them. You will then have your postfix expression.
 
-1. First of all, create a character pointer function infixToPostfix since the function has to return a character array. And now pass into this function the given expression, which is also a character pointer.
+### Understanding the Program for Infix to Postfix Conversion
 
-2. Define a struct stack pointer variable sp. And give it the required memory in the heap. Create the instance. It’s safe to assume that a struct stack element and all its basic operations, push, pop, etc., have already been defined. You better copy everything from the stack docs.
+1. Create a character pointer function **infixToPostfix** since the function must return a character array. Pass the given expression (also a character pointer) into this function.
 
-3. Create a character array/pointer postfix, and assign it sufficient memory to hold all the characters of the infix expression in the heap.
+2. Define a struct stack pointer variable **sp**. Allocate the required memory in the heap and create the instance. Assume that a struct stack element and all its basic operations (push, pop, etc.) have already been defined. It is advisable to copy everything from the stack docs.
 
-4. Create two counters, one to traverse through the infix and another to traverse and insert in the postfix. Refer to the illustration below, which describes the initial conditions.
+3. Create a character array/pointer **postfix** and assign sufficient memory in the heap to hold all characters of the infix expression.
+
+4. Create two counters: one to traverse the infix expression and another to insert elements into the postfix expression. Refer to the illustration below, which describes the initial conditions.
 
 <AdaptiveThemeImage
   src={{
@@ -140,7 +144,7 @@ Let us now see the program pursuing the conversion. I have attached the snippets
   alt="example"
 />
 
-5. Run a while loop until we reach the EOE of the infix. And inside that loop, check if the current index holds an operator, and if it’s not, add that character into the postfix and increment both the counters by 1. And if it does hold an operator, call another function that would check if the precedence of the stackTop is less than the precedence of the current operator. If yes, push it inside the stack. Else, pop the stackTop, and add it back into the postfix. Increment j by 1.
+5. Run a while loop until you reach the end of the expression (EOE) of the infix. Inside that loop, check if the current index holds an operator. If it does not, add that character to the postfix and increment both counters by 1. If it does hold an operator, call another function to check if the precedence of the stack's top operator is less than the precedence of the current operator. If yes, push the current operator onto the stack. Otherwise, pop the top operator from the stack and add it back into the postfix. Increment the counter for the postfix expression (j) by 1.
 
 ```C
 char* infixToPostfix(char* infix){
@@ -181,9 +185,9 @@ char* infixToPostfix(char* infix){
 
 > Code Snippet 1: Creating the function infixToPostfix
 
-6. It’s now time to create the two functions to make this conversion possible. isOperator & precedence which checks if a character is an operator and compares the precedence of two operators respectively.
+6. Now, create two functions to facilitate the conversion: `isOperator` and `precedence`. The `isOperator` function checks if a character is an operator, while the `precedence` function compares the precedence of two operators.
 
-7. Create an integer function isOperator which takes a character as its parameter and returns 2, if it's an operator, and 0 otherwise.
+7. Create an integer function `isOperator` that takes a character as its parameter. This function should return 1 if the character is an operator and 0 otherwise.
 
 ```C
 int isOperator(char ch){
@@ -196,9 +200,10 @@ int isOperator(char ch){
 
 > Code Snippet 2: Creating the function isOperator
 
-8. Create another integer function precedence, which takes a character as its parameter, and returns its relative precedence. It returns 3 if it’s a ‘/’ or a ‘*’. And 2 if it's a ‘+’ or a ‘-’.
+8. Create another integer function `precedence` that takes a character as its parameter and returns its relative precedence. This function should return 3 for the operators ‘/’ or ‘*’, and 2 for ‘+’ or ‘-’.
 
-9. If we are still left with any element in the stack at the end, pop them all and add them to the postfix.
+9. Finally, if any elements remain in the stack at the end of the conversion process, pop them all and append them to the postfix expression.
+
 
 ```C
 int precedence(char ch){
@@ -212,8 +217,6 @@ int precedence(char ch){
 ```
 
 Code Snippet 3: Creating the function precedence
-
-And we have successfully finished writing the codes. 
 
 Here is the whole source code:
 ```C
@@ -336,8 +339,6 @@ int main()
 
 > Code Snippet 4: Source code for the function infixToPostfix
 
-We now need to check the function for some expressions to see if it works.
-
 ```C
     char * infix = "x-y/z-k*d";
     printf("postfix is %s", infixToPostfix(infix));
@@ -350,6 +351,4 @@ PS D:\Code>
 ```
 
 > Figure 1: Output of the above program
-
-So, yes, we could automate the process of conversion through some codes. This must surely be easy for you after having a strong grip on the basics. If you missed any of these concepts, do mind checking them out. 
 

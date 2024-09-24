@@ -4,13 +4,15 @@ description: How to Implement Stack Using Linked List?.
 ---
 
 ## How to Implement Stack Using Linked List?
-Earlier before, whenever we discussed stacks, we used arrays. We saw how good an array is while implementing stacks using them. We saw it follows constant time complexity for each of the operations we discussed. Today, we’ll begin implementing stacks using a different data structure, linked lists.
 
-Linked-lists is surely not a new term for you all. We have come here only after discussing all the basics. So, if you haven’t come across the linked lists, you must have skipped them. I highly recommend you all to go through the videos discussing them in the playlist. Assuming you are done, we’ll proceed.
+Earlier, whenever we discussed stacks, we used arrays. While arrays have constant time complexity for each of the operations, today we’ll begin implementing stacks using a different data structure: linked lists.
 
-### Implementing stacks using linked lists:
+Linked lists are not a new term for all of you. You have arrived here after discussing the basics. If you haven’t encountered linked lists, I highly recommend reviewing the relevant videos in the playlist. Assuming you are familiar with them, let's proceed.
 
-We can now consider a singly linked list. Follow the illustration below.
+### Implementing Stacks Using Linked Lists:
+
+Now, consider a singly linked list. Follow the illustration below.
+
 
 <AdaptiveThemeImage
   src={{
@@ -23,13 +25,14 @@ We can now consider a singly linked list. Follow the illustration below.
   alt="example"
 />
 
-Consider this linked list functioning as a stack. And as you know, we have two sides of a linked list, one the head, and the other pointing to NULL. Which side do you feel should we consider as the top of the stack, where we push and pop from? After following me all the way through here, you would say the head side.
+Consider this linked list functioning as a stack. As you know, a linked list has two sides: one is the head, and the other points to NULL. Which side do you think should be considered as the top of the stack, from where we push and pop? After following along so far, you would say the head side.
 
 ### And why the head side, that is side 1?
 
-Because that’s the head node of the linked list, and insertion and deletion of a node at head happens to function in a constant time complexity, O(1). Whereas inserting or deleting a node at the last position takes a linear time complexity, O(n).
+Because that’s the head node of the linked list, and insertion and deletion of a node at the head occur in constant time complexity, O(1). In contrast, inserting or deleting a node at the last position takes linear time complexity, O(n).
 
-So that stack equivalent of the above illustrated linked list looks something like this:
+So, the stack equivalent of the above illustrated linked list looks something like this:
+
 
 <AdaptiveThemeImage
   src={{
@@ -42,7 +45,7 @@ So that stack equivalent of the above illustrated linked list looks something li
   alt="example"
 />
 
-Let’s revise how we used to define a struct Node in linked lists. We had a struct, and two structure members, data and a struct Node pointer to store the address of the next node.
+Let’s revise how  used to define a struct Node in linked lists.  had a struct, and two structure members, data and a struct Node pointer to store the address of the next node.
 
 ```C
 struct Node{
@@ -55,27 +58,32 @@ struct Node{
 
 #### When is our stack empty or full?
 
-Stacks when implemented with linked lists never get full. We can always add a node to it. There is no limit on the number of nodes a linked list can contain until we have some space in heap memory. Whereas stacks become empty when there is no node in the linked list, hence when the top equals to NULL.
+Stacks implemented with linked lists never get full; you can always add a node to it. There is no limit on the number of nodes a linked list can contain until you run out of space in heap memory. However, a stack becomes empty when there is no node in the linked list, hence when the top equals NULL.
 
-Condition for stack full: When heap memory is exhausted
-Condition for stack empty:  top == NULL
-One change I would like to implement before we proceed; the head node we had in linked lists, is the top for our stacks now. So, from now on, the head node will be referred to as the top node. 
+- **Condition for stack full:** When heap memory is exhausted
+- **Condition for stack empty:** `top == NULL`
 
-Even though a stack-linked list has no upper limit to its size, you can always set a custom size for it. 
+One change to note before we proceed is that the head node we had in linked lists is now the top of our stack. So, from now on, the head node will be referred to as the top node.
 
-These interpretations will help us implement the operations, isEmpty and isFull. We have made our path easy for that. We’ll also discuss the conditions when the heap memory gets full. You already know the basic operations that we will have. I encourage you all to try to put these operations into practice on your own. Tell me if you could. You will not be left in disguise, but with a better understanding of things. Believe in me and practice a lot.
+Even though a stack implemented with a linked list has no upper limit to its size, you can always set a custom size for it. 
+
+These interpretations will help us implement the operations `isEmpty` and `isFull`. I encourage you to try to practice these operations on your own. 
 
 ## Implementing all the Stack Operations using Linked List (With Code in C)
 
-In the last Docs, we started learning about implementing stacks using linked lists. We saw the benefits of using the head side of the linked list as the stack top. We figured out the conditions for the stack linked lists to be empty or full. Today, we’ll discuss more of these operations, and write their codes in C.
+In the last document, we started learning about implementing stacks using linked lists and the benefits of using the head side of the linked list as the stack top. We figured out the conditions for the stack linked lists to be empty or full. Today, we’ll discuss more operations and write their codes in C.
 
-Before writing the codes, we must discuss the algorithm we’ll put into operations. Let's go through them one by one.
+Before writing the codes, let’s discuss the algorithms we’ll implement for each operation:
 
-### 1. **isEmpty** : It just checks if our top element is NULL. 
+### 1. **isEmpty**: 
+It checks if our top element is NULL.
 
-#### 2. **isFull** : A stack is full, only if no more nodes are being created using malloc. This is the condition where heap memory gets exhausted.
+### 2. **isFull**: 
+A stack is full only if no more nodes can be created using `malloc`, which happens when heap memory is exhausted.
 
-#### 3. **Push** : The first thing we need before pushing an element is to create a new node. Check if the stack is not already full. Now, we follow the same concept we learnt while inserting an element at the head or at the index 0 in a linked list. Just set the address of the current top in the next member of the new node, and update the top element with this new node.
+### 3. **Push**: 
+Before pushing an element, create a new node. Check if the stack is not already full. Then, follow the same concept learned while inserting an element at the head or at index 0 in a linked list: set the address of the current top in the `next` member of the new node, and update the top element with this new node.
+
 
 <AdaptiveThemeImage
   src={{
@@ -88,7 +96,8 @@ Before writing the codes, we must discuss the algorithm we’ll put into operati
   alt="example"
 />
 
-### 4. **Pop** : First thing is to check if the stack is not already empty Now, we follow the same concept we learnt while deleting an element at the head or at the index 0 in a linked list. Just update the top pointer with the next node, skipping the current top.
+### 4. **Pop**: 
+The first step is to check if the stack is not already empty. If the stack is empty, you cannot pop any elements. Now, follow the same concept learned while deleting an element at the head or at index 0 in a linked list: simply update the top pointer to point to the next node, effectively skipping the current top node.
 
 <AdaptiveThemeImage
   src={{
@@ -101,18 +110,17 @@ Before writing the codes, we must discuss the algorithm we’ll put into operati
   alt="example"
 />
 
-We’ll limit ourselves to these four operations for today. We’ll now move to our editors to code them. We have already covered the tough parts of today's Docs; these are the easy ones remaining. I have attached the code snippet below, refer to them while you code:
+### Understanding the Code Snippet Below:
 
+1. **Create the Structure for Nodes**: Use `struct` in C, name it `Node`, and include two members: 
+   - An integer variable to store the data.
+   - A `struct Node` pointer to store the address of the next element.
 
-**Understanding the code snippet below:**
+2. **Implement the isEmpty and isFull Functions**:
 
-1. Create the structure for nodes. We’ll use struct in C, name its Node, and make two members of this struct; an integer variable to store the data, and a struct Node pointer to store the address of the next element.
-
-2. First of all, we’ll create the isEmpty and the isFull functions.
-
-3. isEmpty():
-
-    - Create an integer function isEmpty, and pass the pointer to the top node as the parameter. If this top node equals NULL, return 1, else 0.
+   - **isEmpty()**:
+     - Create an integer function `isEmpty`, passing the pointer to the top node as a parameter. 
+     - If this top node equals `NULL`, return `1`; otherwise, return `0`.
 
 ```C
 int isEmpty(struct Node* top){
@@ -147,12 +155,13 @@ int isFull(struct Node* top){
 
 5. Push():
 
-- Create a struct Node* function push which will return the pointer to the new top node.
-- We’ll pass the current top pointer and the data to push in the stack, in the function.
-- Check if the stack is already not full, if full, return the condition stack overflow.
-- Create a new struct Node* pointer n, and assign it a new memory location in the heap.
-- Assign top to the next member of the n structure using n-> next = top, and the given data to its data member.
-- Return this pointer n, since this is our new top node.
+- Create a `struct Node*` function `push`, which will return the pointer to the new top node.
+- Pass the current top pointer and the data to push onto the stack into the function.
+- Check if the stack is already full; if so, return a condition indicating stack overflow.
+- Create a new `struct Node*` pointer `n` and assign it a new memory location in the heap.
+- Assign the current top to the `next` member of the `n` structure using `n->next = top`, and assign the given data to its `data` member.
+- Return this pointer `n`, since this is our new top node.
+
 
 ```C
 struct Node* push(struct Node* top, int x){
@@ -172,12 +181,13 @@ struct Node* push(struct Node* top, int x){
 
 6. Pop() :
 
-- Create an integer function pop which will return the element we remove from the top.
-- We’ll pass the reference of the current top pointer in the function. We are passing the reference this time, because we are not returning the updated top from the function.
-- Check if the stack is already not empty, if empty, return the condition stack underflow.
-- Create a new struct Node* pointer n, and make it point to the current top. Store the data of this node in an integer variable x.
-- Assign top to the next member of the list, by top = top->next, because this is going to be our new top.
-- Free the pointer n. And return x.
+- Create an integer function `pop`, which will return the element removed from the top.
+- Pass the reference of the current top pointer into the function. We are passing the reference this time because we are not returning the updated top from the function.
+- Check if the stack is not empty; if it is empty, return a condition indicating stack underflow.
+- Create a new `struct Node*` pointer `n`, and make it point to the current top. Store the data of this node in an integer variable `x`.
+- Assign top to the next member of the list by using `top = top->next`, because this is going to be our new top.
+- Free the pointer `n` and return `x`.
+
 
 ```C
 int pop(struct Node** top){
@@ -196,7 +206,7 @@ int pop(struct Node** top){
 
 #### **Code Snippet 4: Implementing pop function**
 
-7. Now, since we would always need a traversal function to see if our operations are functioning all well, we’ll just bring our codes from the linked list Docs, named linkedListTraversal.
+7. Now, since  would always need a traversal function to see if our operations are functioning all ll, ’ll just bring our codes from the linked list Docs, named linkedListTraversal.
 
 ```C
 void linkedListTraversal(struct Node *ptr)
@@ -209,7 +219,7 @@ void linkedListTraversal(struct Node *ptr)
 }
 ```
 
-**Code Snippet 5: LinkedListTraversal function**
+#### **Code Snippet 5: LinkedListTraversal function**
 **Here is the whole source code:**
 
 ```C
@@ -283,7 +293,7 @@ int main(){
 
 #### **Code Snippet 6: Implementing a stack and its operations using linked list**
 
-We have just created a stack using a linked list. We have assigned NULL to the top node. Let’s first push some elements and see if the changes reflect in the stack. We’ll use traversal for that.
+ Have just created a stack using a linked list.  have assigned NULL to the top node. Let’s first push some elements and see if the changes reflect in the stack. ’ll use traversal for that.
 
 ```C
     top = push(top, 78);
@@ -294,7 +304,7 @@ We have just created a stack using a linked list. We have assigned NULL to the t
 ```
 
 #### **Code Snippet 7: Pushing elements in a stack.**
-The output we received was:
+The output  received was:
 
 ```
 Element: 8
@@ -315,7 +325,7 @@ So, the push function worked all good. Let’s pop one element out from the stac
 
 **Code Snippet 8: Popping elements from a stack.**
 
-The output we received then was:
+The output  received then was:
 
 ```
 Popped element is 8
@@ -326,7 +336,7 @@ PS D:\Code>
 
 **Figure 2: Output of the above program**
 
-You must have observed we used the pointer to a pointer while popping elements from the stack. We referenced and unreferenced twice. So, to avoid all these complexities, I still have a better way to implement that thing. We can declare the top pointer globally. Earlier we used to declare it under main. Declaring it globally gives its access to all our functions without passing them as a parameter.
+You must have observed  used the pointer to a pointer while popping elements from the stack.  referenced and unreferenced twice. So, to avoid all these complexities, I still have a better way to implement that thing.  can declare the top pointer globally. Earlier  used to declare it under main. Declaring it globally gives its access to all our functions without passing them as a parameter.
 
 Refer to the second implementation of stacks below. They are more or less the same, just subtle changes. Follow them carefully. You are wise enough to understand them on your own.
 
@@ -409,17 +419,17 @@ int main(){
 }
 ```
 
-#### **Code Snippet 8: Implementing a stack and its operations using linked list**
+#### **Code Snippet 8: Implementing a Stack and Its Operations Using Linked List**
 
-Done. That was all we had to do to make these operations function. Only a few more operations remain. We'll finish them in the next Docs. I avoid repeating things just to reduce redundancy in this course. If you found this Docs challenging or too fast, I believe you haven't gone through the previous videos. We covered linked lists very well. You must go through them if you haven't yet. 
+Done! That was all I had to do to make these operations function. Only a few more operations remain, which I will finish in the next Docs. I avoid repeating things to reduce redundancy in this course. If you found this Docs challenging or too fast, I believe you haven't gone through the previous videos. I covered linked lists very well. You must go through them if you haven't yet.
 
 _____________________________________________________________________________________
 
 ## peek( ), stackTop( ) and Other Operations on Stack Using Linked List
 
-We saw how efficiently we can push and pop elements in a stack-linked list. We saw a few other operations, isEmpty, isFull, traversal. Today, we will cover the remaining operations. They are: peek, stackTop, etc.
+We saw how efficiently we can push and pop elements in a stack-linked list. We discussed a few other operations: isEmpty, isFull, and traversal. Today, I will cover the remaining operations: peek, stackTop, etc.
 
-Similar to what we did last time, we will first understand the algorithm behind the operations, followed by the coding section. Let’s see them individually, but before that, let’s have an example illustration of the stack we’ll go into within today’s .
+Similar to what I did last time, I will first explain the algorithm behind the operations, followed by the coding section. Let’s see them individually, but before that, let’s have an example illustration of the stack.
 
 <AdaptiveThemeImage
   src={{
@@ -445,30 +455,30 @@ Similar to what we did last time, we will first understand the algorithm behind 
   alt="example"
 />
 
-Peeking in a stack linked list is not as efficient as when we worked with arrays. Peeking in a linked list takes O(n) because it first traverses to the position where we want to peek in. So, we’ll just have to move to that node and return its data.
+Peeking in a stack linked list is not as efficient as when we worked with arrays. Peeking in a linked list takes O(n) because it first traverses to the position where you want to peek. So, you will just have to move to that node and return its data.
 
+2. **stackTop**: This operation just returns the topmost value in the stack, which is simply the data member of the top pointer.
 
-2. stackTop: This operation just returns the topmost value in the stack. That is, it just returns the data member of the top pointer.
-
-3. stackBottom:
+3. **stackBottom**: 
 
 I will leave the last operation, stackBottom, for your homework. Try implementing this on your own, and let me know if you could. You should be able to code this since we have covered the concepts already in the stack arrays.
 
-So, these were the only operations we had in mind to discuss with you all. You will come across several variations of these. Nevertheless, you are intelligent enough to be able to change your codes if necessary. We’ll now move to our editors to code the operations we discussed today. I have attached the code snippet below. Refer to them while you code:
+So, these are the only operations I had in mind to discuss with you all. You will come across several variations of these. Nevertheless, you are intelligent enough to be able to change your codes if necessary. 
 
-Understanding the code snippet below:
+I’ll now move to our editors to code the operations discussed today. I have attached the code snippet below. Refer to them while you code:
 
-1. Copy everything we did in the last . This will save us some time. It will also prevent repetitions in the course. Our main focus for today is to discuss these three operations. So, creating the stack and other operations can be ignored since they have already been covered.
+### Understanding the Code Snippet Below:
 
-2. We’ll start with the peek function.
+1. Copy everything you did in the last document. This will save us some time and prevent repetitions in the course. Our main focus for today is to discuss these three operations. So, creating the stack and other operations can be ignored since they have already been covered.
 
-3. peek():
+2. I’ll start with the **peek** function.
 
-    - Create an integer function peek, and pass the position you want to peek in as a parameter.
-    - Since we have made the stack pointer global, we should not use that pointer to traverse; otherwise, we will lose the pointer to the top node. Rather create a new struct Node pointer ptr and give it the value of top.
-    - Run a loop from 0 to pos-1, since we are already at the first position. 
-    - If our pointer reaches NULL at some point, we must have reached the last node, and the position asked was beyond the available positions, hence breaking the loop.
-    - If the current pointer found the position and it is not equal to NULL, return the data at that node, else -1.
+3. **peek()**:
+   - Create an integer function `peek`, and pass the position you want to peek in as a parameter.
+   - Since we have made the stack pointer global, you should not use that pointer to traverse; otherwise, you will lose the pointer to the top node. Rather, create a new `struct Node` pointer `ptr` and give it the value of `top`.
+   - Run a loop from 0 to `pos - 1`, since you are already at the first position.
+   - If your pointer reaches `NULL` at some point, you must have reached the last node, and the position asked was beyond the available positions, hence breaking the loop.
+   - If the current pointer found the position and it is not equal to `NULL`, return the data at that node; else return -1.
 
 ```C
 int peek(int pos){
@@ -490,7 +500,7 @@ int peek(int pos){
 
 4. stackTop():
 
-    - Create an integer function stackTop, and we are no longer passing any parameter since the top pointer is declared globally.
+    - Create an integer function stackTop, and  are no longer passing any parameter since the top pointer is declared globally.
     - Simply return the data member of the struct Node pointer top, and that’s it.
 
 ```C
@@ -610,7 +620,7 @@ Let’s now push some elements into the stack and see if the operations work all
 
 > Code Snippet 4: Using push function to put some elements inside the stack
 
-Since we have pushed the elements, we can call our peek function in a loop, printing the whole array.
+Since  have pushed the elements,  can call our peek function in a loop, printing the whole array.
 
 ```C
     for (int i = 1; i <= 4; i++)
@@ -621,7 +631,7 @@ Since we have pushed the elements, we can call our peek function in a loop, prin
 
 > Code Snippet 5: Using peek function to print the whole stack
 
-The output we received was:
+The output  received was:
 
 ```
 Value at position 1 is : 7
@@ -632,6 +642,4 @@ PS D:\Code>
 ```
 
 > Figure 1: Output of the above program
-
-Our peek operation worked accurately. I have left stackBottom up to you all. Don’t mind sending me your doubts regarding the course. We are now planning to move to an application of these stacks called parenthesis matching. 
 

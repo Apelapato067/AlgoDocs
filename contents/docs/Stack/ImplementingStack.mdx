@@ -3,14 +3,16 @@ title: Implementing Stack Using Array
 description: C Code For Implementing Stack Using Array in Data Structures.
 ---
 
-## C Code For Implementing Stack Using Array in Data Structures with example.
+## C Code For Implementing Stack Using Array in Data Structures with Example
 
-In the last Docs, we covered how to implement stacks by using arrays. We also dealt with the basic structure behind defining a stack with all the customizations. We also learned about some of the operations one could do while handling stacks. Today, we’ll try implementing stacks using arrays in C. 
+In the last Docs, we covered how to implement stacks using arrays. We also discussed the basic structure behind defining a stack with all the customizations. Today, we’ll explore the implementation of stacks using arrays in C.
 
-I’ve attached the snippet below. Keeping that in mind will help you understand the implementation.
+### Understanding the Code Snippet 1
 
-**Understanding the code snippet 1:**
-1. So, the first thing would be to create the struct Stack we discussed in the previous tutorial. Include three members, an integer variable to store the size of the stack, an integer variable to store the index of the topmost element, and an integer pointer to hold the address of the array.
+1. The first step is to create the `struct Stack` we discussed in the previous tutorial. This struct should include three members:
+   - An integer variable to store the size of the stack.
+   - An integer variable to store the index of the topmost element.
+   - An integer pointer to hold the address of the array.
 
 ```C
 struct stack
@@ -22,11 +24,11 @@ struct stack
 ```
 > Code Snippet 1: Creating stack
 
-2. In main, create a struct stack s, and assign a value 80(you can assign any value of your choice) to its size, -1 to its top, and reserve memory in heap using malloc for its pointer arr. Don’t forget to include `<stdlib>` .
+2. In the `main` function, create a `struct stack` variable named `s`, and assign a value of `80` (you can choose any value) to its size. Set its top to `-1`, and reserve memory in the heap using `malloc` for its pointer `arr`. Don’t forget to include `<stdlib.h>`.
 
-3. We have one more method to declare these stacks. We can define a struct stack pointer s, and use the arrow operators to deal with their members. The advantage of this method is that we can pass these pointers as references into functions very conveniently.
+3. Alternatively, you can define a pointer to the `struct stack`, allowing you to use the arrow operators to access its members. This method has the advantage of easily passing these pointers as references into functions.
 
-4. Before we advance to pushing elements in this stack, there are a few conditions to deal with. We can only push an element in this stack if there is some space left or the top is not equal to the last index. Similarly, we can only pop an element from this stack if some element is stored or the top is not equal to -1.
+4. Before we proceed to push elements onto this stack, we need to keep in mind a few conditions. You can only push an element onto the stack if there is space left (i.e., the top is not equal to the last index). Similarly, you can only pop an element from the stack if there is at least one element stored (i.e., the top is not equal to `-1`).
 
 <AdaptiveThemeImage
   src={{
@@ -39,9 +41,9 @@ struct stack
   alt="example"
 />
 
-5. So, let us first write functions to check whether these stacks are empty or full.
+5. First, let's write functions to check whether the stack is empty or full.
 
-6. Create an integer function isEmpty, and pass the pointer to the stack as a parameter. In the function, check if the top is equal to -1. If yes, then it’s empty and returns 1; otherwise, return 0.
+6. Create an integer function `isEmpty`, and pass the pointer to the stack as a parameter. Inside the function, check if the `top` is equal to `-1`. If it is, then the stack is empty, and the function should return `1`; otherwise, it should return `0`.
 
 ```C
 int isEmpty(struct stack *ptr)
@@ -175,8 +177,5 @@ The stack is not empty
 PS D:\Code>
 ```
 
-**Figure 2: Output of the above program**
+*Figure 2: Output of the above program*
 
-So, they are all working well.  We can now proceed to implement our push, pop, and other operations. Let’s reserve the other day for them and keep things here for today. Try implementing them on your own and tell me if you could. We’ll see them in the next tutorial.
-
-> I appreciate your support throughout. I hope you enjoyed the docs.

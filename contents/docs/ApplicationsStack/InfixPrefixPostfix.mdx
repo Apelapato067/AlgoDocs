@@ -38,13 +38,16 @@ To understand the interchangeability of these terms, please refer to the table b
 
 So far, we have been dealing with just two operands, but a mathematical expression can hold a lot more. We will now learn to change a general infix mathematical expression to its prefix and postfix relatives. But before that, it is better to understand why we even need these methods.
 
-### Why these methods?
+### Why These Methods?
 
-When we evaluate a mathematical expression, we have a rule in mind, named BODMAS, where we have operators’ precedence in this order; brackets, of, division, multiplication, addition, subtraction. But what would you do when you get to evaluate a 1000 character long-expression, or even longer one? You will try to automate the process. But there is one issue. Computers don’t follow BODMAS; rather, they have their own operator precedence. And this is where we need these postfix and prefix notations. In programming, we use postfix notations more often, likewise, following the precedence order of machines. 
+When we evaluate a mathematical expression, we have a rule in mind called BODMAS, which defines the order of operator precedence: brackets, orders, division, multiplication, addition, and subtraction. However, what would you do when faced with evaluating a 1000-character long expression, or even longer? You would likely try to automate the process. 
 
-Consider the expression `a* ( b + c ) * d;` since computers go left to right while evaluating an expression, we’ll convert this infix expression to its postfix form.
+There is one issue: computers don’t follow BODMAS; instead, they have their own operator precedence. This is where postfix and prefix notations come into play. In programming, postfix notation is often used to align with the precedence order of machines.
 
-Its postfix form is, a b c + * d *.  You must be wondering how we got here. Refer to the illustration below.
+Consider the expression `a * ( b + c ) * d;`. Since computers evaluate expressions from left to right, we need to convert this infix expression to its postfix form.
+
+The postfix form is `a b c + * d *`. You might wonder how we arrived at this. Please refer to the illustration below.
+
 
 <AdaptiveThemeImage
   src={{
@@ -57,41 +60,72 @@ Its postfix form is, a b c + * d *.  You must be wondering how we got here. Refe
   alt="example"
 />
 
-We have successfully reached what we wanted the machine to do. Now the kick is in converting infixes to postfixes and prefixes.
+## Converting Infix, Prefix, and Postfix Expressions
 
-### Converting infix to prefix:
+We have successfully reached the point where we can guide the machine on how to handle mathematical expressions. The next step is converting infixes to postfixes and prefixes.
 
-Consider the expression, x - y * z.
+### Converting Infix to Prefix
 
-1. Parentheses the expression. The infix expression must be parenthesized by following the operator precedence and associativity before converting it into a prefix expression. Our expression now becomes ( x - ( y * z ) ).
+Consider the expression: `x - y * z`.
 
-2. Reach out to the innermost parentheses. And convert them into prefix first, i.e.  ( x - ( y * z ) ) changes to ( x - [ * y z ] ).
+1. **Parenthesize the Expression**: The infix expression must be parenthesized by following operator precedence and associativity. The expression becomes:
+   \[
+   ( x - ( y * z ) )
+   \]
 
-3. Similarly, keep converting one by one, from the innermost to the outer parentheses.  ( x - [ * y z ] )  → [ - x * y z ]. 
+2. **Convert Innermost Parentheses**: Start with the innermost parentheses and convert them into prefix:
+   \[
+   ( x - ( y * z ) ) \rightarrow ( x - [ * y z ] )
+   \]
 
-4. And we are done.
+3. **Continue Converting**: Keep converting from the innermost to the outer parentheses:
+   \[
+   ( x - [ * y z ] ) \rightarrow [ - x * y z ]
+   \]
 
-**Converting infix to postfix:**
+4. **Final Prefix Expression**: The final prefix expression is:
+   \[
+   - x * y z
+   \]
 
-Consider the same expression, x - y * z.
+### Converting Infix to Postfix
 
-5. Parentheses the expression as we did previously. Our expression now becomes ( x - ( y * z ) ).
+Consider the same expression: `x - y * z`.
 
-6. Reach out to the innermost parentheses. And convert them into postfix first, i.e.  ( x - ( y * z ) ) changes to ( x - [ y z * ] ).
+1. **Parenthesize the Expression**: Parenthesize the expression as done previously:
+   \[
+   ( x - ( y * z ) )
+   \]
 
-7. Similarly, keep converting one by one, from the innermost to the outer parentheses.  ( x - [ y z * ] )  → [ x y z * - ]. 
+2. **Convert Innermost Parentheses**: Start with the innermost parentheses and convert them into postfix:
+   \[
+   ( x - ( y * z ) ) \rightarrow ( x - [ y z * ] )
+   \]
 
-8. And we are done.
+3. **Continue Converting**: Keep converting from the innermost to the outer parentheses:
+   \[
+   ( x - [ y z * ] ) \rightarrow [ x y z * - ]
+   \]
 
-Similarly the expression p - q -  r / a, follows the following conversions to become a prefix expression:
--   **p - q -  r / a  →  ( ( p - q ) -  ( r / a ) ) →  ( [ - p q ] - [ / r a ]  )  →  - - p q / r a**
+4. **Final Postfix Expression**: The final postfix expression is:
+   \[
+   x y z * -
+   \]
 
-**Quick Quiz**: Convert the above infix expression into its postfix form.
+### Example: Converting `p - q - r / a` to Prefix
 
-**Note:** You cannot change the expression given to you. For eg. ( p - q ) * ( m - n ) cannot be changed to something like ( p - ( q * m ) - n ).
+The expression follows these conversions to become a prefix expression:
+-   **Conversion Steps**:
+   \[
+   p - q - r / a \rightarrow ( ( p - q ) - ( r / a ) ) \rightarrow ( [ - p q ] - [ / r a ] ) \rightarrow - - p q / r a
+   \]
 
-Let’s change this to its postfix equivalent.
+### Quick Quiz
 
--   **( p - q ) * ( m - n ) →  ( ( p - q ) * ( m - n ) ) →  ( [p q - ] [m n - ] )  → p q-m n -**  
+**Convert the following infix expression into its postfix form**:
+-   \(( p - q ) * ( m - n )\)
 
+**Note**: You cannot change the expression. For example, \(( p - q ) * ( m - n )\) cannot be altered to something like \(( p - ( q * m ) - n )\).
 
+**Conversion Steps**:
+-   \(( p - q ) * ( m - n ) \rightarrow ( ( p - q ) * ( m - n ) ) \rightarrow ( [p q - ] [m n - ] ) \rightarrow p q - m n -\)

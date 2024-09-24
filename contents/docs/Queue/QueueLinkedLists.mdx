@@ -4,11 +4,12 @@ description: A queue using linked lists is a data structure where elements are a
 ---
 
 ## Queue Using Linked Lists
-Up until now, queues had been implemented using arrays. We have another alternative that is a must to learn and has been examiners’ favorite topic, implementing queues using linked lists. Today, we’ll see how to implement queues using linked lists and some of its operations.
 
-Implementing queues using linked lists tests your proficiency in using/ handling both queues and linked lists. And, in case if you have missed either or both of these, I would recommend visiting them first before proceeding.
+Up until now, we have implemented queues using arrays. Today, we will explore another essential alternative: implementing queues using linked lists. This topic is a favorite among examiners, and understanding it is crucial for mastering both data structures.
 
-If you remember, linked lists are chain-like structures with nodes having two parts, an integer variable to hold data and another node pointer to hold the address of the next node. Below illustrated is a linked list with three nodes. The last node points to NULL. And the first node is called the head.
+Implementing queues with linked lists tests your proficiency in managing both queues and linked lists. If you are not familiar with either of these concepts, I recommend reviewing them before proceeding.
+
+Recall that linked lists are chain-like structures where each node contains two parts: an integer variable to hold data and a node pointer to store the address of the next node. Below is an illustration of a linked list with three nodes. The last node points to NULL, and the first node is referred to as the head.
 
 <AdaptiveThemeImage
   src={{
@@ -47,13 +48,18 @@ Since we are implementing this queue using a linked list, the index variables ar
   alt="example"
 />
 
-## Enqueue in a queue linked list:
-Enqueuing in a queue linked list is very much similar to just inserting at the end in a linked list. As we discussed this thoroughly in our past lectures, you should not find this difficult. Inserting a new node at the end requires you to follow few steps:
+## Enqueue in a Queue Linked List
 
-Check if there is a space left in the heap for a new node.
-1. If there is, create a new node *n*, assign it memory in heap, and fill its data with the new value the user has given.
-2. Point the next member of this new node *n* to NULL, and point the next member of the *r* to *n*. And make *r* equal to n. And we are done.
-3. There is one exception here. When we insert the first element, both f and r are pointing to NULL. So, instead of just making r equal to *n*, we make *f* equal to *n* as well. This marks the beginning of the list.
+Enqueuing in a queue implemented using a linked list is quite similar to inserting at the end of a regular linked list. Since we discussed this thoroughly in our previous lectures, you should find this process manageable. To insert a new node at the end, follow these steps:
+
+1. **Check for Available Space:** Verify if there is enough space left in the heap for a new node.
+2. **Create and Initialize the New Node:** If space is available, create a new node *n*, allocate memory for it in the heap, and fill its data with the new value provided by the user.
+3. **Update Pointers:** 
+   - Set the next member of the new node *n* to NULL.
+   - Point the next member of the *r* (rear) node to *n*.
+   - Finally, make *r* equal to *n* to complete the insertion.
+
+4. **Handle the First Element Exception:** When inserting the first element, both *f* (front) and *r* are initially NULL. Therefore, instead of just making *r* equal to *n*, you should also set *f* equal to *n*. This marks the beginning of the list.
 
 <AdaptiveThemeImage
   src={{
@@ -66,12 +72,16 @@ Check if there is a space left in the heap for a new node.
   alt="example"
 />
 
-## Dequeue in a queue linked list:
-Dequeuing in a queue linked list is very much similar to deleting the head node in a linked list. Deleting the head node from the list requires you to follow few steps:
+## Dequeue in a Queue Linked List
 
-1. Check if the queue list is already not empty using the isEmpty function.
-2. If it is, return -1. Else create a new node ptr and make it equal to the f node. And don’t forget to store the data of the f node in some integer variable.
-3. Make the f equal to the next member of f, and free the node ptr. Return the value you stored.
+Dequeuing in a queue implemented using a linked list is similar to deleting the head node of a linked list. To delete the head node, follow these steps:
+
+1. **Check if the Queue is Empty:** Use the `isEmpty` function to verify if the queue is empty.
+2. **Handle Empty Queue Case:** If the queue is empty, return -1.
+3. **Create a Pointer for the Front Node:** If the queue is not empty, create a new node pointer and set it equal to the front node (*f*). Also, store the data from the *f* node in an integer variable.
+4. **Update the Front Pointer:** Set *f* equal to the next member of *f* to update the front of the queue.
+5. **Free the Old Node:** Free the memory allocated for the old node pointer.
+6. **Return the Value:** Finally, return the value that was stored from the *f* node.
 
 <AdaptiveThemeImage
   src={{
@@ -85,27 +95,30 @@ Dequeuing in a queue linked list is very much similar to deleting the head node 
 />
 
 **Condition for *isEmpty*:**
-The only condition for the queue linked list to be empty is that the f node is NULL, which means there is no beginning, hence no element.
 
-Condition for *isFull*:
+The only condition for the queue linked list to be empty is that the front node (*f*) is NULL, which indicates there is no beginning, and hence no elements in the queue.
 
-Queues implemented using linked lists never usually become full until the space in the heap memory is exhausted. Therefore, the only condition for the queue linked list to be full is that the new node becomes NULL when created.
+**Condition for *isFull*:**
 
-We could very easily finish implementing queues using linked lists because we learned it extensively in our previous docs. We started from the basics of both queues and linked lists and could complete everything. I expect you all to write the codes for all these operations yourself, and do tell me in whichever way if you could write the program on your own. I’ll be more than happy to see you all progress. We will anyways discuss the program in C in the next docs.
+Queues implemented using linked lists typically never become full unless the heap memory is exhausted. Therefore, the only condition for the queue linked list to be full is when the new node becomes NULL upon creation.
+
+We can easily complete the implementation of queues using linked lists, as we have extensively learned this topic in our previous documentation. We started with the basics of both queues and linked lists, allowing us to complete everything effectively. I encourage you to write the code for all these operations on your own, and feel free to share your progress with me. I would be delighted to see your advancement. We will discuss the C program in the next documentation.
 
 ## Implementing Queue Using Linked List in C Language
 
-We learned to implement queues using linked lists. We talked about the enqueue and dequeue methods. In the queue linked list, we saw the conditions for its full or empty state. Today, we’ll code these implementations in C. Before proceeding, make sure you have finished till here. I would recommend seeing that first if you somehow missed the last docs since we discussed the concepts there.
+We have learned to implement queues using linked lists, covering the enqueue and dequeue methods. In the queue linked list, we have examined the conditions for its full or empty state. Today, we will write these implementations in C. Before proceeding, ensure that you have reviewed the previous sections. If you missed any of it, I recommend going back, as those concepts are crucial for understanding today's material.
 
-Let’s move onto our editors. I have attached the source code below for your reference.
+Let’s head to our editors. Below is the source code for your reference.
 
-### Understanding the below code snippet:
+### Understanding the Below Code Snippet:
 
-1. First of all, I’ll make you all aware of the things we have already completed. And I’ll make you feel confident about linked lists and queues.
-2. We had studied linked lists before, where we studied the traversal methods, insertion at different positions, deletion at different positions, cases of empty and full. And we have completed queues as well and their basic operations.
-3. Today, we'll integrate our knowledge of both to implement queues using linked lists.
-4. We don't need to copy everything we learned there in the linked lists. We will move with the basics, and this might feel like a revision of the past Docs.
-5. Create a struct Node with two of its members, one integer variable data to store the data, and another struct Node pointer next to store the address of the next node.
+1. **Review Previous Concepts:** I will first remind you of what we have already completed, boosting your confidence in handling linked lists and queues.
+2. **Recap on Linked Lists:** We have previously studied linked lists, including traversal methods, insertion and deletion at different positions, and conditions for empty and full states.
+3. **Integrate Knowledge:** Today, we will integrate our knowledge of both linked lists and queues to implement queues using linked lists.
+4. **Basic Implementation:** We won't need to copy everything from the linked list lessons. Instead, we'll focus on the basics, which may serve as a revision of past documentation.
+5. **Create the Node Structure:** Create a struct named `Node` with two members:
+   - An integer variable `data` to store the data.
+   - A pointer `next` of type `struct Node` to store the address of the next node.
 
 ```C
 struct Node

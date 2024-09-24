@@ -5,9 +5,11 @@ description: A Queue is a linear data structure that follows the First In, First
 
 ## Queue Data Structure
 
-In the last docs, we finished learning stacks. And today, we will start a new data structure named queue. Queue as an English word must be a well-known thing to you. We stand in a queue while waiting for our turn to come. Railway is one of the places where people stand in a long queue, waiting for their chance to buy a ticket.  One important thing to observe, which is quite intuitive, is that your chance comes first when you come first in the queue. And the people standing last, who have joined the queue last, get to buy the ticket in the end.
+The term "queue" is well-known; for example, we often stand in a queue while waiting for our turn. Railways are one of the places where people stand in long queues to buy tickets. 
 
-Unlike stacks, where we followed LIFO( Last In First Out ) discipline, here in the queue, we have FIFO( First In First Out). Follow the illustration below to get a visual understanding of a queue.
+One important aspect of queues is their intuitive nature: the first person to join the queue is the first to be served. This principle is known as FIFO (First In First Out), meaning the first element added to the queue will be the first one to be removed. In contrast, stacks operate under LIFO (Last In First Out) principles. 
+
+Follow the illustration below to get a visual understanding of a queue.
 
 <AdaptiveThemeImage
   src={{
@@ -20,18 +22,20 @@ Unlike stacks, where we followed LIFO( Last In First Out ) discipline, here in t
   alt="example"
 />
 
-In stacks, we had to maintain just one end, head, where both insertion and deletion used to take place, and the other end was closed. But here, in queues, we have to maintain both the ends because we have insertion at one end and deletion from the other end.
+In stacks, we maintained just one end (the head) for both insertion and deletion, while the other end was closed. In queues, however, we must manage both ends: insertion occurs at one end, and deletion happens at the other.
 
 ## Queue ADT
+
 **Data:**
 
-In order to create a queue, we need two pointers, one pointing to the insertion end, to gain knowledge about the address where the new element will be inserted to. And the other pointer pointing to the deletion end, which holds the address of the element which will be deleted first. Along with that, we need the storage to hold the element itself.
+To create a queue, we need two pointers: one pointing to the insertion end to indicate where the new element will be inserted, and the other pointing to the deletion end, which holds the address of the element that will be deleted first. Additionally, we need storage to hold the elements themselves.
 
 **Methods:**
 
-Here are some of the basic methods we would want to have in queues:
+Here are some basic methods we would want to have in queues:
 
-1. **enqueue( )** : to insert an element in a queue.
+1. **enqueue( )**: to insert an element into the queue.
+
 
 <AdaptiveThemeImage
   src={{
@@ -57,16 +61,16 @@ Here are some of the basic methods we would want to have in queues:
   alt="example"
 />
 
-3. firstVal(): to return the value which is at the first position.
+3. **firstVal()**: to return the value at the first position.
 
-4. lastVal(): to return the value which is at the last position.
+4. **lastVal()**: to return the value at the last position.
 
-5. peek(position):  to return the element at some specific position.
+5. **peek(position)**: to return the element at a specific position.
 
-6. isempty( ) / isfull( ): to determine whether the queue is empty or full, which helps us carry out efficient enqueue and dequeue operations.
+6. **isempty() / isfull()**: to determine whether the queue is empty or full, helping us perform efficient enqueue and dequeue operations.
 
-This was our abstract data type, queue. We have in this what we thought would suffice our needs for now. The list could be longer, but in my opinion, this is sufficient.
+This concludes our abstract data type for queues. While the list of methods could be longer, this is sufficient for our current needs.
 
-A queue can be implemented in a number of ways. We can use both an array and a linked list and even a stack, and not just that, but by any ADT. We’ll see all these methods in the coming tutorials. A queue is not limited to ticket counters or shops/malls, it has much wider applications, and you will yourself realize that while we proceed.
+A queue can be implemented in various ways, including using arrays, linked lists, or even stacks. Moreover, a queue has broader applications beyond ticket counters or shops/malls, which you'll discover as we proceed.
 
-A queue is a collection of elements with certain operations following FIFO (First in First Out) discipline. We insert at one end and delete from the other. And this is what you have to keep in mind for now. 
+A queue is a collection of elements with certain operations that follow the FIFO (First In First Out) discipline: we insert at one end and delete from the other.

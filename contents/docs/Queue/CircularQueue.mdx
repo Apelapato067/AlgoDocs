@@ -4,9 +4,9 @@ description: A Circular Queue is a linear data structure that overcomes the limi
 ---
 
 ## Introduction to Circular Queue in Data Structures
-We have completed learning the basics of queues and its operations so far. Before proceeding to the next section, let's catch up on what we covered in queues. Using a real-life example, we explored the meaning of queue. We learn that it follows the FIFO principle. We implemented a queue ADT and its basic operations using arrays. We wrote their code in C.
+You have completed learning the basics of queues and their operations so far. Before proceeding to the next section, let's catch up on what we covered in queues. 
 
-When we discussed queues, we decided to have two index variables *f* and *r*, which would maintain the two ends of the queue. If we follow the illustration below, we would see that our queue gets full when element 8 is pushed in the queue. In other words, we can only enqueue in a queue until the queue isn't full.
+When we discussed queues, we decided to have two index variables *f* and *r*, which would maintain the two ends of the queue. If we follow the illustration below, we would see that our queue gets full when element 8 is pushed into the queue. In other words, we can only enqueue in a queue until the queue isn't full.
 
 <AdaptiveThemeImage
   src={{
@@ -21,7 +21,9 @@ When we discussed queues, we decided to have two index variables *f* and *r*, wh
 
 > Figure 1: Using two integer variables to maintain the ends of a queue
 
-Now, we start dequeuing some elements. Let’s remove the first three elements. And now, if you carefully observe, our queue is still full since the rear end is at the array’s threshold. But technically, it has space worth three elements left. And this is one characteristic cum drawback of a linear/normal queue when implemented using arrays. We don’t get to efficiently utilize the space acquired by the array in the heap. Here the remaining three spaces remain unused for the whole time.
+Now, we start dequeuing some elements. Let’s remove the first three elements. If you carefully observe, our queue is still full since the rear end is at the array’s threshold. But technically, it has space for three elements left. 
+
+This highlights a characteristic cum drawback of a linear/normal queue when implemented using arrays: we don’t get to efficiently utilize the space acquired by the array in the heap. Here, the remaining three spaces remain unused for the whole time.
 
 <AdaptiveThemeImage
   src={{
@@ -92,4 +94,3 @@ And this makes us start from the beginning once we reach the threshold of the ar
 
 And this is the circular implementation of the same array we used to implement linearly. This allows the leftover spaces to be used again. This wheel type array is called the circular queue.
 
-I hope the concept behind using this circular queue is clear to you. Simply put, implementing the array circularly enables us to access the vacant spaces we left behind while deleting the elements. And now we can enqueue until the queue is actually full, and not just the way we did earlier. We’ll see the operations in the next segment.

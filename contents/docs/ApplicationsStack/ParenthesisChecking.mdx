@@ -4,24 +4,26 @@ description: Parenthesis Checking Using Stack in C Language.
 ---
 
 ## Parenthesis Checking Using Stack in C Language
-In the last Docs, we tried making parentheses matching intuitive and more understandable using stacks. We followed one simple algorithm to accomplish that.
 
-The algorithm states:
+In the last Docs, we made parentheses matching intuitive using stacks. We followed a simple algorithm:
 
-- Everytime you come across an opening parenthesis, push it in the stack.
-- Everytime you come across a closing parenthesis, pop one opening parenthesis out from the stack.
-- We call this match of parentheses unbalanced when we encounter either of the two of these troubles:
-    1. There is no more opening bracket inside the stack to pop, and you come across a closing bracket.
-    2. The stack size is not zero, or there are still more than zero opening brackets present in the stack after you come across EOE(end-of-expression).
+- **Push**: Whenever you encounter an opening parenthesis, push it onto the stack.
+- **Pop**: Whenever you encounter a closing parenthesis, pop an opening parenthesis from the stack.
+- **Unbalanced Conditions**:
+    1. If a closing parenthesis is found and the stack is empty, the parentheses are unbalanced.
+    2. If there are still opening brackets left in the stack after reaching the end of the expression, the parentheses are unbalanced.
 
-So, that was a quick revision of the things we learned in the previous Docs. We did enough examples in the previous docs; you can check them as well. In today's lesson, we will program the algorithm in C.
+In today’s lesson, we will implement this algorithm in C.
 
-**Understanding the code snippet below:**
+**Understanding the Code Snippet:**
 
-1. Start by creating an integer function paranthesisMatch, and pass the reference to a character array(expression) exp in the function as a parameter. This function will return 1 if the parentheses are balanced and zero otherwise. 
-
-2. Inside that function, create a stack pointer sp. And initialize the size member to some big number, let it be 100. Initialize the top to -1, and assign the array pointer a memory location in the heap. You have the freedom to choose any data structure you want to implement this stack. We have learned stacks using both arrays and linked lists very efficiently.
-
+1. **Function Definition**: Create an integer function `parenthesisMatch`, passing a character array (`expression`) as a parameter. The function returns `1` if the parentheses are balanced and `0` otherwise.
+   
+2. **Stack Initialization**:
+   - Declare a stack pointer `sp`.
+   - Initialize the `size` to `100` (or any suitable large number).
+   - Set `top` to `-1` to indicate an empty stack.
+   - Allocate memory for the stack array in the heap.
 ```C
     struct stack* sp;
     sp->size = 100;
@@ -29,21 +31,21 @@ So, that was a quick revision of the things we learned in the previous Docs. We 
     sp->arr = (char *)malloc(sp->size * sizeof(char));
 ```
 
-### Code Snippet 1: Creating and Initialising stack array.
+### Code Snippet 1: Creating and Initializing Stack Array
 
-3. So, it would be better if you just copy everything of stack implementation because it will more or less remain the same for that part. I’ll use the array one.
+1. To implement the stack, start by copying the entire stack implementation from before, as it will remain mostly the same. For this example, I’ll use an array-based stack.
 
-4. Change the datatype of the array from integer to char. Accordingly, change everything from integer to char. And arr to exp.
+2. Change the data type of the stack array from `int` to `char`. Also, update any relevant references from `int` to `char` and rename `arr` to `exp`.
 
-5. Run a loop starting from the beginning of the expression till it reaches EOE.
+3. Create a loop that goes through each character of the expression from the start until you reach the end.
 
-6. If the current character of the expression is an opening parenthesis,’(' , push it into the stack using the push operation.
+4. If you find an opening parenthesis `(`, push it onto the stack using the `push` operation.
 
-7. Else if the current character is a closing parenthesis ‘)’, see if the stack is not empty, using isEmpty, and if it is, return 0 there itself, else pop the topmost character using pop operation. 
+5. If you find a closing parenthesis `)`, check if the stack is empty by using the `isEmpty` function. If the stack is empty, return `0` (indicating unbalanced parentheses). If it is not empty, pop the top character from the stack using the `pop` operation.
 
-8. In the end, if the stack becomes empty, return 1, else 0.
+6. After processing the entire expression, if the stack is empty, return `1` (indicating balanced parentheses). If the stack is not empty, return `0`.
 
-9. In the main, define a random character array expression and just passing this expression to parenthesisMatch would do our job.
+7. In the `main` function, define a character array with an expression and pass this expression to the `parenthesisMatch` function to check if the parentheses are balanced.
 
 **Code for parentheses matching:**
 
@@ -229,8 +231,3 @@ PS D:\Code>
 ```
 > Figure 2: Output of the above program
 
-And if you could observe, this application of stacks uses almost all the operations we had learned before. From push and pop to isEmpty, everything. No doubt why this is the first one we are discussing. 
-
-Note: Parenthesis matching nowhere tells us if the given expression is mathematically valid or not. Because it is not supposed to, this algorithm has been meant just to return whether the parentheses in the expression are balanced or not.
-
-For e.g., the expression ((8)(*9)) is mathematically invalid but has balanced parentheses.

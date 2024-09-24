@@ -5,11 +5,11 @@ description: Time Complexity of Operations in Stack Using Arrays.
 
 ## stackTop, stackBottom & Time Complexity of Operations in Stack Using Arrays
 
-In the last Docs, we talked about the peek operation and implemented it in C using arrays. Today, we will explore some new stack operations. 
+In the last documents, we discussed the peek operation and its implementation in C using arrays. Today, we will explore some new stack operations.
 
-Take a deep breath of relief since the things we are discussing today are the easiest of all. We will first start by learning about two operations we have in stacks, stackTop and stackBottom.
+Breathe easy, as the concepts we are covering today are among the simplest. We will start by learning about two operations in stacks: `stackTop` and `stackBottom`.
 
-Let’s consider a stack array for the understanding purpose.
+Let’s consider a stack array for better understanding.
 
 <AdaptiveThemeImage
   src={{
@@ -24,34 +24,33 @@ Let’s consider a stack array for the understanding purpose.
 
 ### stackTop:
 
-This operation is responsible for returning the topmost element in a stack. Retrieving the topmost element was never a big deal. We can just use the stack member top to fetch the topmost index and its corresponding element. Here, in the illustration above, we have the top member at index 2. So, the stackTop operation shall return the value 22.
+This operation returns the topmost element in a stack. Retrieving the topmost element is straightforward. We can use the stack member `top` to fetch the topmost index and its corresponding element. For example, if the `top` member is at index 2, the `stackTop` operation will return the value at that index.
 
 ### stackBottom:
 
-This operation is responsible for returning the bottommost element in a stack, which intuitively, is the element at index 0. We can just fetch the bottommost index, which is 0, and return the corresponding element. Here, in the illustration above, we have the bottommost element at index 0. So, the stackBottom operation shall return the value 7.
+This operation returns the bottommost element in a stack, which is the element at index 0. We can simply access the bottommost index (0) and return the corresponding element. If the bottommost element is at index 0, then the `stackBottom` operation will return that value.
 
-One thing one must observe here is that both these operations happen to work in a constant runtime, that is O(1). Because we are just accessing an element at an index, and that works in a constant time in an array.
+Both of these operations have a constant runtime of O(1) since they involve accessing elements at specific indices in an array.
 
 ### Time complexities of other operations:
 
-- **isEmpty( )**: This operation just checks if the top member equals -1. This works in a constant time, hence, O(1).
-- **isFull( )**: This operation just checks if the top member equals size -1. Even this works in a constant time, hence, O(1).
-- **push( )**: Pushing an element in a stack needs you to just increase the value of top by 1 and insert the element at the index. This is again a case of O(1).
-- **pop( )**: Popping an element in a stack needs you to just decrease the value of top by 1 and return the element we ignored. This is again a case of O(1).
-- **peek( )**: Peeking at a position just returns the element at the index, (top - position + 1), which happens to work in a constant time. So, even this is an example of O(1).
-So, basically all the operations we discussed follow a constant time complexity.
+- **isEmpty( )**: Checks if the `top` member equals -1, working in O(1).
+- **isFull( )**: Checks if the `top` member equals `size - 1`, also O(1).
+- **push( )**: Involves increasing the `top` by 1 and inserting the element, which is O(1).
+- **pop( )**: Decreases the `top` by 1 and returns the ignored element, which is O(1).
+- **peek( )**: Returns the element at the index `(top - position + 1)`, also O(1).
+
+Thus, all the operations we discussed have a constant time complexity.
 
 **Implementation:**
 
-I would suggest you all implement them on your own before moving ahead. I have attached the snippet below, for your referral.
+I encourage you to implement these on your own before moving ahead. Below is a snippet for your reference.
 
 ### Understanding the snippet below:
 
-1. First of all, copy everything we have covered up to this point in your IDEs. I don’t want to repeat them all and make this lengthy. 
-
-2. I suppose you have all the functions and declarations done. 
-
-3. Create an integer function stackTop, and pass the reference to the stack you created as a parameter. Just return the element at the index top of the array. And that’s it.
+1. First, copy everything we have covered up to this point into your IDE. I want to avoid repetition to keep it concise.
+2. Ensure you have all the functions and declarations set up.
+3. Create an integer function `stackTop`, passing the reference to the stack as a parameter, and return the element at the index `top` of the array. That’s it!
 
 ```C
 int stackTop(struct stack* sp){
@@ -188,14 +187,10 @@ Now, since we have done pushing elements into the stack, we can call our functio
 And the output we received was:
 
 ```
- 
 The top most value of this stack is 75  
 The bottom most value of this stack is 1
 PS D:\Code>
 ```
 
-**Figure 1: Output of the above program**
+*Figure 1: Output of the above program*
 
-Finally, I can say that it is all that we had when we implemented stacks using arrays. If you haven't gained enough confidence, hold on and go through these lectures again. We can now move to use linked lists to implement these stacks.
-
-> I appreciate your support throughout. I hope you enjoyed the Docs. If you genuinely appreciate my work, please let your friends know about this Docs too. 

@@ -5,24 +5,26 @@ description: A Double-Ended Queue (Deque) is a data structure that allows insert
 
 ## Double-Ended Queue
 
-In the last docs, we finished learning about queues. We saw both queues and circular queues. We implemented queues using both arrays and linked lists. We saw all their operations. There is actually nothing left there in queues except one interesting topic, which is DE-Queue. It should not be confused with the dequeue we learnt. It is **Double Ended Queues**.
+In the previous documentation, we finished learning about queues, covering both regular queues and circular queues. We implemented queues using arrays and linked lists, along with all their operations. The only remaining topic in this area is **Double-Ended Queues** (DEQueue), which should not be confused with the dequeue operation we previously discussed.
 
-We had certain characteristics in normal queues, which I would like to summarize here:
+### Characteristics of Normal Queues
 
-1. A queue is very similar to the real-life queue, where you stand in the last and wait for your turn.
-2. Similarly, the elements get inserted from one end and exit from the other. 
-3. We had two pointers cum index variables to maintain the two ends of this queue.
-4. We followed the FIFO principle throughout the lectures.
+To recap, normal queues have certain characteristics:
 
-And now, in **DEQueue, we don’t follow the FIFO principle**. As the name suggests, this variant of the queue is double-ended. This means that unlike normal queues where insertion could only happen at the rear end, and deletion at the front end, these double-ended queues have the freedom to insert and delete elements from the end of their choice.
+1. A queue is similar to a real-life queue, where individuals stand at the back and wait for their turn.
+2. Elements are inserted from one end and exit from the other.
+3. We maintain two pointers (or index variables) to manage the two ends of the queue.
+4. We adhere to the FIFO (First In, First Out) principle throughout our discussions.
 
-Double-ended queues, hence, have the following characteristics:
+### Characteristics of Double-Ended Queues
 
-1. They don't follow the FIFO discipline.
-2. Insertion can be done at both the ends of the queue.
-3. Deletion can also be done from both ends of the queue.
+In **DEQueue**, we deviate from the FIFO principle. As the name suggests, this variant of the queue is double-ended, allowing for more flexibility. Specifically, double-ended queues have the following characteristics:
 
-You would assume the implementation part of double-ended queues to be on the tough side, but believe me, it is straightforward to consume. I’ll use illustrations to make you understand things better.
+1. They do not follow the FIFO discipline.
+2. Insertion can be performed at both ends of the queue.
+3. Deletion can also occur from both ends of the queue.
+
+You might assume that implementing double-ended queues is complex, but it's actually quite straightforward. I will use illustrations to help you understand these concepts better.
 
 
 ## Insertion in a DEQueue:
@@ -92,30 +94,31 @@ Now, for one moment, think of the rear as the front end. You would simply then i
   alt="example"
 />
 
-And yeah, we are done deleting the element from the rear end. And inserting at the front end. Moving further, DEQueues are of two types:
+And we are done with deleting elements from the rear end and inserting at the front end. Moving forward, double-ended queues (DEQueues) can be categorized into two types:
 
-1. Restricted Input DEQueue
-2. Restricted Output DEQueue
+1. **Restricted Input DEQueue**
+2. **Restricted Output DEQueue**
 
-**Restricted Input DEQueue:**
-Input restricted DEQueues don’t allow insertion on the front end. But you can delete from both ends.
+### Restricted Input DEQueue
 
-**Restricted Output DEQueue:**
-Output restricted DEQueues don’t allow deletion from the rear end. But you can perform the insertion on both the ends.
+In input restricted DEQueues, insertion at the front end is not allowed, but deletion can occur from both ends.
 
-Now the main part is that you would write the program for implementing the Double Ended Queue ADT yourself this time! I know you are capable of doing that. For your convenience, I would like to discuss the ADT part. I would mention all the functionalities one would expect in DEQueues. So, yeah, let’s see the DEQueue ADT.
+### Restricted Output DEQueue
 
-**DEQueue ADT:**
-The data part would be the same as the queue. 
+In output restricted DEQueues, deletion from the rear end is not permitted, while insertion can be performed at both ends.
 
-**Methods:**
-All the operations except the enqueue and dequeue will remain the same as that of the queue. In place of enqueue and dequeue, we would have: 
+### DEQueue ADT
 
-1. enqueueF( )
-2. enqueueR( )
-3. dequeueF( )
-4. dequeueR( )
+Now, the main task is for you to implement the Double Ended Queue Abstract Data Type (ADT) on your own! I believe you are capable of doing this. For your convenience, let’s discuss the ADT and its functionalities.
 
+#### Methods
 
-You can even have more of these, as initialise( ), print( ), etc. This was our abstract data type, DEQueue. Do implement their programs, and had it not been under your capability, I would have taught it for sure. But you can surely do that on your own. Do tell me if you could. That would be one of those reasons for me to be happy.
+The data structure will remain the same as that of a queue. All operations, except for enqueue and dequeue, will follow the same principles as in a regular queue. Instead of `enqueue` and `dequeue`, we will use the following methods:
+
+1. `enqueueF()` – for inserting at the front.
+2. `enqueueR()` – for inserting at the rear.
+3. `dequeueF()` – for deleting from the front.
+4. `dequeueR()` – for deleting from the rear.
+
+You can also include additional methods such as `initialize()`, `print()`, and others. This concludes our discussion on the abstract data type of DEQueue. Implement these programs.
 

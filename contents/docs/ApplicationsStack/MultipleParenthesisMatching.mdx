@@ -5,21 +5,40 @@ description: Multiple Parenthesis Matching Using Stack with C Code.
 
 ## Multiple Parenthesis Matching Using Stack with C Code
 
-we saw the implementation of parentheses matching using stacks in C. One thing you must have observed is that we used only one type of parenthesis throughout the docs. But in mathematics, we have expressions consisting of all three types of parenthesis. Today we will be interested in matching parentheses when all three types of parentheses are used in any expression. This is what we called multi-parenthesis matching.
+In our previous discussions, we implemented parentheses matching using stacks in C, focusing on a single type of parenthesis. Today, we will extend that concept to handle multiple types of parentheses: round `()`, square `[]`, and curly `{}` brackets. This is what we call multi-parenthesis matching.
 
-If you remember, parenthesis matching has nothing to do with the validity of the expression. It just tells whether an expression has all the parentheses balanced or not. A balanced parentheses expression has a corresponding closing parenthesis to all of its opening parentheses. When we talk about matching multi parenthesis, our focus is mainly on the three types of an opening parenthesis, `[ { (` and their corresponding closing parentheses, `) } ]`. So, basically, this docs is just an extension of what we learned in the previous two.
+### Understanding Multi-Parenthesis Matching
 
-Modifying what we did earlier to make it work for multi-matching needs very little attention. Just follow these steps:
+1. **Balanced Parentheses**: An expression is considered balanced if every opening parenthesis has a corresponding closing parenthesis.
 
-1. Whenever we encounter an opening parenthesis, we simply push it in the stack, similar to what we did earlier.
+2. **Types of Parentheses**: We will be working with three types of opening parentheses: `(`, `{`, and `[` and their corresponding closing parentheses: `)`, `}`, and `]`.
 
-2. And when we encounter a closing parenthesis, the following conditions should be met to declare its balance:
+3. **Key Conditions for Matching**:
+   - When encountering a closing parenthesis, first check that the stack is not empty.
+   - Then, verify that the topmost element in the stack matches the type of closing parenthesis encountered.
 
-    - Before we pop, this size of the stack must not be zero.
-    - The topmost parenthesis of the stack must match the type of closing parenthesis we encountered.
-3. If we find a corresponding opening parenthesis with conditions in point 2 met for every closing parenthesis, and the stack size reduces to zero when we reach EOE, we declare these parentheses, matching or balanced. Otherwise not matching or unbalanced.
+### Steps for Implementation
 
-So, basically, we modified the pop operation. And that's all. Let's see what additions to the code we would like to make. But before that follow the illustration below to get a better understanding of the algorithm.
+1. **Pushing Opening Parentheses**: Whenever we encounter an opening parenthesis, push it onto the stack, just like in the previous implementation.
+
+2. **Popping for Closing Parentheses**: For closing parentheses, ensure:
+   - The stack size is greater than zero (not empty).
+   - The top of the stack matches the current closing parenthesis.
+
+3. **Final Check**: After processing the entire expression, if the stack is empty, the parentheses are balanced; otherwise, they are not.
+
+### Illustration
+
+- When encountering an opening parenthesis, such as `{`, push it onto the stack.
+- If you encounter a closing parenthesis like `}`, check:
+  - Is the stack empty? If yes, the expression is unbalanced.
+  - Does the top of the stack have the corresponding opening parenthesis `{`? If yes, pop it from the stack; if no, the expression is unbalanced.
+
+This modification to our earlier implementation is minimal but crucial for handling multiple types of parentheses.
+
+### Next Steps
+
+Now, let's look at the code changes needed to implement this multi-parenthesis matching. We'll focus on modifying the `pop` operation and adjusting our checks accordingly.
 
 <AdaptiveThemeImage
   src={{
@@ -75,21 +94,24 @@ We’ll try checking if the above expression has balanced multi-parentheses or n
 
 ### Step 3: Since we couldn’t pop an opening bracket corresponding to a closed bracket, we would just end the program here, declaring the parentheses unbalanced.
 
-The modified function should follow this algorithm. Let’s now move to our editors.
+## Modifying the Parenthesis Matching Function for Multiple Parentheses
 
-**Understanding the code snippet below:**
+Now, let's implement the changes needed to modify our existing parenthesis matching function to handle multiple types of parentheses. We will follow the algorithm outlined previously. 
 
-1. Since in this docs, our main focus is to modify the code for matching parenthesis of a single type to matching multi parentheses., we’ll copy the whole thing from our last docs, from creating the function parenthesisMatch to the stack inside.
+### Understanding the Code Snippet
 
-2. It is important to copy everything because a lot of things will remain the same. We make zero changes in the declaration of the stack and its members. 
+1. **Copy Existing Code**: Start by copying the entire implementation of the `parenthesisMatch` function and the stack structure from our previous documentation. This will save time, as many parts of the code remain unchanged.
 
-3. Run a loop starting from the beginning of the expression till it reaches EOE.
+2. **No Changes in Stack Declaration**: The stack declaration and its members will remain the same. We will only focus on modifying the logic to accommodate multiple types of parentheses.
 
-4. If the current character of the expression is an opening parenthesis, be it of any type`,’(‘, ‘[’, ’{’,` push it into the stack using the push operation.
+3. **Iterate Through the Expression**: Run a loop to traverse the character array from the beginning until the end of the expression (EOE).
 
-5. Else if the current character is a closing parenthesis of any type `‘)’, ‘]’, ’}’,` see if the stack is not empty, using isEmpty, and if it is, return 0 there itself, else pop the topmost character using pop operation and store it in another character variable named popped_ch declared globally.
+4. **Push Opening Parentheses**: If the current character is an opening parenthesis (`(`, `[`, or `{`), push it onto the stack using the `push` operation.
 
-6. Create an integer function, match which will get the characters, popped_ch, and the current character of the expression as two parameters. Inside this function, check if these two characters are the same. If they are the same, return 1, else 0.
+5. **Handle Closing Parentheses**: If the current character is a closing parenthesis (`)`, `]`, or `}`):
+   - First, check if the stack is not empty using the `isEmpty` function. If it is empty, return `0` to indicate unbalanced parentheses.
+   - If the stack is not empty, pop the topmost character from the stack and store it in a character variable named `popped_ch`, which should be declared globally.
+
 
 ```C
 int match(char a, char b){
@@ -108,9 +130,11 @@ int match(char a, char b){
 
 > Code Snippet 1: Creating the match function
 
-6. If the match function returns 1, our pop operation is successful, and we can continue checking further characters; else, if it returns 0, end the program here itself and return 0 to the main.
+6. Create an integer function `match` which will take `popped_ch` and the current character of the expression as parameters. Inside this function, check if these two characters are the same. If they are, return 1; otherwise, return 0.
 
-7. And if things went well throughout, and in the end, if the stack becomes empty, return 1, else 0.
+7. If the `match` function returns 1, our pop operation is successful, and we can continue checking further characters; else, if it returns 0, end the program here itself and return 0 to the main.
+
+8. If everything goes well throughout, and in the end, if the stack becomes empty, return 1; else return 0.
 
 **Code for multi parentheses matching:**
 
@@ -321,6 +345,4 @@ PS D:\Code>
 ```
 
 > Figure 2: Output of the above program
-
-So, now we are capable of handling the parenthesis of more than one type in an expression. This was matching multi-parentheses. In order to accommodate any no. of types of parentheses, these codes can be modified further. We should now move to our next topic. I am excited, and so should you be!
 

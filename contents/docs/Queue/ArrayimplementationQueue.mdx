@@ -5,25 +5,26 @@ description: In the array implementation of a Queue, a fixed-size array is used 
 
 ## Array implementation of Queue and its Operations in Data Structure
 
-In the lastDocs, we discussed the idea of the implementation of queues using arrays. We talked about the basic operations and their best methods. And we came to the conclusion that if we maintain two index variables, frontInd & backInd, we can accomplish both enqueue(insertion) and dequeue(deletion) in constant time complexity. Let me just enlist the method we prepared:
+In the last docs on the implementation of queues using arrays, we discussed the basic operations and their optimal methods. We concluded that by maintaining two index variables, frontInd and backInd, we can achieve both enqueue (insertion) and dequeue (deletion) in constant time complexity. 
 
-1. Insertion( enqueue ):
+1. **Insertion (enqueue)**:
+   - Increment backInd by 1.
+   - Insert the element at index backInd.
+   - Time complexity: O(1).
 
-- Increment backInd by 1.
-- Insert the element
-- Time complexity: O(1)
+2. **Deletion (dequeue)**:
+   - Remove the element at index frontInd + 1.
+   - Increment frontInd by 1.
+   - Time complexity: O(1).
 
-2. Deletion( dequeue ):
+3. **Indices**:
+   - The first element is at index frontInd + 1.
+   - The rearmost element is at index backInd.
 
-- Remove the element at the zeroth index( no need for that in an array )
-- Increment frontInd by 1.
-- Time complexity: O(1)
+4. **Conditions**:
+   - Condition for queue empty: frontInd = backInd.
+   - Condition for queue full: backInd = size - 1.
 
-3. Our first element is at index frontInd +1, and the rearmost element is at index backInd.
-
-4. Condition for queue empty: frontInd = backInd.
-
-5. Condition for queue full: backInd = size-1.
 
 Given array below represents a queue:
 <AdaptiveThemeImage
@@ -37,15 +38,16 @@ Given array below represents a queue:
   alt="example"
 />
 
-To implement this, we’ll use a structure and have the following members inside it:
+To implement this, we’ll use a structure with the following members:
 
-1. size: to store the size of the array
+1. **size**: to store the size of the array.
+  
+2. **frontInd**: to store the index prior to the first element.
+  
+3. **backInd**: to store the index of the rearmost element.
+  
+4. **arr**: to store the address of the array dynamically allocated in the heap.
 
-2. frontInd: to store the index prior to the first element.
-
-3. backInd: to store the index of the rearmost element.
-
-4. *arr: to store the address of the array dynamically allocated in heap.
 
 ```c
 struct queue
@@ -84,11 +86,11 @@ Enqueuing is inserting a new element in a queue. Prior to inserting an element i
 />
 
 ### Dequeue:
-Dequeuing is deleting the element in a queue which is the first among all the elements to get inserted. Prior to deleting that element from a queue, we need to follow the below-mentioned points:
+Dequeuing is the process of deleting the element in a queue that is the first among all the elements to get inserted. Before deleting that element from a queue, we need to follow these points:
 
 3. First, check if the queue is already not empty.
 
-4. If it is, it is the case of queue underflow, else just increment frontInd by 1. In arrays, we don’t delete elements; we just stop referring to the element. Follow the illustration below.
+4. If it is empty, this indicates a case of queue underflow. Otherwise, just increment `frontInd` by 1. In arrays, we don’t delete elements; we simply stop referring to the element. Follow the illustration below:
 
 <AdaptiveThemeImage
   src={{
@@ -103,10 +105,11 @@ Dequeuing is deleting the element in a queue which is the first among all the el
 
 **Condition for isEmpty:**
 
-- If our frontInd equals backInd, then there is no element in our queue, and this is the case of an empty queue.
+- If `frontInd` equals `backInd`, then there are no elements in our queue, indicating an empty queue.
 
 **Condition for isFull:**
-- If our backInd equals (the size of the array) -1, then there is no space left in our queue, and this is the case of a full queue.
+
+- If `backInd` equals `(size of the array) - 1`, then there is no space left in our queue, indicating a full queue.
 
 
 > So, these are the basic operations of a queue. We have implemented everything using arrays. We’ll see the programming part in the next Docs. Keep up with the docs, and you won’t miss anything.
