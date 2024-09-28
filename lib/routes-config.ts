@@ -80,7 +80,7 @@ export const ROUTES = [
         { title: "Bubble Sort Program", href: "/BubbleSortProgram" },
         { title: "Insertion Sort Algorithm", href: "/InsertionSortAlgorithm" },
         { title: "Insertion Sort Program", href: "/InsertionSortProgram" },
-        // { title: "Circular Queue & Operations on Circular Queue", href: "/CircularOperationsCircularQueue" },
+        { title: "Selection Sort Algorithm", href: "/SelectionSortAlgorithm" },
         // { title: "Queue Using Linked Lists", href: "/QueueLinkedLists" },
         // { title: "Double-Ended Queue in Data Structure", href: "/DE-Queue" },
       ],
