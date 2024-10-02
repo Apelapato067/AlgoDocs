@@ -81,8 +81,8 @@ export const ROUTES = [
         { title: "Insertion Sort Algorithm", href: "/InsertionSortAlgorithm" },
         { title: "Insertion Sort Program", href: "/InsertionSortProgram" },
         { title: "Selection Sort Algorithm", href: "/SelectionSortAlgorithm" },
-        // { title: "Queue Using Linked Lists", href: "/QueueLinkedLists" },
-        // { title: "Double-Ended Queue in Data Structure", href: "/DE-Queue" },
+        { title: "Selection Sort Program", href: "/SelectionSortProgram" },
+        { title: "QuickSort Algorithm", href: "/QuickSortAlgorithm" },
       ],
     },
 ];

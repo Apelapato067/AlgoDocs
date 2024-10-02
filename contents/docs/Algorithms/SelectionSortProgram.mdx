@@ -1,0 +1,167 @@
+---
+title: Selection Sort Program
+description: Selection Sort is a simple comparison-based sorting algorithm. It repeatedly selects the smallest element from the unsorted portion of the array and swaps it with the first unsorted element.
+---
+
+## Selection Sort Program in C
+
+Let's review the characteristics of the selection sort algorithm before moving on to the programming part:
+
+1. The time complexity of the selection sort algorithm is `O(n^2)` in all cases.
+2. It is not a stable algorithm because it does not preserve the original order of equal elements, as we saw in an earlier example.
+3. Selection sort is not a recursive algorithm.
+4. It is not an adaptive algorithm, as it makes comparisons regardless of whether the array is already sorted or not.
+
+That being all that was known about the selection sort algorithm, let us move on to the programming part. I have attached the source code below. Follow it as we proceed.
+
+### Understanding the code snippet below:
+
+1. Start by defining an array of numbers that we want to sort.
+
+2. Define a variable to store how many numbers are in the array.
+
+3. Before writing the Selection Sort function, create a function to display the numbers in the array.
+
+4. If you already have a function to display the array from earlier lessons, just use that.
+
+```C
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+```
+> Code Snippet 1: Creating the printArray function
+
+5. Create a function called `selectionSort` that does not return a value (void) and takes the array and its length as inputs. 
+
+   Inside this function, create two integer variables: one for the minimum index called `indexOfMin` and another for swapping called `Now`. 
+
+   Use a loop to keep track of the number of passes. For an array of length `n`, you will need to make `(n-1)` passes, starting from the 0th index and ending at the (n-1)th index.
+
+   At each pass, set `indexOfMin` to the first index of the unsorted part of the array, which is represented by `i`.
+
+Create another loop to go through the rest of the unsorted elements and check for any element smaller than the one at `indexOfMin`. 
+
+   This loop should start from `i + 1` and go to the end of the array. 
+
+   During each iteration, compare the current element at index `j` with the element at `indexOfMin`. If the element at index `j` is smaller, update `indexOfMin` to `j`.
+
+After finishing the second loop, swap the elements at indices `i` and `indexOfMin` using a temporary variable. Repeat these steps for each pass until the array is sorted.
+
+And at the end, when you finish iterating through both the `i` and the `j` loops, you would receive a sorted array. All we had to do was this.
+
+```C
+void selectionSort(int *A, int n){
+    int indexOfMin, temp;
+    printf("Running Selection sort...\n");
+    for (int i = 0; i < n-1; i++)
+    {
+        indexOfMin = i;
+        for (int j = i+1; j < n; j++)
+        {
+            if(A[j] < A[indexOfMin]){
+                indexOfMin = j;
+            }
+        }
+        // Swap A[i] and A[indexOfMin]
+        temp = A[i];
+        A[i] = A[indexOfMin];
+        A[indexOfMin] = temp;
+    }
+}
+```
+
+> Code Snippet 2: Creating the selectionSort function
+
+**Here is the whole source code:**
+
+```C
+#include<stdio.h>
+
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+
+void selectionSort(int *A, int n){
+    int indexOfMin, temp;
+    printf("Running Selection sort...\n");
+    for (int i = 0; i < n-1; i++)
+    {
+        indexOfMin = i;
+        for (int j = i+1; j < n; j++)
+        {
+            if(A[j] < A[indexOfMin]){
+                indexOfMin = j;
+            }
+        }
+        // Swap A[i] and A[indexOfMin]
+        temp = A[i];
+        A[i] = A[indexOfMin];
+        A[indexOfMin] = temp;
+    }
+}
+
+int main(){
+    // Input Array (There will be total n-1 passes. 5-1 = 4 in this case!)
+    //  00  01  02  03  04
+    // |03, 05, 02, 13, 12
+
+    // After first pass
+    //  00  01  02  03  04
+    //  02,|05, 03, 13, 12
+
+    // After second pass
+    // 00  01  02  03  04
+    // 02, 03,|05, 13, 12
+
+    // After third pass
+    // 00  01  02  03  04
+    // 02, 03, 05,|13, 12
+
+    // After fourth pass
+    // 00  01  02  03  04
+    // 02, 03, 05, 12,|13
+
+
+    int A[] = {3, 5, 2, 13, 12};
+    int n = 5;
+    printArray(A, n);
+    selectionSort(A, n);
+    printArray(A, n);
+
+    return 0;
+}
+```
+
+> Code Snippet 3: Program to implement the Selection Sort Algorithm
+
+Let us now check if our functions work well. Consider an array A of length 5.
+
+```C
+    int A[] = {3, 5, 2, 13, 12};
+    int n = 5;
+    printArray(A, n);
+    selectionSort(A, n);
+    printArray(A, n);
+```
+
+> Code Snippet 4: Using the selectionSort function
+
+And the output we received was:
+
+```
+3 5 2 13 12 
+Running Selection sort...
+2 3 5 12 13 
+PS D:\Code>
+```
+
+> Figure 1: Output of the above program
+

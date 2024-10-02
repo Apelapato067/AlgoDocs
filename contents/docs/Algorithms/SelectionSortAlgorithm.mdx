@@ -17,3 +17,258 @@ Suppose we are given an array of integers, and we are asked to sort them using t
   height={450}
   alt="example"
 />
+
+In selection sort, we sort the array by repeatedly finding the smallest element from the unsorted part and placing it in its correct position. With each pass, the array becomes more sorted, as the smallest element moves to the correct spot.
+
+To do this, we:
+
+1. Assume the first element of the unsorted part is the smallest.
+2. Compare it with the rest of the unsorted elements to find the actual smallest.
+3. Swap the smallest element with the first unsorted element.
+
+We repeat this process, reducing the unsorted part by one element each time, until the entire array is sorted. Since our array has 5 elements, it only takes 4 passes to sort it.
+
+
+### 1st Pass:
+
+At first pass, our whole array comes under the unsorted part. We will start by assuming 0 as the min index. Now, we’ll have to check among the remaining 4 elements if there is still a lesser element than the first one.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/131.svg",
+    light: "/images/131.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And when we compared the element at min index with the element at index 1, we found that 0 is less than 8 and hence we update our min index to 1.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/132.svg",
+    light: "/images/132.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And now we keep checking with the updated min. Since 7 is not less than 0, we move ahead.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/133.svg",
+    light: "/images/133.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And now we compared the elements at index 1 and 3, and 0 is still lesser than 1, so we move ahead without making any changes.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/134.svg",
+    light: "/images/134.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And now we compared the element at the min index with the last element. Since there is nothing to change, we end our 1st pass here. Now we simply replace the element at 0th index with the element at the min index. And this gives us our first sorted subarray of size 1. And this is where our first pass finishes. We should make an overview of what we received at the end of the first pass.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/135.svg",
+    light: "/images/135.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+### 2nd Pass:
+
+We now start from the beginning of the unsorted array, with a reduced unsorted part of length 4. Hence the number of comparisons would be just 3. We assume the element at index 1 is the one at the min index and start iterating to the right for finding the minimum element.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/136.svg",
+    light: "/images/136.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since 7 is less than 8, we update our min index with 2. And move further.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/137.svg",
+    light: "/images/137.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Next, we compared the elements 7 and 1, and since 1 is still lesser than 7, we update the min index by 3. Then, we move ahead to the next comparison.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/138.svg",
+    light: "/images/138.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since 3 is greater than 1, we don’t make any changes here. And since we are finished with the array, we stop our pass here itself, and swap the element at index 1 with this element at min index. And that would be it for the second pass. Let’s see how close we have reached to the sorted array.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/139.svg",
+    light: "/images/139.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since 8 is greater than 7, we would make no change, but move ahead.
+
+### 3rd Pass:
+We’ll again start from the beginning of the unsorted subarray which is from the index 2, and make the min index equal to 2 for now. And this time our unsorted part has a length 3, hence no. of comparisons would be 2. 
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/145.svg",
+    light: "/images/145.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Since 8 is greater than 7, we would make no change, but move ahead.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/146.svg",
+    light: "/images/146.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Comparing the elements at index min and 4, we found 3 to be smaller than 7 and hence an update is needed here. So, we update min to 4.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/147.svg",
+    light: "/images/147.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since that was the last comparison of the third pass, we make a swap of the indices 2 and min. And the result at the end would be:
+
+### 4th Pass:
+We now have the sorted subarray of length 3, hence the new min would be at the index 3. And for the unsorted part of length 2, we would make just a single comparison. So, let’s see that.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/148.svg",
+    light: "/images/148.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since 7 is less than 8, we update our min to 4. And since that was the only comparison in this pass, we finish our procedure here by swapping the elements at the indices min and 3. And see at the final results:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/149.svg",
+    light: "/images/149.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since a subarray with a single element is always sorted, we ignore the only unsorted part and make it sorted too.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/150.svg",
+    light: "/images/150.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And this is why the Selection Sort algorithm got its name. We select the minimum element at each pass and give it its final position. Few conclusions before we proceed to the programming segment:
+
+## Time Complexity of Selection Sort:
+
+For an array of length 5, we made 4 passes. Therefore, for an array of length `n`, we need to make `n-1` passes.
+
+If we count the number of comparisons made at each pass, we had 4 comparisons in the first pass, 3 comparisons in the second pass, 2 comparisons in the third pass, and 1 comparison in the fourth pass.
+
+This results in a total of `4 + 3 + 2 + 1 = 10` comparisons.
+
+Since each comparison presents the possibility of updating the minimum element, 10 comparisons would be equivalent to making 10 updates.
+
+Thus, for an array of length `n`, the total number of comparisons is:
+
+```
+(n-1) + (n-2) + (n-3) + (n-4) + ... + 1
+```
+
+Sum from 1 to n-1, we get , and hence the time complexity of the algorithm would be **O(n<sup>2</sup>)**.
+
+Selection sort algorithm is not a stable algorithm. Since the smallest element is replaced with the first element at each pass, it may jumble up positions of equal elements very easily. Hence, unstable. Refer to the example below:
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/151.svg",
+    light: "/images/151.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+It is not a recursive algorithm, since we didn’t use recursion here.
+
+Selection sort would anyways compare every element with the min element, regardless of the fact if the array is sorted or not, hence selection sort is not an adaptive algorithm by default.
+
+This algorithm offers the benefit of making the least number of swaps to sort an array. We don’t make any redundant swaps here.

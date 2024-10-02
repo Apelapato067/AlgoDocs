@@ -1,0 +1,137 @@
+---
+title: QuickSort Algorithm
+description: The QuickSort algorithm is an efficient, divide-and-conquer sorting method that selects a 'pivot' element and partitions the array into sub-arrays based on this pivot. It recursively sorts the sub-arrays, resulting in a sorted array with an average time complexity of O(n log n).
+---
+
+## QuickSort Algorithm
+
+The QuickSort algorithm is different from the ones we've learned so far. It uses the divide and conquer method to break down the array into smaller parts, making it more efficient in terms of time and space.
+
+Two important concepts to know before starting with QuickSort:
+
+1. **Divide and Conquer:** This method breaks a big problem into smaller subproblems, solves them individually, and combines their results.
+
+2. **Partition Method in Sorting:** Here, we choose a pivot element and move all smaller elements to its left and all larger ones to its right, fixing the pivot's position.
+
+QuickSort uses both these techniques. 
+
+To sort an array of integers using QuickSort, the first step is to pick a pivot. While there are several ways to choose the pivot, for now, we'll select the first element of each unsorted part of the array.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/152.svg",
+    light: "/images/152.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+In the QuickSort algorithm, each time you have a new unsorted subarray, you perform a partition on it. This involves choosing a pivot, which is the first element of the unsorted subarray. You will also need two index variables, `i` and `j`. Follow the steps below for the partitioning process:
+
+1. Define `i` as the low index (the first element of the subarray) and `j` as the high index (the last element of the subarray).
+
+2. Set the pivot as the element at the low index `i`.
+
+3. Increase `i` by 1 until you find an element greater than the pivot.
+
+4. Decrease `j` by 1 until you find an element smaller than or equal to the pivot.
+
+5. Once you have fixed the values of `i` and `j`, swap the elements at indices `i` and `j`.
+
+6. Repeat steps 3, 4, and 5 until `j` is less than or equal to `i`.
+
+7. Finally, swap the pivot element with the element at index `j`.
+
+This was the partitioning algorithm. Every time you call a partition, the pivot element gets its final position. A partition never guarantees a sorted array, but it does guarantee that all the smaller elements are located to the pivot’s left, and all the greater elements are located to the pivot’s right.
+
+Now let's look at how the array we received at the beginning gets sorted using partitioning and divide and conquer recursively for smaller subarrays.
+
+Firstly, the whole array is unsorted, and hence we apply quicksort on the whole array.
+
+Now, we apply a partition in this array. Applying partition asks you to follow all the above steps we discussed.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/153.svg",
+    light: "/images/153.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Keep increasing i until we reach an element greater than the pivot, and keep decreasing j until we reach an element smaller or equal to the pivot.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/154.svg",
+    light: "/images/154.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Swap the two elements and continue the search further until j crosses i or becomes equal to i.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/155.svg",
+    light: "/images/155.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+As j crossed i while searching, we followed the final step of swapping the pivot element and the element at j.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/156.svg",
+    light: "/images/156.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+After the partitioning, the pivot will be in its final position in the sorted array. For example, if the pivot is 2, all elements smaller than 2 will be on the left, and those greater than 2 will be on the right.
+
+This is where the divide and conquer method comes into play. Instead of focusing on the entire array, we concentrate on the smaller unsorted subarrays. In this case, we have two unsorted subarrays: `{1}` and `{3, 9, 4, 4, 8, 7, 5, 6}`. 
+
+Next, we make a call to QuickSort on these two subarrays to sort them further.
+
+Now since the first subarray has just a single element, we consider it sorted. Let’s now sort the second subarray. Follow all the partition steps from the beginning.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/157.svg",
+    light: "/images/157.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+Now, our new pivot is the element at index 2. And i  and j  are 2 and 9, respectively, marking the start and the end of the subarray. Follow steps 3 and 4.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/158.svg",
+    light: "/images/158.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+And since there were no elements smaller than 3, j crosses i in the very first iteration. This means 3 was already at its sorted index. And there are no elements to its left; the only unsorted subarray is `{9, 4, 4, 8, 7, 5, 6}`. And our new situation becomes:
