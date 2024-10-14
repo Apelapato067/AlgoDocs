@@ -135,3 +135,220 @@ Now, our new pivot is the element at index 2. And i  and j  are 2 and 9, respect
 />
 
 And since there were no elements smaller than 3, j crosses i in the very first iteration. This means 3 was already at its sorted index. And there are no elements to its left; the only unsorted subarray is `{9, 4, 4, 8, 7, 5, 6}`. And our new situation becomes:
+
+## Understanding the code snippet below:
+
+1. Before we proceed with the core concepts, let’s just copy the printArray part in our current programs. This just helps a lot seeing the contents of the array before and after the sorting. Anyways, I have attached the snippet for printArray as well.
+
+```C
+void printArray(int* A, int n){
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+```
+
+**Code Snippet 1: Creating the printArray function**
+
+2. The next step is to define an array of elements. As always, we define an array of integers.
+
+3. Define an integer variable for storing the size/length of the array.
+
+**Understanding the quickSort functions**
+
+4. If you recall what we did every time we were given an unsorted subarray, we just applied a partition on it. Now, since partition is a different job, we will have a different function for that. But the *quicksort* function just intends to follow things to partition. Like, if you pass an array to *quicksort*, it further passes it to the partition function, and the *partition* returns the pivot index after applying all the steps we discussed earlier. Quicksort stores this index and recursively calls itself with smaller subarrays which lie on the left and the right of the pivot index.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/159.svg",
+    light: "/images/159.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+For example, if you call quicksort passing the above array, It would pass it further to the partition, and the partition would return the new index of the pivot element, which is 4. Partition returns 3, the new position of 4. Now, *quicksort* recursively calls itself on the left and the right subarrays highlighted below.
+
+<AdaptiveThemeImage
+  src={{
+    dark: "/images/160.svg",
+    light: "/images/160.svg",
+  }}
+  className="mx-auto pb-4 pt-0"
+  width={770}
+  height={450}
+  alt="example"
+/>
+
+
+### Creating the quickSort function:
+
+5. Create a void function quickSort and pass the address of the array and the lower index, which would be 0 for the first time, and the higher index, which would be length -1 for the first time, as parameters. Create an integer variable partitionIndex for holding the index provided by the partition. Now recursively call the quickSort function twice but with parameters changed to (low, partitionIndex-1) for the left subarray and (partitionIndex+1, high) for the right subarray, instead of just (low, high). But ain’t we forgetting something? The basics of recursion demand a base condition to stop the recursion. Hence, the base condition here would be when our low becomes greater than or equal to our high. This is when our recursion stops.
+
+```C
+void quickSort(int A[], int low, int high)
+{
+    int partitionIndex; // Index of pivot after partition
+
+    if (low < high)
+    {
+        partitionIndex = partition(A, low, high); 
+        quickSort(A, low, partitionIndex - 1);  // sort left subarray 
+        quickSort(A, partitionIndex + 1, high); // sort right subarray
+    }
+}
+```
+
+*Code Snippet 2: Creating the quickSort function*
+
+### Creating the partition function:
+
+6. Create a void function partition, and pass the address of the array and the low and the high of the subarray as parameters. Create an integer variable pivot that takes the element at the low index. Create two index variables, i and j, and make them hold low+1 and high
+
+Create a while loop and run until the index i reaches an element greater than or equal to the pivot or the array finishes. Till then, keep increasing i by 1.  Similarly, create another while loop and run until our index j reaches an element smaller than the pivot or the array finishes. Till then, keep decreasing j by 1. After finishing all the above tasks, we swap the elements at indices i and j.
+
+The above process is repeated using a do-while loop until i becomes greater than j. And when it does, the loop breaks, and before we return, we swap our pivot with the element at index j. And that should finish our job.
+
+
+```C
+int partition(int A[], int low, int high)
+{
+    int pivot = A[low];
+    int i = low + 1;
+    int j = high;
+    int temp;
+
+    do
+    {
+        while (A[i] <= pivot)
+        {
+            i++;
+        }
+
+        while (A[j] > pivot)
+        {
+            j--;
+        }
+
+        if (i < j)
+        {
+            temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
+        }
+    } while (i < j);
+
+    // Swap A[low] and A[j]
+    temp = A[low];
+    A[low] = A[j];
+    A[j] = temp;
+    return j;
+}
+```
+
+*Code Snippet 3: Creating the partition function*
+
+### Here is the whole source code:
+
+```C
+#include <stdio.h>
+
+void printArray(int *A, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }
+    printf("\n");
+}
+
+int partition(int A[], int low, int high)
+{
+    int pivot = A[low];
+    int i = low + 1;
+    int j = high;
+    int temp;
+
+    do
+    {
+        while (A[i] <= pivot)
+        {
+            i++;
+        }
+
+        while (A[j] > pivot)
+        {
+            j--;
+        }
+
+        if (i < j)
+        {
+            temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
+        }
+    } while (i < j);
+
+    // Swap A[low] and A[j]
+    temp = A[low];
+    A[low] = A[j];
+    A[j] = temp;
+    return j;
+}
+
+void quickSort(int A[], int low, int high)
+{
+    int partitionIndex; // Index of pivot after partition
+
+    if (low < high)
+    {
+        partitionIndex = partition(A, low, high); 
+        quickSort(A, low, partitionIndex - 1);  // sort left subarray 
+        quickSort(A, partitionIndex + 1, high); // sort right subarray
+    }
+}
+
+int main()
+{
+    //int A[] = {3, 5, 2, 13, 12, 3, 2, 13, 45};
+    int A[] = {9, 4, 4, 8, 7, 5, 6};
+    // 3, 5, 2, 13, 12, 3, 2, 13, 45
+    // 3, 2, 2, 13i, 12, 3j, 5, 13, 45
+    // 3, 2, 2, 3j, 12i, 13, 5, 13, 45 --> first call to partition returns 3
+    int n = 9;
+    n =7;
+    printArray(A, n);
+    quickSort(A, 0, n - 1);
+    printArray(A, n);
+    return 0;
+}
+```
+
+> Code Snippet 4: Program to implement the Quick Sort Algorithm
+
+Let us now check if our functions work well. Consider an array A of length 7.
+
+```C
+    int A[] = {9, 4, 4, 8, 7, 5, 6};
+    int n = 7;
+    printArray(A, n);
+    quickSort(A, 0, n-1);
+    printArray(A, n);
+```
+
+> Code Snippet 5: Using the quickSort function
+
+And the output we received was:
+
+```
+9 4 4 8 7 5 6
+4 4 5 6 7 8 9
+PS D:\Code>
+```
+
+**Figure 1: Output of the above program**
+
